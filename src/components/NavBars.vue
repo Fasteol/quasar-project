@@ -1,11 +1,11 @@
 <template>
-    <div class="navbar">
+    <div class="navbar" :class="{ 'navbar--white': isWhiteText, border: border }">
     <body class="mobile">
       <nav>
         <div class="container nav-wrapper">
           <div class="brand">
             <img src="../assets/images/logo_keraton.png" class="icon">
-            <span class="app-name">KERATON KASEPUHAN CIREBON</span>
+            <span class="app-name" :class="{ white: isWhiteText }">KERATON KASEPUHAN CIREBON</span>
           </div>
           <div class="navbars">
             <span></span>
@@ -14,33 +14,50 @@
           </div>
           <ul class="nav-list">
             <li class="title">
-              <a href="../views/BeranDa.vue">Beranda</a>
+              <a :class="{ white: isWhiteText }" href="/">Beranda</a>
             </li>
             <li class="title">
-              <p>Sejarah</p>
+              <p :class="{ white: isWhiteText }">Sejarah</p>
               <ul class="dropdown-list">
-                <li><a href="../views/SejarahKeraton.vue">Keraton</a></li>
-                <li><a href="../views/sejarahSilsilah.vue">Silsilah</a></li>
+                <li><a href="sejarah">Keraton</a></li>
+                <li><a href="silsilah">Silsilah</a></li>
               </ul>
             </li>
             <li class="title">
-              <p>Objek Wisata</p>
+              <p :class="{ white: isWhiteText }">Objek Wisata</p>
               <ul class="dropdown-list">
-                <li><a href="../views/AreaKeraton.vue">Keraton Kesepuhan</a></li>
-                <li><a href="../views/Museum.vue">Museum Pusaka</a></li>
-                <li><a href="../views/AgungDalem.vue">Dalem Agung Pakungwati</a></li>
-                <li><a href="../views/Lotus.vue">Lotus</a></li>
+                <li><a href="areakeraton">Keraton Kesepuhan</a></li>
+                <li><a href="museum">Museum Pusaka</a></li>
+                <li><a href="dalemagung">Dalem Agung Pakungwati</a></li>
+                <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
               </ul>
             </li>
             <li class="title">
-              <p>Booking</p>
+              <p :class="{ white: isWhiteText }">Booking</p>
               <ul class="dropdown-list">
-                <li><a href="../views/CheckoutKeraton.vue">Paket Keraton</a></li>
-                <li><a href="../views/Booking.vue">Tiket Event</a></li>
+                <li><a href="#">Paket Keraton</a></li>
+                <li><a href="booking">Tiket Event</a></li>
               </ul>
             </li>
             <li>
-              <img src="../assets/images/avatar.png" class="avatar">
+              <button
+                @click="getTickets"
+                style="
+                  border-radius: 5px;
+                  background-color: #123b32;
+                  color: white;
+                  padding: 2px 8px;
+                  width: 162px;
+                  height: 34px;
+                  border: none;
+                  font-family: 'Raleway';
+                  font-size: 14px;
+                  font-weight: 700;
+                "
+              >
+                Dapatkan Tiket
+              </button>
+              <!-- <img src="../assets/images/avatar.png" class="avatar">
               <ul class="dropdown-list">
                 <div class="user">
                   <li><img src="../assets/images/avatar.png" class="avatar"></li>
@@ -48,7 +65,7 @@
                 </div>
                 <li><a href="../views/HistoryTransaksi.vue">Pembelian</a></li>
                 <li class="signout"><a href="../views/SignIn.vue" style="color: red;">Sign Out</a></li>
-              </ul>
+              </ul> -->
             </li>
           </ul>
         </div>
@@ -72,7 +89,20 @@
         } else {
           document.body.classList.remove('mobile');
         }
-      }
+      },
+      getTickets() {
+        this.$router.push({ name: "signin" });
+      },
+    },
+    props: {
+      isWhiteText: {
+        type: Boolean,
+        default: false,
+      },
+      border: {
+        type: Boolean,
+        default: false,
+      },
     }
   }
   </script>

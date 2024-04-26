@@ -15,15 +15,27 @@
             <a :class="{ white: isWhiteText }" href="beranda">Beranda</a>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="sejarah">Sejarah</a>
+            <p :class="{ white: isWhiteText }">Sejarah</p>
+            <ul class="dropdown-list">
+              <li><a href="sejarah">Keraton</a></li>
+              <li><a href="silsilah">Silsilah</a></li>
+            </ul>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="booking">Booking</a>
+            <a :class="{ white: isWhiteText }">Booking</a>
+            <ul class="dropdown-list">
+              <li><a href="#">Paket Keraton</a></li>
+              <li><a href="booking">Tiket Event</a></li>
+            </ul>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="areakeraton"
-              >Objek Wisata</a
-            >
+            <p :class="{ white: isWhiteText }">Objek Wisata</p>
+            <ul class="dropdown-list">
+              <li><a href="areakeraton">Keraton Kesepuhan</a></li>
+              <li><a href="museum">Museum Pusaka</a></li>
+              <li><a href="dalemagung">Dalem Agung Pakungwati</a></li>
+              <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
+            </ul>
           </li>
           <button
             @click="getTickets"
@@ -73,6 +85,46 @@ export default {
 
 .sub {
   padding-top: 10px;
+}
+
+.sub:hover {
+  text-decoration: underline;
+}
+
+nav ul.dropdown-list {
+  margin-top: -1rem;
+  list-style-type: none;
+  display: block;
+  position: absolute;
+  background: #FFFFFF;
+  border: 1px solid #123B32;
+  border-radius: 10px;
+  padding: 6px 16px;
+  width: max-content;
+  opacity: 0;
+  pointer-events: none;
+}
+
+nav ul.dropdown-list li {
+  margin-left: 0;
+  padding: 5px 0;
+}
+
+.sub:hover .dropdown-list {
+  opacity: 1;
+  pointer-events: auto;
+  animation: moveUp .5s ease-in-out forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(20px); 
+  }
 }
 
 .navbar {
