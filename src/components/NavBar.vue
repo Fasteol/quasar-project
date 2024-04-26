@@ -6,7 +6,7 @@
         src="../assets/images/logo_keraton.png"
         class="app-icon"
       />
-      <span class="app-name">KERATON KASEPUHAN CIREBON</span>
+      <span :class="{ white: isWhiteText }" class="app-name">KERATON KASEPUHAN CIREBON</span>
     </div>
     <div class="navbar-right">
       <nav>
@@ -16,7 +16,7 @@
           </li>
           <li class="sub">
             <p :class="{ white: isWhiteText }">Sejarah</p>
-            <ul class="dropdown-list">
+            <ul class="dropdown-list" style="margin-top: -1rem;">
               <li><a href="#sejarah">Keraton</a></li>
               <li><a href="#sejarahsilsilah">Silsilah</a></li>
             </ul>
@@ -164,7 +164,7 @@ nav ul.dropdown-list li {
 .app-name {
   font-size: 20px;
   width: 139px;
-  color: #fff;
+  /* color: #fff; */
   height: 84px;
   margin-left: 16px;
 }
