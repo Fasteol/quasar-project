@@ -17,23 +17,23 @@
           <li class="sub">
             <p :class="{ white: isWhiteText }">Sejarah</p>
             <ul class="dropdown-list">
-              <li><a href="sejarah">Keraton</a></li>
-              <li><a href="silsilah">Silsilah</a></li>
+              <li><a href="#sejarah">Keraton</a></li>
+              <li><a href="#sejarahsilsilah">Silsilah</a></li>
             </ul>
           </li>
           <li class="sub">
             <a :class="{ white: isWhiteText }">Booking</a>
             <ul class="dropdown-list">
               <li><a href="#">Paket Keraton</a></li>
-              <li><a href="booking">Tiket Event</a></li>
+              <li><a href="#booking">Tiket Event</a></li>
             </ul>
           </li>
           <li class="sub">
             <p :class="{ white: isWhiteText }">Objek Wisata</p>
             <ul class="dropdown-list">
-              <li><a href="areakeraton">Keraton Kesepuhan</a></li>
-              <li><a href="museum">Museum Pusaka</a></li>
-              <li><a href="dalemagung">Dalem Agung Pakungwati</a></li>
+              <li><a href="#areakeraton">Keraton Kesepuhan</a></li>
+              <li><a href="#museum">Museum Pusaka</a></li>
+              <li><a href="#dalemagung">Dalem Agung Pakungwati</a></li>
               <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
             </ul>
           </li>

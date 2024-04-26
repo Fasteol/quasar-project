@@ -154,7 +154,7 @@
         <h2 class="tanyaText">Ada pertanyaan untuk kami?</h2>
       </div>
       <div class="faq">
-        <div v-for="(faq, index) in faqs" :key="index">
+        <div style="border-bottom: 1px solid black;" v-for="(faq, index) in faqs" :key="index">
           <button class="accordion" @click="toggleAccordion(index)">
             <span class="nomor">{{ faq.nomor }}</span> {{ faq.pertanyaan }}
             <svg
@@ -169,7 +169,8 @@
                 d="M16 3C13.4288 3 10.9154 3.76244 8.77759 5.1909C6.63975 6.61935 4.97351 8.64968 3.98957 11.0251C3.00563 13.4006 2.74819 16.0144 3.2498 18.5362C3.75141 21.0579 4.98953 23.3743 6.80762 25.1924C8.6257 27.0105 10.9421 28.2486 13.4638 28.7502C15.9856 29.2518 18.5995 28.9944 20.9749 28.0104C23.3503 27.0265 25.3807 25.3603 26.8091 23.2224C28.2376 21.0846 29 18.5712 29 16C28.9964 12.5533 27.6256 9.24882 25.1884 6.81163C22.7512 4.37445 19.4467 3.00364 16 3ZM21.7075 14.7075L16.7075 19.7075C16.6146 19.8005 16.5043 19.8742 16.3829 19.9246C16.2615 19.9749 16.1314 20.0008 16 20.0008C15.8686 20.0008 15.7385 19.9749 15.6171 19.9246C15.4957 19.8742 15.3854 19.8005 15.2925 19.7075L10.2925 14.7075C10.1049 14.5199 9.99945 14.2654 9.99945 14C9.99945 13.7346 10.1049 13.4801 10.2925 13.2925C10.4801 13.1049 10.7346 12.9994 11 12.9994C11.2654 12.9994 11.5199 13.1049 11.7075 13.2925L16 17.5863L20.2925 13.2925C20.3854 13.1996 20.4957 13.1259 20.6171 13.0756C20.7385 13.0253 20.8686 12.9994 21 12.9994C21.1314 12.9994 21.2615 13.0253 21.3829 13.0756C21.5043 13.1259 21.6146 13.1996 21.7075 13.2925C21.8004 13.3854 21.8741 13.4957 21.9244 13.6171C21.9747 13.7385 22.0006 13.8686 22.0006 14C22.0006 14.1314 21.9747 14.2615 21.9244 14.3829C21.8741 14.5043 21.8004 14.6146 21.7075 14.7075Z"
                 fill="#D9A520"
               />
-            </svg></button
+            </svg>
+          </button
           ><svg
             width="1064"
             height="1"
@@ -177,7 +178,6 @@
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line y1="0.5" x2="1064" y2="0.5" stroke="#212121" />
           </svg>
           <div class="panel" v-show="faq.active">
             <p class="jawaban">{{ faq.jawaban }}</p>
@@ -198,9 +198,9 @@
         <div class="quickLinks">
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/sejarah">Sejarah</a></li>
-            <li><a href="/booking">Booking</a></li>
-            <li><a href="/areakeraton">Objek Wisata</a></li>
+            <li><a href="#sejarah">Sejarah</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#areakeraton">Objek Wisata</a></li>
           </ul>
         </div>
 
@@ -220,13 +220,13 @@
         <div class="company">
           <ul>
             <li><a href="curaweda.com">About us</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="curaweda.com">Partners</a></li>
+            <li><a href="curaweda.com">Contact</a></li>
           </ul>
         </div>
-        <h4 class="subscribe">Subscribes your email for updates!</h4>
+        <!-- <h4 class="subscribe">Subscribes your email for updates!</h4> -->
       </div>
-      <input type="text" placeholder="Enter Your Email" />
+      <!-- <input type="text" placeholder="Enter Your Email" /> -->
       <p class="alamat">Jalan Kesepuhan 43 Cirebon, Jawa Barat 45114</p>
       <footer>
         <p class="wm">@ 2024 Keraton Kasepuhan Cirebon</p>
@@ -348,7 +348,7 @@ export default {
 }
 
 #section5 .container {
-  position: relative;
+  margin: 5rem 0;
   background-image: url("../assets/images/keraton2.png");
   background-size: cover;
 }
@@ -364,9 +364,9 @@ export default {
   backdrop-filter: blur(3px);
 }
 
-#section5 .container > .text {
-  position: relative;
-  z-index: 1;
+#section5 .container .text {
+  position: absolute;
+  margin-top: 12rem;
 }
 
 #section6 .container {
@@ -806,23 +806,17 @@ export default {
   text-align: center;
   width: 50%;
   height: 10%;
-  top: 78%;
+  top: 85%;
   font-family: "Raleway";
   font-size: 20px;
   color: #ffffff;
 }
 
 .btnViewMore {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 5px;
   gap: 10px;
-  position: absolute;
-  width: 15%;
-  height: 7%;
-  left: 43%;
-  margin-top: 380px;
+  position: relative;
+  margin-top: 49.5rem;
 }
 
 .btnViewMore:hover {
@@ -840,7 +834,6 @@ export default {
 
 .tanyaText {
   position: absolute;
-  width: 21%;
   font-family: "Inria Serif";
   font-style: normal;
   font-size: 25px;
@@ -848,7 +841,7 @@ export default {
   font-weight: 700;
   color: #212121;
   top: 5vw;
-  left: 41vw;
+  left: 39vw;
 }
 
 .faq {
@@ -857,14 +850,13 @@ export default {
 }
 
 .accordion {
+  margin-top: 1rem;
   display: block;
   background-color: transparent;
   border: 0px;
-  border-bottom: 1px, black;
   font-family: "Raleway";
   font-size: 25px;
   color: #212121;
-  margin-bottom: 20px;
 }
 
 .accordion .nomor {
@@ -921,8 +913,6 @@ li a {
 
 .qlText {
   position: absolute;
-  width: 159px;
-  height: 40px;
   left: 88px;
   top: 293px;
   font-family: "Raleway";
@@ -1139,7 +1129,7 @@ input::placeholder {
     background-size: cover;
   }
 
-  #section5 .container::before {
+  /* #section5 .container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1148,11 +1138,12 @@ input::placeholder {
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
-  }
+  } */
 
   #section5 .container > .text {
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
+    margin-bottom: -2rem;
   }
 
   #section6 .container {
