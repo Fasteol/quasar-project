@@ -1,5 +1,5 @@
 <template>
-  <navbar/>
+  <navbar isWhiteText/>
   <section id="hero">
     <div class="text">
       <h5 style="color: #FAE084;">Warisan Leluhur Cirebon</h5>

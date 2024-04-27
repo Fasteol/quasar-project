@@ -1,11 +1,12 @@
 <template>
-  <nav>
-    <NavBar border />
-    <div class="cover">
-      <img src="../assets/images/SilsilahSejarah.png" />
+  <navbar isWhiteText/>
+  <section id="hero">
+    <div class="text">
+      <h5 style="color: #FAE084;">Warisan Leluhur Cirebon</h5>
+      <h2 style="padding: 0 10rem;">Mengenal Lebih Dekat dengan Sejarah Keraton</h2>
     </div>
-  </nav>
-  <div class="seluruh">
+  </section>
+  <section>
     <div class="container">
       <img
         src="../assets/images/Line 17.png"
@@ -35,7 +36,6 @@
         </div>
       </div>
     </div>
-
     <div class="container">
       <p class="Sulthan">
         <span class="sultan-title"><b>Sultan Sepuh II</b></span> <br /><br />
@@ -429,23 +429,44 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<script setup>
-import NavBar from "../components/NavBars.vue";
-</script>
-
 <script>
+import navbar from "../components/NavBar.vue"
 export default {
-  name: "DetailSejarah",
-};
+  components: {
+    navbar
+  }
+}
 </script>
 
 <style scoped>
-@import url("https://fonts.gss2?family=Inter:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+  font-family: "Raleway", sans-serif;
+}
+#hero {
+  min-height: 90vh;
+  background-image: url(../assets/images/sejarah.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+  text-align: center;
+  color: white;
+}
+.container {
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
 .text-bawah {
   margin-left: -100px;
   margin-top: 25px;
@@ -497,6 +518,7 @@ export default {
   width: 800px;
   margin: 0 auto;
   position: relative;
+  padding: 3rem 10rem;
 }
 
 .Warisan {
@@ -551,7 +573,7 @@ p {
 }
 
 .Sulthan {
-  margin-top: -100px;
+  margin-top: -10rem;
   margin-left: -60px;
 }
 

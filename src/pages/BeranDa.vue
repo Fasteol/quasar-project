@@ -1,7 +1,5 @@
 <template>
-  <nav class="nav">
-    <navbar isWhiteText />
-  </nav>
+  <navbar isWhiteText />
   <section class="sec-home" id="section1">
     <div class="container">
       <div class="text1">
@@ -95,12 +93,9 @@
       </div>
       <div class="container-card">
         <div class="card4">
+          <div class="overlay"></div>
           <a href="#">
-            <p class="title4">Tadarus di Langgar Anggit</p>
-            <p class="subtitle4">
-              Tradisi ini dilaksanakan di keraton kesepuhan cirebon pada tanggal
-              10 maret - 9 April 2024
-            </p>
+            <p class="title5" style="filter: brightness(200%)">Tadarus di Langgar Anggit</p>
           </a>
         </div>
         <div class="card5">
@@ -713,7 +708,6 @@ export default {
   background-color: #b6b6b6;
   flex: 1;
   transition: 0.3s all ease;
-  /* filter: brightness(70%); */
 }
 .card5 {
   background-image: url("../assets/images/card5.png");
@@ -775,6 +769,17 @@ export default {
   text-align: left;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust the opacity (0.3) to your preference */
+  z-index: 1;
+  border-radius: 20px;
+}
+
 .title5 {
   position: absolute;
   bottom: 10px; /* Geser ke bawah sejauh 10px dari tepi kartu */
@@ -786,6 +791,7 @@ export default {
   line-height: 40px;
   color: #ffffff;
   text-align: left; /* Teks diatur menjadi rata kiri */
+  z-index: 2;
 }
 
 .title6 {
