@@ -1,5 +1,5 @@
 <template>
-  <navbar isWhiteText />
+  <navbar :isWhiteText=false />
   <section
     class="sec-home"
     id="section1"
