@@ -20,7 +20,7 @@
   </div>
   <a class="judul1">Tiket Masuk Keraton & Bundling</a>
   <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(1, 4)" :key="index">
+    <div class="ni" v-for="(item, index) in tiketItems" :key="index">
     <img class="image" :src="item.image" alt="Gambar" />
     <div class="buttonaji">
       </div>
@@ -35,55 +35,23 @@
   </div>
 </div>
 
-  <a class="judul1">Paket Wisata Silaturahmi (minimal 35 orang)</a>
-  <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(5, 8)" :key="index">
-    <img class="image" :src="item.image" alt="Gambar" />
-    <div class="buttonaji">
+<div v-for="(item, index) in paketItems" :key="index">
+  <a class="judul1">Paket {{ paketNameItems[index] }} (minimal 35 orang)</a>
+    <div class="container">
+      <div class="ni" v-for="(data, i) in item" :key="i">
+        <img class="image" :src="data.image" alt="Gambar" />
+        <div class="buttonaji">
       </div>
-    <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-    <h1 class="judul-besar">{{ item.titleBig }}</h1>
-    <div class="tengah">
-      <h3 class="judul-kecil">{{ item.price }}</h3>
-      <button class="tambah">
-        Tambah <img class="photo" src="../assets/Frame.svg" />
-      </button>
-    </div>
-  </div>
-</div>
-
-  <a class="judul1">Paket Wisata Non Silaturahmi (minimal 40 orang)</a>
-  <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(9, 11)" :key="index">
-    <img class="image" :src="item.image" alt="Gambar" />
-    <div class="buttonaji">
+      <h2 class="judul-sedang">{{ data.titleMedium }}</h2>
+      <h1 class="judul-besar">{{ data.titleBig }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ data.price }}</h3>
+        <button class="tambah">
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
       </div>
-    <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-    <h1 class="judul-besar">{{ item.titleBig }}</h1>
-    <div class="tengah">
-      <h3 class="judul-kecil">{{ item.price }}</h3>
-      <button class="tambah">
-        Tambah <img class="photo" src="../assets/Frame.svg" />
-      </button>
     </div>
-  </div>
 </div>
-
-<a class="judul1">Paket Wisata Pelajar (minimal 50 orang)</a>
-<div class="container">
-  <div class="ni" v-for="(item, index) in filterItems(12, 12)" :key="index">
-    <img class="image" :src="item.image" alt="Gambar" />
-    <div class="buttonaji">
-    </div>
-    <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-    <h1 class="judul-besar">{{ item.titleBig }}</h1>
-    <div class="tengah">
-      <h3 class="judul-kecil">{{ item.price }}</h3>
-      <button class="tambah">
-        Tambah <img class="photo" src="../assets/Frame.svg" />
-      </button>
-    </div>
-  </div>
 </div>
 
 <div class="footer">
@@ -166,6 +134,9 @@ export default {
   },
   data() {
     return {
+      tiketItems: ref(),
+      paketItems: ref(),
+      paketNameItems: ref(),
       isOpen: false,
       isOpen2: false,
       imageUrl: "../assets/trigger.svg",
@@ -280,7 +251,65 @@ export default {
       ],
     };
   },
+  mounted(){
+    this.fetchData()
+  },
   methods: {
+    async fetchData(){
+      try{
+        const response = await this.$axios.get('http://localhost:3000/keraton/items/booking')
+        if(response.status != 200) throw Error('Error Occured')
+        let tikets = [], pakets = { }
+        for(let subType of response.data.data){
+          switch(subType.typeId){
+            case 1:
+              for(let purchasable of subType.Purchasable){
+                let harga = purchasable.priceUmum || purchasable.priceMancanegara ? this.countPrice(purchasable.price, purchasable.priceUmum, purchasable.priceMancanegara) :`Rp. ${this.formatRupiah(purchasable.price)}`
+                tikets.push({ 
+                  id: purchasable.id, 
+                  image: purchasable.image,
+                  titleMedium: purchasable.name,
+                  titleBig: purchasable.desc,
+                  price: `${harga}/${purchasable.unit}`
+                })
+              }
+              break;
+            case 2:
+              const subTypeName = subType.name
+              for(let purchasable of subType.Purchasable){
+                pakets[subTypeName] = []
+                pakets[subTypeName].push({
+                  id: purchasable.id, 
+                  image: purchasable.image,
+                  titleMedium: purchasable.name,
+                  titleBig: purchasable.desc,
+                  price: `Rp. ${this.formatRupiah(purchasable.price)}/${purchasable.unit}`
+                })
+              }
+              break;
+            default:
+              break;
+          }
+        }
+        this.tiketItems = tikets
+        this.paketItems = Object.values(pakets)
+        this.paketNameItems = Object.keys(pakets)
+        console.log(this.paketNameItems)
+      }catch(err){
+        console.log(err)
+      }
+    },
+    countPrice(normalPrice, secondPrice, thirdPrice){
+      let returnedPrice = `Rp. ${this.formatRupiah(normalPrice)}`
+      const prices = [normalPrice, secondPrice, thirdPrice].filter(price => price !== null).sort((a, b) => a - b);
+      if(prices.length > 1){
+        returnedPrice = `Rp. ${this.formatRupiah(prices[0])} - ${this.formatRupiah(prices[prices.length - 1])}`
+      }
+      return returnedPrice
+    },
+    formatRupiah(price){
+      return (price / 1000).toLocaleString('en-US', {minimumFractionDigits: 3})
+    },
     filterItems(startId, endId) {
     return this.items.filter(item => item.id >= startId && item.id <= endId);
   },
