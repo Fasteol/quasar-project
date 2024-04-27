@@ -56,14 +56,14 @@
       </div>
     </div>
     <div class="container">
-      <div class="ni" v-for="(item, index) in items" :key="index">
+      <div class="ni" v-for="(item, index) in events" :key="index">
     <img class="image" :src="item.image" alt="Gambar" />
      <div class="buttonaji">
     <button class="btn-small">{{ item.buttonText1 }}</button>
     <button class="btn-small">{{ item.buttonText2 }}</button>
           </div>
-          <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-          <h1 class="judul-besar">{{ item.titleBig }}</h1>
+          <h2 class="judul-sedang">{{ item.titleBig }}</h2>
+          <h1 class="judul-besar">{{ item.titleMedium }}</h1>
           <div class="tengah">
           <button class="tambah">
           Tambah <img class="photo" src="../assets/Frame.svg" />
@@ -96,50 +96,67 @@ export default {
       default: "Jenis Event",
     },
   },
+  watch:{
+    selectedOptions: {
+      handler(val){
+        console.log(val)
+        this.fetchData()
+      }
+    },
+    selectedOptions2: {
+      handler(val){
+        console.log(val)
+        this.fetchData()
+      }
+    }
+  },
   data() {
     return {
       isOpen: false,
       isOpen2: false,
       imageUrl: "../assets/trigger.svg",
-      options: [
-        { label: "Hari", value: "Perminggu" },
-        { label: "Minggu", value: "Perminggu" },
-        { label: "Bulan", value: "Perminggu" },
-      ],
+      options: ref(),
       options2: [
-        { label: "Gratis", value: "Gratis" },
+        { label: "Gratis", value: "1" },
+        { label: "Bayar", value: "0" },
       ],
       selectedOptions: [],
       selectedOptions2: [],
-      items: [
-        {
-          image: "src/assets/images/isra.png",
-          buttonText1: "Perminggu",
-          buttonText2: "Gratis",
-          titleMedium: "Peringatan isra mi'raj di langgar alit",
-          titleBig:
-            "Keluarga Keraton Kasepuhan mengadakan acara Isra Miraj di Langgar Alit yang rutin digunakan untuk peringatan hari besar Islam",
-        },
-        {
-          image: "/src/assets/images/sholat.png",
-          buttonText1: "Perminggu",
-          buttonText2: "Gratis",
-          titleMedium: "Perayaan Maulid Nabi di Masjid Agung",
-          titleBig:
-            "Komunitas Muslim mengadakan acara perayaan Maulid Nabi di Masjid Agung setempat",
-        },
-        {
-          image: "src/assets/images/bedug.png",
-          buttonText1: "Perminggu",
-          buttonText2: "Gratis",
-          titleMedium: "Tadarus di langgar alit",
-          titleBig:
-            "Kegiatan tadarus Alquran ini biasanya dibimbing oleh kaum masjid dan dilakukan dua kali khatam selama bulan Ramadan",
-        },
-      ],
+      events: ref()
     };
   },
+  mounted(){
+    this.fetchData()
+  },
   methods: {
+    async fetchData(){
+      let freeOptions, iterationOptions
+      try{
+        if(this.selectedOptions) iterationOptions = Object.values(this.selectedOptions)
+        if(this.selectedOptions2) freeOptions = Object.values(this.selectedOptions2)
+        console.log(freeOptions, iterationOptions)
+        const eventResponse = await this.$axios.post('http://localhost:3000/keraton/event/page', {
+          ...(iterationOptions && iterationOptions.length != 0 && { iterat: Object.values(this.selectedOptions) }),
+          ...(freeOptions && freeOptions.length < 2 && freeOptions.length != 0 && { free: freeOptions[0] != 0 ? true : false })
+        })
+        const iterationResponse = await this.$axios.get('http://localhost:3000/keraton/iteration')
+        if(eventResponse.status != 200) throw Error('Error occured')
+        if(iterationResponse.status != 200) throw Error('Error occured')
+        this.events = eventResponse.data.data.map((event) =>({
+          image: event.image,
+          buttonText1: event.iteration.name,
+          buttonText2: event.isFree ? "Gratis" : "Bayar",
+          titleMedium: event.desc,
+          titleBig: event.name
+        }))
+        this.options = iterationResponse.data.data.map((iterat) => ({
+          label: iterat.name,
+          value: iterat.id
+        }))
+      }catch(err){
+        console.log(err)
+      }
+    },
     toggleDropdown() {
       this.isOpen = !this.isOpen;
     },
