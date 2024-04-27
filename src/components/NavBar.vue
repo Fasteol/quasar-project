@@ -6,7 +6,9 @@
         src="../assets/images/logo_keraton.png"
         class="app-icon"
       />
-      <span :class="{ white: isWhiteText }" class="app-name">KERATON KASEPUHAN CIREBON</span>
+      <span :class="{ white: isWhiteText }" class="app-name"
+        >KERATON KASEPUHAN CIREBON</span
+      >
     </div>
     <div class="navbar-right">
       <nav>
@@ -16,7 +18,7 @@
           </li>
           <li class="sub">
             <p :class="{ white: isWhiteText }">Sejarah</p>
-            <ul class="dropdown-list" style="margin-top: -1rem;">
+            <ul class="dropdown-list" style="margin-top: -1rem">
               <li><a href="#sejarah">Keraton</a></li>
               <li><a href="#sejarahsilsilah">Silsilah</a></li>
             </ul>
@@ -82,6 +84,8 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+.navbar {
+}
 
 .sub {
   padding-top: 10px;
@@ -96,8 +100,8 @@ nav ul.dropdown-list {
   list-style-type: none;
   display: block;
   position: absolute;
-  background: #FFFFFF;
-  border: 1px solid #123B32;
+  background: #ffffff;
+  border: 1px solid #123b32;
   border-radius: 10px;
   padding: 6px 16px;
   width: max-content;
@@ -113,7 +117,7 @@ nav ul.dropdown-list li {
 .sub:hover .dropdown-list {
   opacity: 1;
   pointer-events: auto;
-  animation: moveUp .5s ease-in-out forwards;
+  animation: moveUp 0.5s ease-in-out forwards;
 }
 
 @keyframes moveUp {
@@ -123,7 +127,7 @@ nav ul.dropdown-list li {
   }
   100% {
     opacity: 1;
-    transform: translateX(-50%) translateY(20px); 
+    transform: translateX(-50%) translateY(20px);
   }
 }
 

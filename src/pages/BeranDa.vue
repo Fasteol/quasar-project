@@ -1,7 +1,5 @@
 <template>
-  <nav class="nav">
-    <navbar isWhiteText />
-  </nav>
+  <navbar isWhiteText />
   <section
     class="sec-home"
     id="section1"
@@ -356,10 +354,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-.nav {
-  z-index: 999;
-  position: absolute;
-}
 
 #section3 .container {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
