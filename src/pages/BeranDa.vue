@@ -1,14 +1,18 @@
 <template>
-  <nav class="nav">
-    <navbar isWhiteText />
-  </nav>
-  <section class="sec-home" id="section1">
+  <navbar isWhiteText />
+  <section
+    class="sec-home"
+    id="section1"
+    :style="{
+      'background-image': `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImageUrl1})`,
+      'background-size': 'cover',
+    }"
+  >
     <div class="container">
       <div class="text1">
-        <p class="wlcText">Warisan Leluhur Cirebon</p>
+        <p class="wlcText">{{ title1 }}</p>
         <p class="wlcText2">
-          Bersama Lestarikan <br />
-          Keraton Tertua Di Kota Cirebon
+          {{ subTitle1 }}
         </p>
         <a href="https://your-link-here.com" class="btn1">
           <img class="btn1" src="../assets/images/btn1.png" />
@@ -17,16 +21,22 @@
     </div>
   </section>
 
-  <section class="sec-home" id="section2">
+  <section
+    class="sec-home"
+    id="section2"
+    :style="{
+      'background-image': `url(${backgroundImageUrl2}),
+    linear-gradient(transparent, #fff9a0, #ffe96e)`,
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+    }"
+  >
     <div class="container">
       <div class="text">
         <p class="aboutText">Tentang</p>
-        <h2 class="ksc2Text">Keraton Kesepuhan Cirebon</h2>
-        <p class="sej1Text">
-          Pada awal pembangunannya, Keraton Kasepuhan dibangun oleh Pangeran
-          Emas Zainul Arifin dengan maksud untuk memperluas bangunan
-          pesanggerahan Keraton Pangkuwati.
-        </p>
+        <h2 class="ksc2Text">{{ title2 }}</h2>
+        <p class="sej1Text">{{ subTitle2 }}</p>
       </div>
     </div>
   </section>
@@ -154,7 +164,11 @@
         <h2 class="tanyaText">Ada pertanyaan untuk kami?</h2>
       </div>
       <div class="faq">
-        <div v-for="(faq, index) in faqs" :key="index">
+        <div
+          style="border-bottom: 1px solid black"
+          v-for="(faq, index) in faqs"
+          :key="index"
+        >
           <button class="accordion" @click="toggleAccordion(index)">
             <span class="nomor">{{ faq.nomor }}</span> {{ faq.pertanyaan }}
             <svg
@@ -176,9 +190,7 @@
             viewBox="0 0 1064 1"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-          >
-            <line y1="0.5" x2="1064" y2="0.5" stroke="#212121" />
-          </svg>
+          ></svg>
           <div class="panel" v-show="faq.active">
             <p class="jawaban">{{ faq.jawaban }}</p>
           </div>
@@ -198,9 +210,9 @@
         <div class="quickLinks">
           <ul>
             <li><a href="/">Beranda</a></li>
-            <li><a href="/sejarah">Sejarah</a></li>
-            <li><a href="/booking">Booking</a></li>
-            <li><a href="/areakeraton">Objek Wisata</a></li>
+            <li><a href="#sejarah">Sejarah</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#areakeraton">Objek Wisata</a></li>
           </ul>
         </div>
 
@@ -220,13 +232,13 @@
         <div class="company">
           <ul>
             <li><a href="curaweda.com">About us</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="curaweda.com">Partners</a></li>
+            <li><a href="curaweda.com">Contact</a></li>
           </ul>
         </div>
-        <h4 class="subscribe">Subscribes your email for updates!</h4>
+        <!-- <h4 class="subscribe">Subscribes your email for updates!</h4> -->
       </div>
-      <input type="text" placeholder="Enter Your Email" />
+      <!-- <input type="text" placeholder="Enter Your Email" /> -->
       <p class="alamat">Jalan Kesepuhan 43 Cirebon, Jawa Barat 45114</p>
       <footer>
         <p class="wm">@ 2024 Keraton Kasepuhan Cirebon</p>
@@ -242,13 +254,20 @@
 
 <script setup>
 import navbar from "../components/NavBar.vue";
-import axios from "../api/axios";
+import { ref } from "vue";
 </script>
 
 <script>
 export default {
   data() {
     return {
+      linkYoutube: ref(),
+      title1: ref(""),
+      subTitle1: ref(""),
+      title2: ref(""),
+      subTitle2: ref(""),
+      backgroundImageUrl1: ref(),
+      backgroundImageUrl2: ref(),
       faqs: [
         {
           nomor: "01",
@@ -302,9 +321,27 @@ export default {
     },
 
     async fetchData() {
-      let url = "page/content/1";
+      let url = "http://localhost:3000/keraton/page/content/1";
       try {
-        const response = await axios.get(url);
+        const response = await this.$axios.get(url);
+        if (response.status == 200) {
+          const { data } = response.data;
+          if (data.length > 0) {
+            data.forEach((item) => {
+              item.Contents.forEach((content) => {
+                if (content.sectionName === "Warisan Leluhur Cirebon") {
+                  this.title1 = content.sectionName;
+                  this.subTitle1 = content.context.xs1.label;
+                  this.backgroundImageUrl1 = content.context.xi1;
+                } else if (content.sectionName === "Tentang") {
+                  this.title2 = content.context.xs1;
+                  this.subTitle2 = content.context.xs2;
+                  this.backgroundImageUrl2 = content.context.xi1;
+                }
+              });
+            });
+          }
+        }
       } catch (error) {
         console.error(error);
       }
@@ -317,25 +354,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-.nav {
-  z-index: 999;
-}
-
-#section1 .container {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../assets/images/bg1.png");
-  background-size: cover;
-  margin-top: -110px;
-  z-index: -999;
-}
-
-#section2 .container {
-  background-image: url("../assets/images/batik.png"),
-    linear-gradient(transparent, #fff9a0, #ffe96e);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 #section3 .container {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -348,7 +366,7 @@ export default {
 }
 
 #section5 .container {
-  position: relative;
+  margin: 5rem 0;
   background-image: url("../assets/images/keraton2.png");
   background-size: cover;
 }
@@ -364,9 +382,9 @@ export default {
   backdrop-filter: blur(3px);
 }
 
-#section5 .container > .text {
-  position: relative;
-  z-index: 1;
+#section5 .container .text {
+  position: absolute;
+  margin-top: 12rem;
 }
 
 #section6 .container {
@@ -806,23 +824,17 @@ export default {
   text-align: center;
   width: 50%;
   height: 10%;
-  top: 78%;
+  top: 85%;
   font-family: "Raleway";
   font-size: 20px;
   color: #ffffff;
 }
 
 .btnViewMore {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 5px;
   gap: 10px;
-  position: absolute;
-  width: 15%;
-  height: 7%;
-  left: 43%;
-  margin-top: 380px;
+  position: relative;
+  margin-top: 49.5rem;
 }
 
 .btnViewMore:hover {
@@ -840,7 +852,6 @@ export default {
 
 .tanyaText {
   position: absolute;
-  width: 21%;
   font-family: "Inria Serif";
   font-style: normal;
   font-size: 25px;
@@ -848,7 +859,7 @@ export default {
   font-weight: 700;
   color: #212121;
   top: 5vw;
-  left: 41vw;
+  left: 39vw;
 }
 
 .faq {
@@ -857,14 +868,13 @@ export default {
 }
 
 .accordion {
+  margin-top: 1rem;
   display: block;
   background-color: transparent;
   border: 0px;
-  border-bottom: 1px, black;
   font-family: "Raleway";
   font-size: 25px;
   color: #212121;
-  margin-bottom: 20px;
 }
 
 .accordion .nomor {
@@ -921,8 +931,6 @@ li a {
 
 .qlText {
   position: absolute;
-  width: 159px;
-  height: 40px;
   left: 88px;
   top: 293px;
   font-family: "Raleway";
@@ -1139,7 +1147,7 @@ input::placeholder {
     background-size: cover;
   }
 
-  #section5 .container::before {
+  /* #section5 .container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -1148,11 +1156,12 @@ input::placeholder {
     height: 100%;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(3px);
-  }
+  } */
 
   #section5 .container > .text {
     position: relative;
-    z-index: 1;
+    /* z-index: 1; */
+    margin-bottom: -2rem;
   }
 
   #section6 .container {

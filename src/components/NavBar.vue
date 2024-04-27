@@ -6,7 +6,9 @@
         src="../assets/images/logo_keraton.png"
         class="app-icon"
       />
-      <span class="app-name">KERATON KASEPUHAN CIREBON</span>
+      <span :class="{ white: isWhiteText }" class="app-name"
+        >KERATON KASEPUHAN CIREBON</span
+      >
     </div>
     <div class="navbar-right">
       <nav>
@@ -15,15 +17,27 @@
             <a :class="{ white: isWhiteText }" href="beranda">Beranda</a>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="sejarah">Sejarah</a>
+            <p :class="{ white: isWhiteText }">Sejarah</p>
+            <ul class="dropdown-list" style="margin-top: -1rem">
+              <li><a href="#sejarah">Keraton</a></li>
+              <li><a href="#sejarahsilsilah">Silsilah</a></li>
+            </ul>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="booking">Booking</a>
+            <a :class="{ white: isWhiteText }">Booking</a>
+            <ul class="dropdown-list">
+              <li><a href="#">Paket Keraton</a></li>
+              <li><a href="#booking">Tiket Event</a></li>
+            </ul>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="areakeraton"
-              >Objek Wisata</a
-            >
+            <p :class="{ white: isWhiteText }">Objek Wisata</p>
+            <ul class="dropdown-list">
+              <li><a href="#areakeraton">Keraton Kesepuhan</a></li>
+              <li><a href="#museum">Museum Pusaka</a></li>
+              <li><a href="#dalemagung">Dalem Agung Pakungwati</a></li>
+              <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
+            </ul>
           </li>
           <button
             @click="getTickets"
@@ -70,9 +84,51 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+.navbar {
+}
 
 .sub {
   padding-top: 10px;
+}
+
+.sub:hover {
+  text-decoration: underline;
+}
+
+nav ul.dropdown-list {
+  margin-top: -1rem;
+  list-style-type: none;
+  display: block;
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #123b32;
+  border-radius: 10px;
+  padding: 6px 16px;
+  width: max-content;
+  opacity: 0;
+  pointer-events: none;
+}
+
+nav ul.dropdown-list li {
+  margin-left: 0;
+  padding: 5px 0;
+}
+
+.sub:hover .dropdown-list {
+  opacity: 1;
+  pointer-events: auto;
+  animation: moveUp 0.5s ease-in-out forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(20px);
+  }
 }
 
 .navbar {
@@ -112,7 +168,7 @@ export default {
 .app-name {
   font-size: 20px;
   width: 139px;
-  color: #fff;
+  /* color: #fff; */
   height: 84px;
   margin-left: 16px;
 }

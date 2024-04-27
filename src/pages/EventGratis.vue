@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border/>
+    <navbar border />
   </nav>
   <div class="header">
     <div class="text1">
@@ -66,12 +66,12 @@
           <h1 class="judul-besar">{{ item.titleMedium }}</h1>
           <div class="tengah">
           <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
+            Tambah <img class="photo" src="../assets/Frame.svg" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup>
@@ -316,9 +316,7 @@ nav ul li button:hover {
   margin-left: 131px;
   width: 250px; /* Contoh ukuran lebar */
   height: 200px; /* Contoh ukuran tinggi */
-  
 }
-
 
 .buttonaji {
   display: flex; /* Use flexbox */
