@@ -33,7 +33,7 @@
             <ul class="dropdown-list">
               <li><a href="#areakeraton">Keraton Kesepuhan</a></li>
               <li><a href="#museum">Museum Pusaka</a></li>
-              <li><a href="#dalemagung">Dalem Agung Pakungwati</a></li>
+              <li><a href="#agungdalem">Dalem Agung Pakungwati</a></li>
               <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
             </ul>
           </li>

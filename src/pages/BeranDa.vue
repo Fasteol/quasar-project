@@ -1,23 +1,18 @@
 <template>
-  <navbar isWhiteText />
-  <section class="sec-home" id="section1">
-    <div class="container">
-      <div class="text1">
-        <p class="wlcText">Warisan Leluhur Cirebon</p>
-        <p class="wlcText2">
-          Bersama Lestarikan <br />
-          Keraton Tertua Di Kota Cirebon
-        </p>
-        <a href="https://your-link-here.com" class="btn1">
-          <img class="btn1" src="../assets/images/btn1.png" />
-        </a>
-      </div>
+  <navbar isWhiteText/>
+  <section id="hero">
+    <div class="texthero">
+      <h5 style="color: #FAE084;">Warisan Leluhur Cirebon</h5>
+      <h2 style="padding: 0 10rem;">Bersama Lestarikan Keraton Tertua di Cirebon</h2>
+      <a href="https://your-link-here.com" class="btn1">
+        <img class="btn1" src="../assets/images/btn1.png" />
+      </a>
     </div>
   </section>
 
   <section class="sec-home" id="section2">
     <div class="container">
-      <div class="text">
+      <div class="hero">
         <p class="aboutText">Tentang</p>
         <h2 class="ksc2Text">Keraton Kesepuhan Cirebon</h2>
         <p class="sej1Text">
@@ -312,17 +307,31 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-.nav {
-  z-index: 999;
+
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/images/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.texthero {
+  text-align: center;
+  color: white;
 }
 
-#section1 .container {
+/* #section1 .container {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../assets/images/bg1.png");
   background-size: cover;
   margin-top: -110px;
   z-index: -999;
-}
+} */
 
 #section2 .container {
   background-image: url("../assets/images/batik.png"),
@@ -391,19 +400,20 @@ export default {
   font-family: Raleway, sans-serif;
 }
 
-.wlcText {
+/* .wlcText {
   font-size: 24px;
   color: #fffd8c;
   position: absolute;
   left: 41vw;
   top: 22vw;
+  padding: 1rem;
 }
 
 .wlcText2 {
   position: relative;
   font-size: 64px;
   top: 2vw;
-}
+} */
 
 .btn1 {
   top: 65%;
