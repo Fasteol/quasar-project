@@ -358,10 +358,7 @@ export default {
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 .nav {
   z-index: 999;
-}
-
-#section1 .container {
-  margin-top: -110px;
+  position: absolute;
 }
 
 #section3 .container {
