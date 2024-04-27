@@ -2,13 +2,19 @@
   <nav class="nav">
     <navbar isWhiteText />
   </nav>
-  <section class="sec-home" id="section1">
+  <section
+    class="sec-home"
+    id="section1"
+    :style="{
+      'background-image': `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImageUrl1})`,
+      'background-size': 'cover',
+    }"
+  >
     <div class="container">
       <div class="text1">
-        <p class="wlcText">Warisan Leluhur Cirebon</p>
+        <p class="wlcText">{{ title1 }}</p>
         <p class="wlcText2">
-          Bersama Lestarikan <br />
-          Keraton Tertua Di Kota Cirebon
+          {{ subTitle1 }}
         </p>
         <a href="https://your-link-here.com" class="btn1">
           <img class="btn1" src="../assets/images/btn1.png" />
@@ -17,16 +23,22 @@
     </div>
   </section>
 
-  <section class="sec-home" id="section2">
+  <section
+    class="sec-home"
+    id="section2"
+    :style="{
+      'background-image': `url(${backgroundImageUrl2}),
+    linear-gradient(transparent, #fff9a0, #ffe96e)`,
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+    }"
+  >
     <div class="container">
       <div class="text">
         <p class="aboutText">Tentang</p>
-        <h2 class="ksc2Text">Keraton Kesepuhan Cirebon</h2>
-        <p class="sej1Text">
-          Pada awal pembangunannya, Keraton Kasepuhan dibangun oleh Pangeran
-          Emas Zainul Arifin dengan maksud untuk memperluas bangunan
-          pesanggerahan Keraton Pangkuwati.
-        </p>
+        <h2 class="ksc2Text">{{ title2 }}</h2>
+        <p class="sej1Text">{{ subTitle2 }}</p>
       </div>
     </div>
   </section>
@@ -154,7 +166,11 @@
         <h2 class="tanyaText">Ada pertanyaan untuk kami?</h2>
       </div>
       <div class="faq">
-        <div style="border-bottom: 1px solid black;" v-for="(faq, index) in faqs" :key="index">
+        <div
+          style="border-bottom: 1px solid black"
+          v-for="(faq, index) in faqs"
+          :key="index"
+        >
           <button class="accordion" @click="toggleAccordion(index)">
             <span class="nomor">{{ faq.nomor }}</span> {{ faq.pertanyaan }}
             <svg
@@ -169,16 +185,14 @@
                 d="M16 3C13.4288 3 10.9154 3.76244 8.77759 5.1909C6.63975 6.61935 4.97351 8.64968 3.98957 11.0251C3.00563 13.4006 2.74819 16.0144 3.2498 18.5362C3.75141 21.0579 4.98953 23.3743 6.80762 25.1924C8.6257 27.0105 10.9421 28.2486 13.4638 28.7502C15.9856 29.2518 18.5995 28.9944 20.9749 28.0104C23.3503 27.0265 25.3807 25.3603 26.8091 23.2224C28.2376 21.0846 29 18.5712 29 16C28.9964 12.5533 27.6256 9.24882 25.1884 6.81163C22.7512 4.37445 19.4467 3.00364 16 3ZM21.7075 14.7075L16.7075 19.7075C16.6146 19.8005 16.5043 19.8742 16.3829 19.9246C16.2615 19.9749 16.1314 20.0008 16 20.0008C15.8686 20.0008 15.7385 19.9749 15.6171 19.9246C15.4957 19.8742 15.3854 19.8005 15.2925 19.7075L10.2925 14.7075C10.1049 14.5199 9.99945 14.2654 9.99945 14C9.99945 13.7346 10.1049 13.4801 10.2925 13.2925C10.4801 13.1049 10.7346 12.9994 11 12.9994C11.2654 12.9994 11.5199 13.1049 11.7075 13.2925L16 17.5863L20.2925 13.2925C20.3854 13.1996 20.4957 13.1259 20.6171 13.0756C20.7385 13.0253 20.8686 12.9994 21 12.9994C21.1314 12.9994 21.2615 13.0253 21.3829 13.0756C21.5043 13.1259 21.6146 13.1996 21.7075 13.2925C21.8004 13.3854 21.8741 13.4957 21.9244 13.6171C21.9747 13.7385 22.0006 13.8686 22.0006 14C22.0006 14.1314 21.9747 14.2615 21.9244 14.3829C21.8741 14.5043 21.8004 14.6146 21.7075 14.7075Z"
                 fill="#D9A520"
               />
-            </svg>
-          </button
+            </svg></button
           ><svg
             width="1064"
             height="1"
             viewBox="0 0 1064 1"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-          >
-          </svg>
+          ></svg>
           <div class="panel" v-show="faq.active">
             <p class="jawaban">{{ faq.jawaban }}</p>
           </div>
@@ -242,13 +256,20 @@
 
 <script setup>
 import navbar from "../components/NavBar.vue";
-import axios from "../api/axios";
+import { ref } from "vue";
 </script>
 
 <script>
 export default {
   data() {
     return {
+      linkYoutube: ref(),
+      title1: ref(""),
+      subTitle1: ref(""),
+      title2: ref(""),
+      subTitle2: ref(""),
+      backgroundImageUrl1: ref(),
+      backgroundImageUrl2: ref(),
       faqs: [
         {
           nomor: "01",
@@ -302,9 +323,27 @@ export default {
     },
 
     async fetchData() {
-      let url = "page/content/1";
+      let url = "http://localhost:3000/keraton/page/content/1";
       try {
-        const response = await axios.get(url);
+        const response = await this.$axios.get(url);
+        if (response.status == 200) {
+          const { data } = response.data;
+          if (data.length > 0) {
+            data.forEach((item) => {
+              item.Contents.forEach((content) => {
+                if (content.sectionName === "Warisan Leluhur Cirebon") {
+                  this.title1 = content.sectionName;
+                  this.subTitle1 = content.context.xs1.label;
+                  this.backgroundImageUrl1 = content.context.xi1;
+                } else if (content.sectionName === "Tentang") {
+                  this.title2 = content.context.xs1;
+                  this.subTitle2 = content.context.xs2;
+                  this.backgroundImageUrl2 = content.context.xi1;
+                }
+              });
+            });
+          }
+        }
       } catch (error) {
         console.error(error);
       }
@@ -322,19 +361,7 @@ export default {
 }
 
 #section1 .container {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../assets/images/bg1.png");
-  background-size: cover;
   margin-top: -110px;
-  z-index: -999;
-}
-
-#section2 .container {
-  background-image: url("../assets/images/batik.png"),
-    linear-gradient(transparent, #fff9a0, #ffe96e);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 #section3 .container {

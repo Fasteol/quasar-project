@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border/>
+    <navbar border />
   </nav>
   <div class="header">
     <div class="text1">
@@ -57,21 +57,21 @@
     </div>
     <div class="container">
       <div class="ni" v-for="(item, index) in items" :key="index">
-    <img class="image" :src="item.image" alt="Gambar" />
-     <div class="buttonaji">
-    <button class="btn-small">{{ item.buttonText1 }}</button>
-    <button class="btn-small">{{ item.buttonText2 }}</button>
-          </div>
-          <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-          <h1 class="judul-besar">{{ item.titleBig }}</h1>
-          <div class="tengah">
+        <img class="image" :src="item.image" alt="Gambar" />
+        <div class="buttonaji">
+          <button class="btn-small">{{ item.buttonText1 }}</button>
+          <button class="btn-small">{{ item.buttonText2 }}</button>
+        </div>
+        <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
+        <h1 class="judul-besar">{{ item.titleBig }}</h1>
+        <div class="tengah">
           <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
+            Tambah <img class="photo" src="../assets/Frame.svg" />
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script setup>
@@ -106,9 +106,7 @@ export default {
         { label: "Minggu", value: "Perminggu" },
         { label: "Bulan", value: "Perminggu" },
       ],
-      options2: [
-        { label: "Gratis", value: "Gratis" },
-      ],
+      options2: [{ label: "Gratis", value: "Gratis" }],
       selectedOptions: [],
       selectedOptions2: [],
       items: [
@@ -299,9 +297,7 @@ nav ul li button:hover {
   margin-left: 131px;
   width: 250px; /* Contoh ukuran lebar */
   height: 200px; /* Contoh ukuran tinggi */
-  
 }
-
 
 .buttonaji {
   display: flex; /* Use flexbox */
