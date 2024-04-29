@@ -2,11 +2,11 @@
   <navbar isWhiteText />
   <section id="hero">
     <div class="texthero">
-      <h5 style="color: #fae084">Warisan Leluhur Cirebon</h5>
+      <h5 style="color: #fae084">{{  sectionData['0']?.name }}</h5>
       <h2 style="padding: 0 10rem">
-        Bersama Lestarikan Keraton Tertua di Cirebon
+        {{ sectionData['0']?.context.xs1.data }}
       </h2>
-      <a href="https://your-link-here.com" class="btn1">
+      <a :href="sectionData['0']?.context.xi1.data" v-mod class="btn1">
         <img class="btn1" src="../assets/images/btn1.png" />
       </a>
     </div>
@@ -16,7 +16,7 @@
     class="sec-home"
     id="section2"
     :style="{
-      'background-image': `url(${backgroundImageUrl2}),
+      'background-image': `url(${sectionData['1']?.context.xi1.data}),
     linear-gradient(transparent, #fff9a0, #ffe96e)`,
       'background-position': 'center',
       'background-repeat': 'no-repeat',
@@ -25,9 +25,9 @@
   >
     <div class="container">
       <div class="hero">
-        <p class="aboutText">Tentang</p>
-        <h2 class="ksc2Text">{{ title2 }}</h2>
-        <p class="sej1Text">{{ subTitle2 }}</p>
+        <p class="aboutText">{{ sectionData['1']?.name }}</p>
+        <h2 class="ksc2Text">{{ sectionData['1']?.context.xs1.data }}</h2>
+        <p class="sej1Text">{{ sectionData['1']?.context.xs2.data }}</p>
       </div>
     </div>
   </section>
@@ -35,7 +35,7 @@
   <section class="sec-home" id="section3">
     <div class="container">
       <div class="text">
-        <a href="https://www.youtube.com/watch?v=0FnJXClnXXQ">
+        <a :href="sectionData['2']?.context.xl1.data">
           <img src="../assets/images/Frame.png" />
         </a>
       </div>
@@ -243,6 +243,7 @@
 
 <script setup>
 import navbar from "../components/NavBar.vue";
+import socket from "src/socket";
 import { ref } from "vue";
 </script>
 
@@ -250,6 +251,7 @@ import { ref } from "vue";
 export default {
   data() {
     return {
+      sectionData: ref({}),
       linkYoutube: ref(),
       title1: ref(""),
       subTitle1: ref(""),
@@ -298,8 +300,19 @@ export default {
   },
   mounted() {
     this.fetchData();
+    this.socket()
+  },
+  beforeUnmount() {
+    socket.disconnect()
   },
   methods: {
+    socket(){
+      socket.connect()
+      socket.on('dashboard', () => {
+        this.fetchData()
+      })
+    },
+
     toggleAccordion(index) {
       this.faqs.forEach((faq, idx) => {
         if (idx !== index) {
@@ -310,29 +323,17 @@ export default {
     },
 
     async fetchData() {
-      let url = "http://localhost:3000/keraton/page/content/1";
+      let rawSection = {}
       try {
-        const response = await this.$axios.get(url);
-        if (response.status == 200) {
-          const { data } = response.data;
-          if (data.length > 0) {
-            data.forEach((item) => {
-              item.Contents.forEach((content) => {
-                if (content.sectionName === "Warisan Leluhur Cirebon") {
-                  this.title1 = content.sectionName;
-                  this.subTitle1 = content.context.xs1.label;
-                  this.backgroundImageUrl1 = content.context.xi1;
-                } else if (content.sectionName === "Tentang") {
-                  this.title2 = content.context.xs1;
-                  this.subTitle2 = content.context.xs2;
-                  this.backgroundImageUrl2 = content.context.xi1;
-                }
-              });
-            });
-          }
-        }
-      } catch (error) {
-        console.error(error);
+        const response = await this.$api.get('page/content/1');
+        const { data, status } = response
+        if (status != 200) throw Error('Error Occured')
+        if(data.data.length < 1) throw Error('No Section send from Databasea')
+        data.data[0].Contents.forEach((content) => { rawSection[content.sectionOrder] = { name: content.sectionName, context: content.context } })
+        console.log(rawSection)
+        this.sectionData = rawSection
+      } catch (err) {
+        console.log(err);
       }
     },
   },
