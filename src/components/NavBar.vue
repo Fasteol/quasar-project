@@ -14,29 +14,27 @@
     <div class="navbar-right">
       <nav>
         <ul>
-          <li class="sub">
-            <a href="beranda">Beranda</a>
-          </li>
+          <li class="sub"><a href="beranda">Beranda</a></li>
           <li class="sub">
             <p>Sejarah</p>
             <ul class="dropdown-list" style="margin-top: -1rem">
-              <li><a href="#sejarah">Keraton</a></li>
-              <li><a href="#sejarahsilsilah">Silsilah</a></li>
+              <li><a href="#/sejarah">Keraton</a></li>
+              <li><a href="#/sejarahsilsilah">Silsilah</a></li>
             </ul>
           </li>
           <li class="sub">
             <p>Booking</p>
             <ul class="dropdown-list">
-              <li><a href="#">Paket Keraton</a></li>
-              <li><a href="#booking">Tiket Event</a></li>
+              <li><a href="#/booking">Paket Keraton</a></li>
+              <li><a href="#/eventgratis">Tiket Event</a></li>
             </ul>
           </li>
           <li class="sub">
             <p>Objek Wisata</p>
             <ul class="dropdown-list">
-              <li><a href="#areakeraton">Keraton Kesepuhan</a></li>
-              <li><a href="#museum">Museum Pusaka</a></li>
-              <li><a href="#agungdalem">Dalem Agung Pakungwati</a></li>
+              <li><a href="#/areakeraton">Keraton Kesepuhan</a></li>
+              <li><a href="#/museum">Museum Pusaka</a></li>
+              <li><a href="#/agungdalem">Dalem Agung Pakungwati</a></li>
               <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
             </ul>
           </li>
@@ -103,18 +101,20 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
-.navbar {
-}
 
 .sub {
   padding-top: 10px;
+}
+
+.sub a {
+  color: white;
 }
 
 .sub:hover {
   text-decoration: underline;
 }
 
-nav ul.dropdown-list {
+nav ul .dropdown-list {
   margin-top: -1rem;
   list-style-type: none;
   display: block;
@@ -144,7 +144,7 @@ nav ul.dropdown-list li {
 }
 
 /* , .scrolled .nav-right nav ul .sub */
-.scrolled {
+.scrolled a {
   background-color: white;
   color: black;
 }
@@ -210,10 +210,9 @@ nav ul.dropdown-list li {
 }
 
 .app-name {
-  font-size: 20px;
-  width: 139px;
+  font-size: 12px;
+  width: 100px;
   /* color: #fff; */
-  height: 84px;
   margin-left: 16px;
 }
 
