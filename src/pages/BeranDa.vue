@@ -4,7 +4,7 @@
     <div class="texthero">
       <h5 style="color: #fae084">{{ sectionData["0"]?.name }}</h5>
       <h2 style="padding: 0 10rem">
-        {{ sectionData["0"]?.context.xs1.label }}
+        {{ sectionData["0"]?.context.xs1.data }}
       </h2>
       <a :href="sectionData['0']?.context.xi1.data" v-mod class="btn1">
         <img class="btn1" src="../assets/images/btn1.png" />
@@ -26,9 +26,9 @@
     <div class="container">
       <div class="hero">
         <p class="aboutText">{{ sectionData["1"]?.name }}</p>
-        <h2 class="ksc2Text">{{ sectionData["1"]?.context.xs1 }}</h2>
+        <h2 class="ksc2Text">{{ sectionData["1"]?.context.xs1.data }}</h2>
         <p class="sej1Text" style="margin-top: 50px">
-          {{ sectionData["1"]?.context.xs2 }}
+          {{ sectionData["1"]?.context.xs2.data }}
         </p>
       </div>
     </div>
@@ -37,7 +37,7 @@
   <section class="sec-home" id="section3">
     <div class="container">
       <div class="text">
-        <a :href="sectionData['2']?.context.xl1">
+        <a :href="sectionData['2']?.context.xl1.data">
           <img src="../assets/images/Frame.png" />
         </a>
       </div>
@@ -48,24 +48,24 @@
     <div class="container">
       <div class="text">
         <p class="sej2Text">Sejarah</p>
-        <h2 class="ksc4Text">Keraton Kesepuhan Cirebon</h2>
+        <h2 class="ksc4Text">{{ sectionData["3"]?.context.xs1.data }}</h2>
       </div>
 
       <div class="card1">
         <a href="https://your-link-here.com">
-          <img src="../assets/images/sej.png" alt="sejarah1" />
+          <img :src="sectionData['3']?.context.xi1.data" alt="sejarah1" />
         </a>
       </div>
 
       <div class="card2">
         <a href="https://your-link-here.com">
-          <img src="../assets/images/sej2.png" alt="sejarah2" />
+          <img :src="sectionData['3']?.context.xi2.data" alt="sejarah2" />
         </a>
       </div>
 
       <div class="card3">
         <a href="https://your-link-here.com">
-          <img src="../assets/images/sej3.png" alt="sejarah3" />
+          <img :src="sectionData['3']?.context.xi3.data" alt="sejarah3" />
           <div class="caption">
             <p class="title3">Silsilah Keraton Kesepuhan Cirebon</p>
             <svg
@@ -84,7 +84,7 @@
         </a>
       </div>
 
-      <a href="/sejarah">
+      <a :href="sectionData['3']?.context.xl1.data">
         <img class="pls" src="../assets/images/btninfo.png"
       /></a>
     </div>
@@ -94,10 +94,19 @@
     <div class="container">
       <div class="text">
         <p class="eventText">Event</p>
-        <p class="ksc5Text">Keraton Kesepuhan Cirebon</p>
+        <p class="ksc5Text">{{ sectionData["4"]?.context.xs1.data }}</p>
       </div>
       <div class="container-card">
-        <div class="card4">
+        <div
+          class="card4"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi1.data})`,
+            'background-size': 'cover',
+            'border-radius': '20px',
+            'margin-left': '10px',
+            'background-color': '#b6b6b6',
+          }"
+        >
           <div class="overlay"></div>
           <a href="#">
             <p class="title5" style="filter: brightness(200%)">
@@ -105,12 +114,22 @@
             </p>
           </a>
         </div>
-        <div class="card5">
+        <div
+          class="card5"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi2.data})`,
+          }"
+        >
           <a href="#">
             <p class="title5">Jamasan Kerisa dan Tombak</p>
           </a>
         </div>
-        <div class="card6">
+        <div
+          class="card6"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi3.data})`,
+          }"
+        >
           <a href="#">
             <p class="title6">Siraman Panjat Jimat</p>
           </a>
@@ -121,7 +140,7 @@
         dan tradisi turun menurun dengan rutin melaksanakan upacara adat tradisi
         mereka.
       </p>
-      <a href="/filterbayar">
+      <a :href="sectionData['4']?.context.xl1.data">
         <img class="btnViewMore" src="../assets/images/btninfo.png" />
       </a>
     </div>
@@ -130,17 +149,15 @@
   <section class="sec-home" id="section6">
     <div class="container">
       <div class="text">
-        <p class="owText">Objek Wisata</p>
-        <p class="ksc6Text">Keraton Kesepuhan Cirebon</p>
+        <p class="owText">{{ sectionData["5"]?.name }}</p>
+        <p class="ksc6Text">{{ sectionData["5"]?.context.xs1.data }}</p>
       </div>
       <div class="tiket">
         <div class="text2">
           <p class="sej3Text">
-            Mari mengenal budaya kasepuhan Cirebon. Bersama kita lestarikan dan
-            apresiasikan beragam budaya dan tradisi Indonesia dengan mengunjungi
-            Keraton Kasepuhan Cirebon.
+            {{ sectionData["5"]?.context.xs2.data }}
           </p>
-          <a href="/areakeraton">
+          <a :href="sectionData['5']?.context.xl1.data">
             <img class="btn2" src="../assets/images/tiket.png" />
           </a>
         </div>
@@ -151,8 +168,8 @@
   <section class="sec-home" id="section7">
     <div class="container">
       <div class="text">
-        <p class="faqText">FAQ</p>
-        <h2 class="tanyaText">Ada pertanyaan untuk kami?</h2>
+        <p class="faqText">{{ sectionData["6"]?.name }}</p>
+        <h2 class="tanyaText">{{ sectionData["6"]?.context.xs1.data }}</h2>
       </div>
       <div class="faq">
         <div
@@ -397,8 +414,8 @@ export default {
 }
 
 #section5 .container {
-  margin: 5rem 0;
   background-image: url("../assets/images/keraton2.png");
+  height: 1000px;
   background-size: cover;
 }
 
@@ -753,19 +770,13 @@ export default {
   height: 427px;
 }
 .card4 {
-  background-image: url("../assets/images/card4.png");
-  background-size: cover;
   position: relative;
-  border-radius: 20px;
-  margin-left: 10px;
   height: 427px;
   width: 273.21px;
-  background-color: #b6b6b6;
   flex: 1;
   transition: 0.3s all ease;
 }
 .card5 {
-  background-image: url("../assets/images/card5.png");
   background-size: cover;
   position: relative;
   border-radius: 20px;
@@ -777,7 +788,6 @@ export default {
   transition: 0.3s all ease;
 }
 .card6 {
-  background-image: url("../assets/images/card6.png");
   background-size: cover;
   position: relative;
   border-radius: 20px;
@@ -872,7 +882,7 @@ export default {
   text-align: center;
   width: 50%;
   height: 10%;
-  top: 85%;
+  margin-top: 700px;
   font-family: "Raleway";
   font-size: 20px;
   color: #ffffff;
@@ -882,7 +892,7 @@ export default {
   padding: 5px;
   gap: 10px;
   position: relative;
-  margin-top: 49.5rem;
+  margin-top: 53rem;
 }
 
 .btnViewMore:hover {
