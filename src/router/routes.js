@@ -14,8 +14,20 @@ import FilterBayar from "../pages/FilterBayar.vue";
 import AgungDalem from "../pages/AgungDalem.vue";
 import sejarahSilsilah from "../pages/sejarahSilsilah.vue";
 import silsilahDesktop from "../pages/silsilahDesktop.vue";
+import AdminHomePage from "../pages/Admin/HomePage.vue";
+import AdminAddPage from "../pages/Admin/AddPage.vue";
 
 const routes = [
+  {
+    path: "/admin/home",
+    name: "AdminHomePage",
+    component: AdminHomePage,
+  },
+  {
+    path: "/admin/add",
+    name: "AdminAddPage",
+    component: AdminAddPage,
+  },
   {
     path: "/signin",
     name: "signin",

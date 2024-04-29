@@ -1,23 +1,14 @@
 <template>
-  <navbar :isWhiteText=false />
-  <section
-    class="sec-home"
-    id="section1"
-    :style="{
-      'background-image': `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${backgroundImageUrl1})`,
-      'background-size': 'cover',
-    }"
-  >
-    <div class="container">
-      <div class="text1">
-        <p class="wlcText">{{ title1 }}</p>
-        <p class="wlcText2">
-          {{ subTitle1 }}
-        </p>
-        <a href="https://your-link-here.com" class="btn1">
-          <img class="btn1" src="../assets/images/btn1.png" />
-        </a>
-      </div>
+  <navbar isWhiteText />
+  <section id="hero">
+    <div class="texthero">
+      <h5 style="color: #fae084">Warisan Leluhur Cirebon</h5>
+      <h2 style="padding: 0 10rem">
+        Bersama Lestarikan Keraton Tertua di Cirebon
+      </h2>
+      <a href="https://your-link-here.com" class="btn1">
+        <img class="btn1" src="../assets/images/btn1.png" />
+      </a>
     </div>
   </section>
 
@@ -33,7 +24,7 @@
     }"
   >
     <div class="container">
-      <div class="text">
+      <div class="hero">
         <p class="aboutText">Tentang</p>
         <h2 class="ksc2Text">{{ title2 }}</h2>
         <p class="sej1Text">{{ subTitle2 }}</p>
@@ -105,11 +96,10 @@
       </div>
       <div class="container-card">
         <div class="card4">
+          <div class="overlay"></div>
           <a href="#">
-            <p class="title4">Tadarus di Langgar Anggit</p>
-            <p class="subtitle4">
-              Tradisi ini dilaksanakan di keraton kesepuhan cirebon pada tanggal
-              10 maret - 9 April 2024
+            <p class="title5" style="filter: brightness(200%)">
+              Tadarus di Langgar Anggit
             </p>
           </a>
         </div>
@@ -123,7 +113,6 @@
             <p class="title6">Siraman Panjat Jimat</p>
           </a>
         </div>
-            
       </div>
       <p class="sec5Text">
         Hingga saat ini, Keraton Kasepuhan Cirebon tetap mempertahankan keaslian
@@ -355,6 +344,39 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/images/bg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.texthero {
+  text-align: center;
+  color: white;
+}
+
+/* #section1 .container {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../assets/images/bg1.png");
+  background-size: cover;
+  margin-top: -110px;
+  z-index: -999;
+} */
+
+#section2 .container {
+  background-image: url("../assets/images/batik.png"),
+    linear-gradient(transparent, #fff9a0, #ffe96e);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #section3 .container {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../assets/images/keraton1.jpg");
@@ -414,19 +436,20 @@ export default {
   font-family: Raleway, sans-serif;
 }
 
-.wlcText {
+/* .wlcText {
   font-size: 24px;
   color: #fffd8c;
   position: absolute;
   left: 41vw;
   top: 22vw;
+  padding: 1rem;
 }
 
 .wlcText2 {
   position: relative;
   font-size: 64px;
   top: 2vw;
-}
+} */
 
 .btn1 {
   top: 65%;
@@ -731,7 +754,6 @@ export default {
   background-color: #b6b6b6;
   flex: 1;
   transition: 0.3s all ease;
-  /* filter: brightness(70%); */
 }
 .card5 {
   background-image: url("../assets/images/card5.png");
@@ -793,6 +815,22 @@ export default {
   text-align: left;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Adjust the opacity (0.3) to your preference */
+  z-index: 1;
+  border-radius: 20px;
+}
+
 .title5 {
   position: absolute;
   bottom: 10px; /* Geser ke bawah sejauh 10px dari tepi kartu */
@@ -804,6 +842,7 @@ export default {
   line-height: 40px;
   color: #ffffff;
   text-align: left; /* Teks diatur menjadi rata kiri */
+  z-index: 2;
 }
 
 .title6 {

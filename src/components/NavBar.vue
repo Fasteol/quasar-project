@@ -1,41 +1,42 @@
 <template>
-  <div class="navbar" :class="{ 'navbar--white': isWhiteText, border: border }">
+  <div
+    class="navbar"
+    :class="{ white: isWhiteText, border: border, scrolled: isScrolled }"
+  >
     <div class="navbar-left">
       <img
         alt="icon-aplikasi"
         src="../assets/images/logo_keraton.png"
         class="app-icon"
       />
-      <span :class="{ white: isWhiteText }" class="app-name"
-        >KERATON KASEPUHAN CIREBON</span
-      >
+      <span class="app-name">KERATON KASEPUHAN CIREBON</span>
     </div>
     <div class="navbar-right">
       <nav>
         <ul>
           <li class="sub">
-            <a :class="{ white: isWhiteText }" href="beranda">Beranda</a>
+            <a href="beranda">Beranda</a>
           </li>
           <li class="sub">
-            <p :class="{ white: isWhiteText }">Sejarah</p>
+            <p>Sejarah</p>
             <ul class="dropdown-list" style="margin-top: -1rem">
               <li><a href="#sejarah">Keraton</a></li>
               <li><a href="#sejarahsilsilah">Silsilah</a></li>
             </ul>
           </li>
           <li class="sub">
-            <a :class="{ white: isWhiteText }">Booking</a>
+            <p>Booking</p>
             <ul class="dropdown-list">
               <li><a href="#">Paket Keraton</a></li>
               <li><a href="#booking">Tiket Event</a></li>
             </ul>
           </li>
           <li class="sub">
-            <p :class="{ white: isWhiteText }">Objek Wisata</p>
+            <p>Objek Wisata</p>
             <ul class="dropdown-list">
               <li><a href="#areakeraton">Keraton Kesepuhan</a></li>
               <li><a href="#museum">Museum Pusaka</a></li>
-              <li><a href="#dalemagung">Dalem Agung Pakungwati</a></li>
+              <li><a href="#agungdalem">Dalem Agung Pakungwati</a></li>
               <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
             </ul>
           </li>
@@ -64,19 +65,37 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isScrolled: false,
+    };
+  },
   props: {
-    isWhiteText: {
-      type: Boolean,
-      default: false,
-    },
     border: {
       type: Boolean,
       default: false,
     },
+    isWhiteText: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     getTickets() {
       this.$router.push({ name: "signin" });
+    },
+    handleScroll() {
+      if (window.pageYOffset > 50) {
+        this.isScrolled = true;
+      } else {
+        this.isScrolled = false;
+      }
     },
   },
 };
@@ -120,6 +139,26 @@ nav ul.dropdown-list li {
   animation: moveUp 0.5s ease-in-out forwards;
 }
 
+.white {
+  color: white;
+}
+
+/* , .scrolled .nav-right nav ul .sub */
+.scrolled {
+  background-color: white;
+  color: black;
+}
+
+.white {
+  color: white;
+}
+
+/* , .scrolled .nav-right nav ul .sub */
+.scrolled {
+  background-color: white;
+  color: black;
+}
+
 @keyframes moveUp {
   0% {
     opacity: 0;
@@ -133,10 +172,15 @@ nav ul.dropdown-list li {
 
 .navbar {
   display: flex;
+  position: fixed;
+  top: 0; /* Menempatkan navbar di bagian atas layar */
+  left: 0;
+  width: 100%; /* Menggunakan lebar penuh */
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   font-family: "Raleway";
+  z-index: 1000;
 }
 
 .border {
@@ -196,17 +240,9 @@ nav ul li:last-child {
 
 nav ul li a,
 nav ul li button {
-  color: #000000; /* Default text color: black */
+  color: black; /* Default text color: black */
   text-decoration: none;
   cursor: pointer;
-}
-
-.navbar--white {
-  color: #ffffff;
-}
-
-.white {
-  color: #ffffff;
 }
 
 @media screen and (max-width: 600px) {
