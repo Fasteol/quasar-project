@@ -1,6 +1,6 @@
 <template>
   <navbar />
-  <div class="q-mt-xl">
+  <div style="margin-top: 150px" class="q-px-xl">
     <div class="text-h6 text-semibold">Edit Konten Dashboard</div>
     <div>Ubah dan atur konten di halaman beranda web</div>
     <q-table
