@@ -37,7 +37,7 @@
   <section class="sec-home" id="section3">
     <div class="container">
       <div class="text">
-        <a :href="sectionData['2']?.context.xl1.data">
+        <a :href="sectionData['2']?.context.xl1">
           <img src="../assets/images/Frame.png" />
         </a>
       </div>
@@ -230,6 +230,7 @@
         <!-- <h4 class="subscribe">Subscribes your email for updates!</h4> -->
       </div>
       <!-- <input type="text" placeholder="Enter Your Email" /> -->
+
       <p class="alamat">Jalan Kesepuhan 43 Cirebon, Jawa Barat 45114</p>
       <footer>
         <p class="wm">@ 2024 Keraton Kasepuhan Cirebon</p>
