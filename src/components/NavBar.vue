@@ -14,31 +14,73 @@
     <div class="navbar-right">
       <nav>
         <ul>
-          <li class="sub"><a href="beranda">Beranda</a></li>
           <li class="sub">
-            <p>Sejarah</p>
-            <ul class="dropdown-list" style="margin-top: -1rem">
-              <li><a href="#/sejarah">Keraton</a></li>
-              <li><a href="#/sejarahsilsilah">Silsilah</a></li>
-            </ul>
+            <q-btn
+              flat
+              label="Beranda"
+              :text-color="isScrolled ? 'black' : 'white'"
+              no-caps
+              dense
+            ></q-btn>
           </li>
           <li class="sub">
-            <p>Booking</p>
-            <ul class="dropdown-list">
-              <li><a href="#/booking">Paket Keraton</a></li>
-              <li><a href="#/eventgratis">Tiket Event</a></li>
-            </ul>
+            <q-btn
+              flat
+              label="Sejarah"
+              :text-color="isScrolled ? 'black' : 'white'"
+              no-caps
+              dense
+            >
+              <q-menu>
+                <q-list>
+                  <q-item>
+                    <q-item-section>
+                      <q-item-label>First Item Enabled</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
           </li>
           <li class="sub">
-            <p>Objek Wisata</p>
-            <ul class="dropdown-list">
-              <li><a href="#/areakeraton">Keraton Kesepuhan</a></li>
-              <li><a href="#/museum">Museum Pusaka</a></li>
-              <li><a href="#/agungdalem">Dalem Agung Pakungwati</a></li>
-              <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
-            </ul>
+            <q-btn
+              flat
+              label="Booking"
+              :text-color="isScrolled ? 'black' : 'white'"
+              no-caps
+              dense
+            >
+              <q-menu>
+                <q-list>
+                  <q-item>
+                    <q-item-section>
+                      <q-item-label>First Item Enabled</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
           </li>
-          <button
+          <li class="sub">
+            <q-btn
+              flat
+              label="Objek Wisata"
+              :text-color="isScrolled ? 'black' : 'white'"
+              no-caps
+              dense
+            >
+              <q-menu>
+                <q-list>
+                  <q-item>
+                    <q-item-section>
+                      <q-item-label>First Item Enabled</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-menu>
+            </q-btn>
+          </li>
+          <!-- <button
             @click="getTickets"
             style="
               border-radius: 5px;
@@ -54,7 +96,15 @@
             "
           >
             Dapatkan Tiket
-          </button>
+          </button> -->
+          <q-btn
+            style="background: #123b32; color: white; padding-inline: 30px"
+            no-caps
+            dense
+            @click="getTickets"
+          >
+            <span class="text-bold">Dapatkan Tiket</span>
+          </q-btn>
         </ul>
       </nav>
     </div>
@@ -226,6 +276,7 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   margin-right: 88px;
 }
 

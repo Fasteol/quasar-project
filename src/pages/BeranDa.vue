@@ -2,7 +2,7 @@
   <navbar isWhiteText />
   <section id="hero">
     <div class="texthero">
-      <h5 style="color: #fae084">{{sectionData["0"]?.name}}</h5>
+      <h5 style="color: #fae084">{{ sectionData["0"]?.name }}</h5>
       <h2 style="padding: 0 10rem">
         {{ sectionData["0"]?.context.xs1.data }}
       </h2>
@@ -25,7 +25,7 @@
   >
     <div class="container">
       <div class="hero">
-        <p class="aboutText">{{sectionData["1"]?.name}}</p>
+        <p class="aboutText">{{ sectionData["1"]?.name }}</p>
         <h2 class="ksc2Text">{{ sectionData["1"]?.context.xs1.data }}</h2>
         <p class="sej1Text" style="margin-top: 50px">
           {{ sectionData["1"]?.context.xs2.data }}
@@ -47,8 +47,8 @@
   <section class="sec-home" id="section4">
     <div class="container">
       <div class="text">
-        <p class="sej2Text">{{sectionData["3"]?.name}}</p>
-        <h2 class="ksc4Text">{{sectionData["3"]?.context.xs1.data}}</h2>
+        <p class="sej2Text">{{ sectionData["3"]?.name }}</p>
+        <h2 class="ksc4Text">{{ sectionData["3"]?.context.xs1.data }}</h2>
       </div>
 
       <div class="card1">
@@ -92,8 +92,8 @@
   <section id="section5">
     <div class="container">
       <div class="text">
-        <p class="eventText">{{sectionData["4"]?.name}}</p>
-        <p class="ksc5Text">{{sectionData["4"]?.context.xs1.data}}</p>
+        <p class="eventText">{{ sectionData["4"]?.name }}</p>
+        <p class="ksc5Text">{{ sectionData["4"]?.context.xs1.data }}</p>
       </div>
       <div class="container-card">
         <div
@@ -109,18 +109,18 @@
           <div class="overlay"></div>
           <a href="#">
             <p class="title5" style="filter: brightness(200%)">
-              {{ sectionData['4']?.context.xi1.sub }}
+              {{ sectionData["4"]?.context.xi1.sub }}
             </p>
           </a>
         </div>
         <div
-        class="card5"
-        :style="{
-          'background-image': `url(${sectionData['4']?.context.xi2.data})`,
-        }"
+          class="card5"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi2.data})`,
+          }"
         >
-        <a href="#">
-            <p class="title5">{{ sectionData['4']?.context.xi2.sub }}</p>
+          <a href="#">
+            <p class="title5">{{ sectionData["4"]?.context.xi2.sub }}</p>
           </a>
         </div>
         <div
@@ -130,12 +130,12 @@
           }"
         >
           <a href="#">
-            <p class="title6">{{ sectionData['4']?.context.xi3.sub }}</p>
+            <p class="title6">{{ sectionData["4"]?.context.xi3.sub }}</p>
           </a>
         </div>
       </div>
       <p class="sec5Text">
-        {{ sectionData['4']?.context.xs2.data }}
+        {{ sectionData["4"]?.context.xs1.data }}
       </p>
       <a :href="sectionData['4']?.context.xl1.data">
         <img class="btnViewMore" src="../assets/images/btninfo.png" />
@@ -146,8 +146,8 @@
   <section class="sec-home" id="section6">
     <div class="container">
       <div class="text">
-        <p class="owText">{{sectionData["5"]?.name}}</p>
-        <p class="ksc6Text">{{sectionData["5"]?.context.xs1.data}}</p>
+        <p class="owText">{{ sectionData["5"]?.name }}</p>
+        <p class="ksc6Text">{{ sectionData["5"]?.context.xs1.data }}</p>
       </div>
       <div class="tiket">
         <div class="text2">
@@ -165,8 +165,8 @@
   <section class="sec-home" id="section7">
     <div class="container">
       <div class="text">
-        <p class="faqText">{{sectionData["6"]?.name}}</p>
-        <h2 class="tanyaText">{{sectionData["6"]?.context.xs1.data}}</h2>
+        <p class="faqText">{{ sectionData["6"]?.name }}</p>
+        <h2 class="tanyaText">{{ sectionData["6"]?.context.xs1.data }}</h2>
       </div>
       <div class="faq">
         <div
@@ -347,15 +347,15 @@ export default {
         if (status != 200) throw Error("Error Occured");
         if (data.data.length < 1) throw Error("No Section send from Databasea");
         data.data[0].Contents.forEach((content) => {
-          if(content.sectionOrder === 6){
-            const contextValue = Object.values(content.context)
-            contextValue.shift()
+          if (content.sectionOrder === 6) {
+            const contextValue = Object.values(content.context);
+            contextValue.shift();
             this.faqs = contextValue.map((context, i) => ({
-              nomor:  String(i + 1).padStart(2, '0'),
+              nomor: String(i + 1).padStart(2, "0"),
               pertanyaan: context.data,
               jawaban: context.sub,
-              active: false
-            }))
+              active: false,
+            }));
           }
           rawSection[content.sectionOrder] = {
             name: content.sectionName,
