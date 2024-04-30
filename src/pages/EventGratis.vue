@@ -57,20 +57,17 @@
     </div>
     <div class="container">
       <div class="ni" v-for="(item, index) in events" :key="index">
-    <img class="image" :src="item.image" alt="Gambar" />
-     <div class="buttonaji">
-    <button class="btn-small">{{ item.buttonText1 }}</button>
-    <button class="btn-small">{{ item.buttonText2 }}</button>
+        <img class="image" :src="item.image" alt="Gambar" />
+        <div class="buttonaji">
+          <button class="btn-small">{{ item.buttonText1 }}</button>
+          <button class="btn-small">{{ item.buttonText2 }}</button>
+              </div>
+                <h2 class="judul-sedang">{{ item.titleBig }}</h2>
+                <h1 class="judul-besar">{{ item.titleMedium }}</h1>
+                <div class="tengah">
+                  <h3 class="judul-kecil">{{ item.price }}</h3>
+              </div>
           </div>
-          <h2 class="judul-sedang">{{ item.titleBig }}</h2>
-          <h1 class="judul-besar">{{ item.titleMedium }}</h1>
-          <div class="tengah">
-            <h3 class="judul-kecil">{{ item.price }}</h3>
-          <button class="tambah">
-            Tambah <img class="photo" src="../assets/Frame.svg" />
-          </button>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -136,11 +133,11 @@ export default {
         if(this.selectedOptions) iterationOptions = Object.values(this.selectedOptions)
         if(this.selectedOptions2) freeOptions = Object.values(this.selectedOptions2)
         console.log(freeOptions, iterationOptions)
-        const eventResponse = await this.$axios.post('http://localhost:3000/keraton/event/page', {
+        const eventResponse = await this.$api.post('event/page', {
           ...(iterationOptions && iterationOptions.length != 0 && { iterat: Object.values(this.selectedOptions) }),
           ...(freeOptions && freeOptions.length < 2 && freeOptions.length != 0 && { free: freeOptions[0] != 0 ? true : false })
         })
-        const iterationResponse = await this.$axios.get('http://localhost:3000/keraton/iteration')
+        const iterationResponse = await this.$api.get('iteration')
         if(eventResponse.status != 200) throw Error('Error occured')
         if(iterationResponse.status != 200) throw Error('Error occured')
         this.events = eventResponse.data.data.map((event) =>({

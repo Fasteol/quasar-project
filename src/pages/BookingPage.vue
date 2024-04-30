@@ -240,8 +240,7 @@ export default {
         const response = await this.$api.get("items/booking");
         if (response.status != 200) throw Error("Error Occured");
         console.log(response);
-        let tikets = [],
-          pakets = {};
+        let tikets = [],pakets = {};
         for (let subType of response.data.data) {
           switch (subType.typeId) {
             case 1:
