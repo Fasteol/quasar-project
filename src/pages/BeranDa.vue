@@ -163,7 +163,20 @@
   </section>
 
   <section class="sec-home" id="section7">
-    <div class="container">
+    <div
+      style="
+        background-size: cover;
+        text-align: center;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        background-position: center;
+        color: white;
+        font-family: Raleway, sans-serif;
+      "
+    >
       <div>
         <p class="faqText">{{ sectionData["6"]?.name }}</p>
         <h2 class="tanyaText">{{ sectionData["6"]?.context.xs1.data }}</h2>
