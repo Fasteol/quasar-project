@@ -1,5 +1,5 @@
 <template>
-   <div>
+  <div>
     <div>
       <h1>Event</h1>
       <div class="ni" v-for="(item, index) in events" :key="index">
@@ -7,118 +7,176 @@
         <div class="buttonaji">
           <button class="btn-small">{{ item.buttonText1 }}</button>
           <button class="btn-small">{{ item.buttonText2 }}</button>
-            </div>
-              <h2 class="judul-sedang">{{ item.titleBig }}</h2>
-              <h1 class="judul-besar">{{ item.titleMedium }}</h1>
-              <div class="tengah">
-                <h3 class="judul-kecil">{{ item.price }}</h3>
-              </div>
-            </div>
+        </div>
+        <h2 class="judul-sedang">{{ item.titleBig }}</h2>
+        <h1 class="judul-besar">{{ item.titleMedium }}</h1>
+        <div class="tengah">
+          <h3 class="judul-kecil">{{ item.price }}</h3>
+        </div>
+      </div>
     </div>
     <div>
       Tiket / Paket
       <div class="ni" v-for="(item, index) in tiketPakets" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji"></div>
-      <h2 class="judul-sedang">{{ item.name }}</h2>
-      <h1 class="judul-besar">{{ item.desc }}</h1>
-      <h1 class="judul-besar">{{ item.subType }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
+        <img class="image" :src="item.image" alt="Gambar" />
+        <div class="buttonaji"></div>
+        <h2 class="judul-sedang">{{ item.name }}</h2>
+        <h1 class="judul-besar">{{ item.desc }}</h1>
+        <h1 class="judul-besar">{{ item.subType }}</h1>
+        <div class="tengah">
+          <h3 class="judul-kecil">{{ item.price }}</h3>
+        </div>
       </div>
     </div>
-    </div>
-   </div>
-   
-   <q-btn
-      class="text-capitalize"
-      @click="openDialog('event')"
-      >Add New Event</q-btn
-    >
-   <q-btn
-      class="text-capitalize"
-      @click="openDialog('tiketPaket')"
-      >Add New Tiket / Paket</q-btn
-    >
+  </div>
+
+  <q-btn class="text-capitalize" @click="openDialog('event')"
+    >Add New Event</q-btn
+  >
+  <q-btn class="text-capitalize" @click="openDialog('tiketPaket')"
+    >Add New Tiket / Paket</q-btn
+  >
+
   <q-dialog v-model="addNewEvent">
-    <!-- BUATIN Q-SELECT Iterationn -->
-    <!-- Buatin Free Switch -->
-    <q-input
-          filled
-          v-model="event.name"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
-    <q-input
-          filled
-          v-model="event.desc"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
-    <q-input
-          filled
-          v-model="event.price"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
-      <q-file
-        filled
-        type="file"
-        v-model="event.image"
-        label="Tambahkan Image"
-        color="black"
-        class="q-mt-md"
-      />
+    <q-card>
+      <q-card-section class="row items-center q-pb-none">
+        <div class="text-h6">Add New Event</div>
+        <q-space />
+        <q-btn icon="close" flat round dense v-close-popup />
+      </q-card-section>
+
+      <q-card-section class="flex items-center">
+        <div>
+          <div class="flex items-center">
+            <q-input
+              filled
+              v-model="event.name"
+              label="Iteration"
+              color="black"
+              bg-color="gray"
+            />
+            <div class="flex items-center">
+              <div>Free</div>
+              <q-toggle v-model="statusEvent" color="green" />
+            </div>
+          </div>
+          <q-input
+            filled
+            v-model="event.name"
+            label="Name"
+            color="black"
+            bg-color="gray"
+            class="q-mt-md"
+          />
+          <q-input
+            filled
+            v-model="event.desc"
+            label="Description"
+            color="black"
+            bg-color="gray"
+            class="q-mt-md"
+          />
+
+          <div class="flex items-center q-mt-md q-gutter-md">
+            <q-btn no-caps label="Create" />
+            <q-input
+              filled
+              v-model="event.price"
+              label="Rp."
+              color="black"
+              bg-color="gray"
+            />
+          </div>
+        </div>
+        <div><q-file
+      filled
+      type="file"
+      v-model="event.image"
+      label="Tambahkan Image"
+      color="black"
+      class="q-mt-md"
+    /></div>
+      </q-card-section>
+    </q-card>
   </q-dialog>
+
+  <!-- <q-dialog v-model="addNewEvent">
+    <q-input
+      filled
+      v-model="event.name"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-input
+      filled
+      v-model="event.desc"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-input
+      filled
+      v-model="event.price"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-file
+      filled
+      type="file"
+      v-model="event.image"
+      label="Tambahkan Image"
+      color="black"
+      class="q-mt-md"
+    />
+  </q-dialog> -->
   <q-dialog v-model="addNewTiketPaket">
     <!-- Buatin Q-Select Unit -->
     <!-- Buatin Q-Select SubType -->
     <q-input
-          filled
-          v-model="tikets.name"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
+      filled
+      v-model="tikets.name"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
     <q-input
-          filled
-          v-model="tikets.desc"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
+      filled
+      v-model="tikets.desc"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
     <q-input
-          filled
-          v-model="tikets.price"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
+      filled
+      v-model="tikets.price"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
     <q-input
-          filled
-          v-model="tikets.priceUmum"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
+      filled
+      v-model="tikets.priceUmum"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
     <q-input
-          filled
-          v-model="tikets.priceMancanegara"
-          label="Text"
-          color="black"
-          bg-color="gray"
-      />
-      <q-file
-        filled
-        type="file"
-        v-model="tikets.image"
-        label="Tambahkan Image"
-        color="black"
-        class="q-mt-md"
-      />
+      filled
+      v-model="tikets.priceMancanegara"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-file
+      filled
+      type="file"
+      v-model="tikets.image"
+      label="Tambahkan Image"
+      color="black"
+      class="q-mt-md"
+    />
   </q-dialog>
 </template>
 
@@ -128,6 +186,7 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
+      statusEvent: ref(false),
       events: ref(),
       tiketPakets: ref(),
       iterations: ref([]),
@@ -142,94 +201,101 @@ export default {
         price: "",
         image: "",
         iterationId: 0,
-        isFree: false
+        isFree: false,
       }),
       tikets: ref({
         name: "",
         desc: "",
         unit: "",
-        price: 0, 
+        price: 0,
         priceUmum: null,
         priceMancanegara: null,
         image: "",
-        subTypeId: 0
+        subTypeId: 0,
       }),
 
       addNewEvent: ref(),
-      addNewTiketPaket: ref()
+      addNewTiketPaket: ref(),
     };
   },
-  mounted(){
-    this.fetchData()
-    socket.connect()
+  mounted() {
+    this.fetchData();
+    socket.connect();
   },
   beforeUnmount() {
-    socket.disconnect()
+    socket.disconnect();
   },
   watch: {
     addNewEvent: {
-      handler(val){
-        if(!val) this.resetDefault()
-      }
+      handler(val) {
+        if (!val) this.resetDefault();
+      },
     },
     addNewTiketPaket: {
-      handler(val){
-        if(!val) this.resetDefault()
-      }
-    }
+      handler(val) {
+        if (!val) this.resetDefault();
+      },
+    },
   },
-  methods:{
-    async fetchData(){
-      try{
-        const helper = await this.$api.get('items/helper')
-        const eventResponse = await this.$api.get('event')
-        const tiketPaketReponse = await this.$api.get('items')
-        if(eventResponse.status != 200) throw Error('Error occured')
-        if(tiketPaketReponse.status != 200) throw Error('Error occured')
-        this.events = eventResponse.data.data.map(event => ({
+  methods: {
+    async fetchData() {
+      try {
+        const helper = await this.$api.get("items/helper");
+        const eventResponse = await this.$api.get("event");
+        const tiketPaketReponse = await this.$api.get("items");
+        if (eventResponse.status != 200) throw Error("Error occured");
+        if (tiketPaketReponse.status != 200) throw Error("Error occured");
+        this.events = eventResponse.data.data.map((event) => ({
           id: event.id,
           image: event.image,
           price: event.price ? `Rp. ${this.formatRupiah(event.price)}` : "",
           buttonText1: event.iteration.name,
           buttonText2: event.isFree ? "Gratis" : "Bayar",
           titleMedium: event.desc,
-          titleBig: event.name
-        }))
+          titleBig: event.name,
+        }));
         this.tiketPakets = tiketPaketReponse.data.data.map((tiket) => ({
           id: tiket.id,
           image: tiket.image,
           name: tiket.name,
           desc: tiket.desc,
           subType: tiket.subType.name,
-          price: this.formatRupiah(this.countPrice(tiket.price, tiket.priceUmum, tiket.priceMancanegara))
-        }))
-        this.iterations = helper.data.data.iterations
-        this.subTypes = helper.data.data.subTypes
-      }catch(err){
-        console.log(err)
+          price: this.formatRupiah(
+            this.countPrice(
+              tiket.price,
+              tiket.priceUmum,
+              tiket.priceMancanegara
+            )
+          ),
+        }));
+        this.iterations = helper.data.data.iterations;
+        this.subTypes = helper.data.data.subTypes;
+      } catch (err) {
+        console.log(err);
       }
     },
-    async sendUpdate(type){
-      try{
-        let url = type
-        const response = await this.$api.post('')
-      }catch(err){
-        console.log(err)
+    async sendUpdate(type) {
+      try {
+        let url = type;
+        const response = await this.$api.post("");
+      } catch (err) {
+        console.log(err);
       }
     },
-    async sendCreate(type){
-      try{
-        
-      }catch(err){
-        console.log(err)
+    async sendCreate(type) {
+      try {
+      } catch (err) {
+        console.log(err);
       }
     },
-    openDialog(type, itemData){
-      console.log(type)
-      type != "event" ? this.addNewTiketPaket = true : this.addNewEvent = true
-      if(itemData){
-        const dataToChanged = type != "event" ? "event" : "tikets"
-        this[dataToChanged] = { ...itemData }
+    openDialog(type, itemData) {
+      console.log(type);
+      type != "event"
+        ? (this.addNewTiketPaket = true)
+        : (this.addNewEvent = true);
+      if (itemData) {
+        const dataToChanged = type != "event" ? "event" : "tikets";
+        this[dataToChanged] = { ...itemData };
       }
     },
     formatRupiah(price) {
@@ -249,10 +315,10 @@ export default {
       }
       return returnedPrice;
     },
-    resetDefault(){
-      const listToClear = []
-      for(let clear of listToClear){
-        this[clear] = ""
+    resetDefault() {
+      const listToClear = [];
+      for (let clear of listToClear) {
+        this[clear] = "";
       }
 
       this.event = {
@@ -261,20 +327,19 @@ export default {
         price: "",
         image: "",
         iterationId: 0,
-        isFree: false 
-      }
+        isFree: false,
+      };
       this.tikets = {
         name: "",
         desc: "",
         unit: "",
-        price: 0, 
+        price: 0,
         priceUmum: null,
         priceMancanegara: null,
         image: "",
-        subTypeId: 0
-      }
-    }
-  }
- };
+        subTypeId: 0,
+      };
+    },
+  },
+};
 </script>
- 
