@@ -25,9 +25,6 @@
       <h1 class="judul-besar">{{ item.titleBig }}</h1>
       <div class="tengah">
         <h3 class="judul-kecil">{{ item.price }}</h3>
-        <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
       </div>
     </div>
   </div>
@@ -42,9 +39,6 @@
         <h1 class="judul-besar">{{ data.titleBig }}</h1>
         <div class="tengah">
           <h3 class="judul-kecil">{{ data.price }}</h3>
-          <button class="tambah">
-            Tambah <img class="photo" src="../assets/Frame.svg" />
-          </button>
         </div>
       </div>
     </div>

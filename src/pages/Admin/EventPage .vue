@@ -1,98 +1,5 @@
 <template>
-  <div class="text-center text-h6 text-bold q-mt-md">Edit Section {{ sectionName }}</div>
-  <div class="text-center q-mt-sm">Ubah dan alur konten web Keraton</div>
-
-  <div style="padding-inline: 300px; margin-top: 120px">
-    
-    <div class="col-grow">
-        <q-input
-          filled
-          v-model="sectionName"
-          label="Section Name"
-          color="black"
-          bg-color="gray"
-        />
-      </div>
-      <q-input
-        filled
-        v-model="sectionOrder"
-        type="number"
-        label="Order"
-        color="black"
-        bg-color="gray"
-      />
-
-
-    <q-btn
-    no-caps
-    @click="addNewInput('text')"
-    label="Tambahkan Text Input"
-    />
-    <q-btn
-    no-caps
-    @click="addNewInput('link')"
-    label="Tambahkan Link Input"
-    />
-    <q-btn
-    no-caps
-    @click="addNewInput('image')"
-    label="Tambahkan Image Input"
-    />
-
-    <div v-for="(item, i) in textInputs" :key="i" class="flex full-width" style="gap: 5px">
-      <div class="col-grow">
-        <q-input
-          filled
-          v-model="item.data"
-          label="Text"
-          color="black"
-          bg-color="gray"
-        />
-      </div>
-      <q-input
-        filled
-        v-model="item.textSize"
-        label="Size"
-        color="black"
-        bg-color="gray"
-      />
-    </div>
-
-    <div
-      v-for="(link, i) in linkInputs"
-      :key="i"
-      class="flex full-width q-mt-md"
-      style="gap: 5px"
-    >
-      <div class="col-grow">
-        <q-input
-          filled
-          v-model="link.data"
-          label="Link"
-          color="black"
-          bg-color="gray"
-        />
-      </div>
-    </div>
-    <q-file
-      v-for="(image, i) in imageInputs"
-      :key="i"
-      filled
-      type="file"
-      v-model="image.data"
-      label="Tambahkan Image"
-      color="black"
-      class="q-mt-md"
-    />
-    <q-btn
-      no-caps
-      @click="sendUpdate"
-      style="background: #123b32"
-      text-color="white"
-      label="Save and Update"
-      class="full-width q-mt-md"
-    />
-  </div>
+ 
 </template>
 
 <script>
@@ -105,20 +12,20 @@ export default {
       textInputs: ref([]),
       imageInputs: ref([]),
       linkInputs: ref([]),
-      dynamicTitle: ref(["title1", "title2"]),
+      dynamicTitle: ref(['title1', 'title2'])
     };
   },
-  data() {
-    return {
-      contentId: this.$route.params.id,
-    };
+  data(){
+    return{
+      contentId: this.$route.params.id
+    }
   },
-  mounted() {
-    this.fetchData();
-    socket.connect();
+  mounted(){
+    this.fetchData()
+    socket.connect()
   },
   beforeUnmount() {
-    socket.disconnect();
+    socket.disconnect()
   },
   methods:{
     async fetchData(){
@@ -189,8 +96,8 @@ export default {
       }
     },
     takeTwoChars(str) {
-      return str.slice(0, 2);
-    },
-  },
-};
+        return str.slice(0, 2);
+    }
+  }
+ };
 </script>

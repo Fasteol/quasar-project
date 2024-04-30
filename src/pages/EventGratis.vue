@@ -65,6 +65,7 @@
           <h2 class="judul-sedang">{{ item.titleBig }}</h2>
           <h1 class="judul-besar">{{ item.titleMedium }}</h1>
           <div class="tengah">
+            <h3 class="judul-kecil">{{ item.price }}</h3>
           <button class="tambah">
             Tambah <img class="photo" src="../assets/Frame.svg" />
           </button>
@@ -144,6 +145,7 @@ export default {
         if(iterationResponse.status != 200) throw Error('Error occured')
         this.events = eventResponse.data.data.map((event) =>({
           image: event.image,
+          price: event.price ? `Rp. ${this.formatRupiah(event.price)}` : "",
           buttonText1: event.iteration.name,
           buttonText2: event.isFree ? "Gratis" : "Bayar",
           titleMedium: event.desc,
@@ -156,6 +158,11 @@ export default {
       }catch(err){
         console.log(err)
       }
+    },
+    formatRupiah(price) {
+      return (price / 1000).toLocaleString("en-US", {
+        minimumFractionDigits: 3,
+      });
     },
     toggleDropdown() {
       this.isOpen = !this.isOpen;
