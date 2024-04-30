@@ -47,7 +47,7 @@
   <section class="sec-home" id="section4">
     <div class="container">
       <div class="text">
-        <p class="sej2Text">Sejarah</p>
+        <p class="sej2Text">{{ sectionData["3"]?.name }}</p>
         <h2 class="ksc4Text">{{ sectionData["3"]?.context.xs1.data }}</h2>
       </div>
 
@@ -67,7 +67,6 @@
         <a href="https://your-link-here.com">
           <img :src="sectionData['3']?.context.xi3.data" alt="sejarah3" />
           <div class="caption">
-            <p class="title3">Silsilah Keraton Kesepuhan Cirebon</p>
             <svg
               width="32"
               height="32"
@@ -93,7 +92,7 @@
   <section id="section5">
     <div class="container">
       <div class="text">
-        <p class="eventText">Event</p>
+        <p class="eventText">{{ sectionData["4"]?.name }}</p>
         <p class="ksc5Text">{{ sectionData["4"]?.context.xs1.data }}</p>
       </div>
       <div class="container-card">
@@ -355,6 +354,7 @@ export default {
             context: content.context,
           };
         });
+
         console.log(rawSection);
         this.sectionData = rawSection;
       } catch (err) {
