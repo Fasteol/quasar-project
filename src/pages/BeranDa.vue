@@ -164,7 +164,7 @@
 
   <section class="sec-home" id="section7">
     <div class="container">
-      <div class="text">
+      <div>
         <p class="faqText">{{ sectionData["6"]?.name }}</p>
         <h2 class="tanyaText">{{ sectionData["6"]?.context.xs1.data }}</h2>
       </div>
@@ -203,6 +203,22 @@
       </div>
     </div>
   </section>
+
+  <!-- <div class="q-px-xl full-width">
+    <q-list class="rounded-borders" v-for="(item, index) in faqs" :key="index">
+      <q-expansion-item
+        expand-separator
+        :label="item.pertanyaan"
+        class="text-h5"
+      >
+        <q-card>
+          <q-card-section>
+            {{ item.jawaban }}
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+    </q-list>
+  </div> -->
 
   <section class="sec-home" id="section8">
     <div class="container">
@@ -908,7 +924,6 @@ export default {
 }
 
 .faqText {
-  position: absolute;
   font-family: "Inria Serif";
   font-size: 25px;
   top: 2vw;
@@ -917,15 +932,12 @@ export default {
 }
 
 .tanyaText {
-  position: absolute;
   font-family: "Inria Serif";
   font-style: normal;
   font-size: 25px;
   text-align: center;
   font-weight: 700;
   color: #212121;
-  top: 5vw;
-  left: 39vw;
 }
 
 .faq {
@@ -1236,7 +1248,6 @@ input::placeholder {
 
   #section7 .container {
     background-image: url("../assets/images/batik.png");
-    display: fixed;
   }
 
   #section8 .container {
@@ -1250,7 +1261,6 @@ input::placeholder {
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 120vh;
     flex-direction: column;
     background-position: center;
     color: white;
@@ -1756,26 +1766,19 @@ input::placeholder {
   }
 
   .faqText {
-    position: absolute;
     font-family: "Inria Serif";
     font-size: 25px;
-    top: 2vw;
     text-align: center;
     color: #d9a520;
   }
 
-  .tanyaText {
-    position: absolute;
-    width: 21%;
+  /* .tanyaText {
     font-family: "Inria Serif";
     font-style: normal;
     font-size: 25px;
     text-align: center;
-    font-weight: 700;
     color: #212121;
-    top: 5vw;
-    left: 41vw;
-  }
+  } */
 
   .faq {
     position: relative;

@@ -33,9 +33,15 @@
             >
               <q-menu>
                 <q-list>
-                  <q-item>
+                  <q-item clickable v-ripple to="/sejarah">
                     <q-item-section>
-                      <q-item-label>First Item Enabled</q-item-label>
+                      <q-item-label>Keraton</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple to="/sejarahsilsilah">
+                    <q-item-section>
+                      <q-item-label>Silsilah</q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>
@@ -52,9 +58,15 @@
             >
               <q-menu>
                 <q-list>
-                  <q-item>
+                  <q-item clickable v-ripple to="/filterbayar">
                     <q-item-section>
-                      <q-item-label>First Item Enabled</q-item-label>
+                      <q-item-label>Paket Keraton</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple to="/eventgratis">
+                    <q-item-section>
+                      <q-item-label>Tiket Event</q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>
@@ -71,9 +83,21 @@
             >
               <q-menu>
                 <q-list>
-                  <q-item>
+                  <q-item clickable v-ripple to="/areakeraton">
                     <q-item-section>
-                      <q-item-label>First Item Enabled</q-item-label>
+                      <q-item-label>Keraton Kesepuhan</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple to="/museum">
+                    <q-item-section>
+                      <q-item-label>Museum Pusaka</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple to="/agungdalem">
+                    <q-item-section>
+                      <q-item-label>Dalem Agung Pangkuwati</q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>
