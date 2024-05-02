@@ -160,6 +160,7 @@ const rows = [
 export default {
   components: { navbar },
   setup() {
+  
     return {
       columns,
       rows: ref([])

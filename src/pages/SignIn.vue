@@ -16,14 +16,14 @@
         <h3 class="text">Email</h3>
         <div :class="{ 'box': true, 'error-border': emailError }">
           <input type="email" v-model="email">
-          <h3 class="error-message" v-show="emailError">{{ emailErrorMessage }}</h3>
+          <h3 class="error-message" v-if="emailError">{{ emailError }}</h3>
         </div>
         <h3 class="text">Password</h3>
         <div :class="{ 'box': true, 'error-border': passwordError }">
           <input type="password" v-model="password" placeholder="6+ Characters">
-          <h3 class="error-message" v-show="passwordError">{{ passwordErrorMessage }}</h3>
+          <h3 class="error-message" v-if="passwordError">{{ passwordError }}</h3>
         </div>
-        <button class="button">Sign In</button>
+        <button @click="logIn" class="button">Sign In</button>
         <h3 class="signup">Belum buat akun? <router-link to="/signup" class="highlight">Sign Up</router-link></h3>
         <h3 class="terms">Dengan signin ke Keraton Kasepuhan Cirebon, anda setuju dengan <b>Terms</b> dan <b>Privacy Policy</b>.</h3>
       </form>
@@ -31,27 +31,45 @@
   </div>
 </template>
 
-<script setup>
-
+<script>
 import { ref } from 'vue';
-
-const email = ref('');
-const password = ref('');
-const emailError = ref(false);
-const passwordError = ref(false);
-const emailErrorMessage = ref("Please type your email");
-const passwordErrorMessage = ref("Please type your password");
-
-const submitForm = () => {
-  emailError.value = !email.value.trim();
-  passwordError.value = !password.value.trim();
-
-  if (!email.value.trim() || !password.value.trim()) {
-    return;
+import CookieHandler from 'src/cookieHandler';
+import StorageHandler from 'src/storeHandler'
+export default {
+  data() {
+    return {
+      emailError: ref(),
+      passwordError: ref()
+    };
+  },
+  methods:{
+    async logIn(){
+      try{
+        this.validateInput()
+        const response = await this.$api.post('auth/login', {
+          email: this.email,
+          password: this.password
+        })
+        if(response.status != 200) throw Error(response.data.message)
+        const { generatedToken, userExist} = response.data.data
+        CookieHandler.setCookie('token', generatedToken)
+        StorageHandler.saveData('name', userExist['name'], 'local')
+        StorageHandler.saveData('email', userExist['email'], 'local')
+        this.$router.replace('/')
+      }catch(err){
+        console.log(err)
+      }
+    },
+    validateInput(){
+      let emailError, passwordError
+      if(!this.email) emailError = "Email is required"
+      if(!this.password) passwordError = "Password is required"
+      if(this.email && !this.email.split('@')[1]) emailError = "Must be an email"
+      this.emailError = emailError
+      this.passwordError = passwordError
+      if(emailError && passwordError) throw Error('Invalid Input')
+    }
   }
-
-  console.log('Email:', email.value);
-  console.log('Password:', password.value);
 };
 </script>
 
