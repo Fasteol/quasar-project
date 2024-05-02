@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border />
+    <navbar border/>
   </nav>
   <div class="header">
     <div class="text1">
@@ -56,22 +56,86 @@
       </div>
     </div>
     <div class="container">
-      <div class="ni" v-for="(item, index) in events" :key="index">
+      <div class="ni" v-for="(item, index) in items" :key="index">
     <img class="image" :src="item.image" alt="Gambar" />
      <div class="buttonaji">
     <button class="btn-small">{{ item.buttonText1 }}</button>
     <button class="btn-small">{{ item.buttonText2 }}</button>
           </div>
-          <h2 class="judul-sedang">{{ item.titleBig }}</h2>
-          <h1 class="judul-besar">{{ item.titleMedium }}</h1>
+          <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
+          <h1 class="judul-besar">{{ item.titleBig }}</h1>
           <div class="tengah">
           <button class="tambah">
-            Tambah <img class="photo" src="../assets/Frame.svg" />
-          </button>
-        </div>
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
       </div>
     </div>
   </div>
+</div>
+
+<div class="footer">
+
+<div class="logo">
+  <img src="../assets/images/logo_keraton.png" alt="">
+  <p>KERATON <br>KASEPUHAN <br>CIREBON</p>
+</div>
+<div class="footer-col">
+  <div class="footer-col-1">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">Beranda</a></li>
+      <li><a href="#">Sejarah</a></li>
+      <li><a href="#">Booking</a></li>
+      <li><a href="#">Objek Wisata</a></li>
+    </ul>
+  </div>
+  <div class="footer-col-2">
+    <h3>Socials</h3>
+    <ul>
+      <li><a href="#">Whatsapp</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Threads</a></li>
+    </ul>
+  </div>
+  <div class="footer-col-3">
+    <h3>Company</h3>
+    <ul>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Partners</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col-4">
+    <h3>Subscribes your email for updates!</h3>
+    <button class="button">Enter your email</button>
+
+
+  </div>
+</div>
+<div class="adress">
+  Jalan Kasepuhan 43
+  Cirebon, Jawa Barat
+  45114
+</div>
+<div class="lower">
+  <div class="inlower">
+    @2024 Keraton Kasepuhan Cirebon
+  </div>
+  <div class="susun">
+    <p>In collaboration</p>
+
+    <div class="collab">
+      <img src="../assets/images/logo_keraton.png" alt="" class="foto1">
+      <img src="../assets/images/1 931.svg" alt="" class="foto2">
+      <img src="../assets/images/telkom.svg" alt="" class="foto3">
+      <img src="../assets/images/bjb.svg" alt="" class="foto4">
+
+    </div>
+  </div>
+</div>
+</div>
+
 </template>
 
 <script setup>
@@ -96,67 +160,50 @@ export default {
       default: "Jenis Event",
     },
   },
-  watch:{
-    selectedOptions: {
-      handler(val){
-        console.log(val)
-        this.fetchData()
-      }
-    },
-    selectedOptions2: {
-      handler(val){
-        console.log(val)
-        this.fetchData()
-      }
-    }
-  },
   data() {
     return {
       isOpen: false,
       isOpen2: false,
       imageUrl: "../assets/trigger.svg",
-      options: ref(),
+      options: [
+        { label: "Hari", value: "Perminggu" },
+        { label: "Minggu", value: "Perminggu" },
+        { label: "Bulan", value: "Perminggu" },
+      ],
       options2: [
-        { label: "Gratis", value: "1" },
-        { label: "Bayar", value: "0" },
+        { label: "Gratis", value: "Gratis" },
       ],
       selectedOptions: [],
       selectedOptions2: [],
-      events: ref()
+      items: [
+        {
+          image: "src/assets/images/isra.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Peringatan isra mi'raj di langgar alit",
+          titleBig:
+            "Keluarga Keraton Kasepuhan mengadakan acara Isra Miraj di Langgar Alit yang rutin digunakan untuk peringatan hari besar Islam",
+        },
+        {
+          image: "/src/assets/images/sholat.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Perayaan Maulid Nabi di Masjid Agung",
+          titleBig:
+            "Komunitas Muslim mengadakan acara perayaan Maulid Nabi di Masjid Agung setempat",
+        },
+        {
+          image: "src/assets/images/bedug.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Tadarus di langgar alit",
+          titleBig:
+            "Kegiatan tadarus Alquran ini biasanya dibimbing oleh kaum masjid dan dilakukan dua kali khatam selama bulan Ramadan",
+        },
+      ],
     };
   },
-  mounted(){
-    this.fetchData()
-  },
   methods: {
-    async fetchData(){
-      let freeOptions, iterationOptions
-      try{
-        if(this.selectedOptions) iterationOptions = Object.values(this.selectedOptions)
-        if(this.selectedOptions2) freeOptions = Object.values(this.selectedOptions2)
-        console.log(freeOptions, iterationOptions)
-        const eventResponse = await this.$axios.post('http://localhost:3000/keraton/event/page', {
-          ...(iterationOptions && iterationOptions.length != 0 && { iterat: Object.values(this.selectedOptions) }),
-          ...(freeOptions && freeOptions.length < 2 && freeOptions.length != 0 && { free: freeOptions[0] != 0 ? true : false })
-        })
-        const iterationResponse = await this.$axios.get('http://localhost:3000/keraton/iteration')
-        if(eventResponse.status != 200) throw Error('Error occured')
-        if(iterationResponse.status != 200) throw Error('Error occured')
-        this.events = eventResponse.data.data.map((event) =>({
-          image: event.image,
-          buttonText1: event.iteration.name,
-          buttonText2: event.isFree ? "Gratis" : "Bayar",
-          titleMedium: event.desc,
-          titleBig: event.name
-        }))
-        this.options = iterationResponse.data.data.map((iterat) => ({
-          label: iterat.name,
-          value: iterat.id
-        }))
-      }catch(err){
-        console.log(err)
-      }
-    },
     toggleDropdown() {
       this.isOpen = !this.isOpen;
     },
@@ -316,7 +363,9 @@ nav ul li button:hover {
   margin-left: 131px;
   width: 250px; /* Contoh ukuran lebar */
   height: 200px; /* Contoh ukuran tinggi */
+  
 }
+
 
 .buttonaji {
   display: flex; /* Use flexbox */
@@ -539,5 +588,116 @@ nav ul li button:hover {
 .dropdown-toggle2 img {
   margin-left: auto; /* Jarak antara teks dan gambar */
   z-index: 1;
+}
+
+.footer {
+ width: 100%;
+ height: auto;
+ margin-top: 278px;
+ position: relative;
+  margin-bottom: 100px;
+ 
+} 
+a {
+ text-decoration: none;
+ color: #212121;
+}
+ul {
+ list-style-type: none;
+}
+.footer-col {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 20px;
+}
+
+.footer-col h3 {
+ font-size: 30px;
+ font-weight: 40px;
+ display: inline-block;
+ margin-bottom: 11px;
+ margin-top: 76px;
+}
+.footer-col-1 {
+ 
+ margin-left: 88px;
+ width: 20vw;
+ 
+}
+
+
+
+.logo {
+font-size: 20px;
+font-weight: 400;
+display: flex;
+flex-direction: row;
+margin-left: 88px;
+
+
+}
+
+.logo img {
+width: 70px;
+margin-right: 9px;
+
+}
+
+.footer-col-2 {
+margin-left: 60px;
+}
+
+.footer-col-3 {
+margin-left: 60px;
+}
+
+.footer-col-4 {
+margin-left: 139px;
+width: 434px;
+}
+
+.footer-col li {
+color: #212121;
+}
+
+.footer-col li:not(:last-child) {
+margin-bottom: 11px;
+}
+
+.adress {
+width: 184px;
+height: 84px;
+font-size: 20px;
+font-weight: 400;
+margin-top: 62px;
+margin-left: 88px;
+}
+
+.lower {
+
+height: 142px;
+margin-left: 88px;
+display: flex;
+}
+
+.inlower {
+padding-top: 118px;
+position: absolute;
+}
+
+.collab {
+display: flex;
+flex-direction: row;
+gap: 46px;
+
+}
+
+.susun {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 46px;
+padding-left: 795px;
 }
 </style>

@@ -7,7 +7,7 @@
 
 
     <div class="image-container">
-      <img alt="Area Keraton Image" class="image" src="../assets/images/image 19.png" />
+      <img alt="Area Keraton Image" class="image" src="../assets/images/museumPaket.png" />
       <p class="image-text">MUSEUM PUSAKA</p>
       <p class="text-bottom1">Museum Pusaka ini terletak di dalam kompleks Keraton Kasepuhan, Cirebon, Jawa Barat.</p>
       <p class="text-bottom2">Didirikan pada tahun 1981 oleh Sultan Sepuh XIV, Pangeran Raja Mochamad Jayadiningrat.</p>
@@ -22,27 +22,26 @@
       dan lukisan.</p>
 
       <div class="slider" ref="slider">
-  <div
-    v-for="(card, index) in cards"
-    :key="index"
-    :id="'card-' + index"
-    :class="{ cardd: true, active: index === currentIndex || index === (currentIndex + 1) % cards.length }"
-  >
-    {{ card.content }}
+    <div
+      v-for="(card, index) in cards"
+      :key="index"
+      :id="'card-' + index"
+      :class="{ cardd: true, active: index === currentIndex }"
+    >
+      {{ card.content }}
+    </div>
   </div>
-</div>
 
-  <div class="button-container">
-  <button class="button-slider" @click="prevCard">&lt;</button>
+  <div>
+  <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg">
   <div
     class="bulet"
     v-for="(bullet, index) in bullets"
     :key="index"
     :class="{ active: index === currentIndex }"
   ></div>
-  <button class="button-slider" @click="nextCard">&gt;</button>
-</div>
-
+  <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg">
+</div>  
     <div class="Fasilitas">
       <p>Fasilitas</p>
       <p class="Fasilitas-Text">Fasilitas di Keraton Kasepuhan Cirebon cukup lengkap untuk menunjang kegiatan wisata dan
@@ -220,7 +219,7 @@ watch: {
 };
 </script>
 
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 </style>
 
@@ -322,7 +321,8 @@ overflow-x: hidden;
 .image {
   width: 100%;
   width: 1280px;
-  height: 640px;
+  height: 100%;
+  max-height: 580px;
   object-fit: cover;
   filter: brightness(60%);
 }
@@ -332,7 +332,7 @@ overflow-x: hidden;
 
 .Fasilitas {
   position: absolute;
-  width: 542px;
+  width: 442px;
   height: 72px;
   top: 1500px;
   left: 120px;
@@ -529,7 +529,7 @@ overflow-x: hidden;
   position: absolute;
   width: 625px;
   height: 72px;
-  top: 280px;
+  top: 250px;
   left: 327px;
   color: white;
   font-size: 64px;
@@ -544,7 +544,7 @@ overflow-x: hidden;
   position: absolute;
   width: 362px;
   height: 18px;
-  top: 490px;
+  top: 420px;
   left: 90px;
   font-size: 16px;
   line-height: 24px;
@@ -555,7 +555,7 @@ overflow-x: hidden;
   position: absolute;
   width: 360px;
   height: 48px;
-  top: 490px;
+  top: 420px;
   left: 499px;
   font-size: 16px;
   line-height: 24px;
@@ -567,7 +567,7 @@ overflow-x: hidden;
   position: absolute;
   width: 362px;
   height: 48px;
-  top: 490px;
+  top: 420px;
   left: 889px;
   font-size: 16px;
   line-height: 24px;
@@ -578,7 +578,7 @@ overflow-x: hidden;
   position: absolute;
   width: 32px;
   height: 32px;
-  top: 600px;
+  top: 530px;
   left: 624px;
   cursor: pointer;
 }
@@ -853,7 +853,6 @@ right: 100px;
 .cardd.active{
   width: 255.72px;
   height: 414px;
-  z-index: 9999;
 }
 
 .button-container {
@@ -864,16 +863,11 @@ right: 100px;
   gap: 10px;
 }
 
-.button-slider {
-  width:30px;
-  height: 35px;
-  background: transparent;
-  color: #212121;
+.button-slider{
   font-weight: bold;
-  border: 3px solid #212121;
-  border-radius: 50%;
   cursor: pointer;
   transition: all 0.5s ease;
+  
 }
 
 .bulet {

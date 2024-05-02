@@ -35,7 +35,6 @@
               <li><a href="#/areakeraton">Keraton Kesepuhan</a></li>
               <li><a href="#/museum">Museum Pusaka</a></li>
               <li><a href="#/agungdalem">Dalem Agung Pakungwati</a></li>
-              <!-- <li><a href="../views/Lotus.vue">Lotus</a></li> -->
             </ul>
           </li>
           <button
@@ -86,7 +85,7 @@ export default {
   },
   methods: {
     getTickets() {
-      this.$router.push({ name: "signin" });
+      this.$router.push({ name: "/signin" });
     },
     handleScroll() {
       if (window.pageYOffset > 50) {

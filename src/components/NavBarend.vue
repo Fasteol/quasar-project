@@ -31,7 +31,6 @@
                 <li><a href="areakeraton">Keraton Kesepuhan</a></li>
                 <li><a href="museum">Museum Pusaka</a></li>
                 <li><a href="agungdalem">Dalem Agung Pakungwati</a></li>
-                <li><a href="lotus">Lotus</a></li>
               </ul>
             </li>
             <li class="title" :class="{ 'navbar--white': isWhiteText, 'border': border }">
@@ -52,18 +51,19 @@ export default {
   props: {
     isWhiteText: {
       type: Boolean,
-      default: false, 
+      default: false,
     },
     border: {
       type: Boolean,
-      default: false, 
+      default: false,
     },
   },
   mounted() {
-    window.addEventListener('resize', () => {
-      this.addRequiredClass();
-    });
+    window.addEventListener('resize', this.addRequiredClass);
     this.addRequiredClass();
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.addRequiredClass);
   },
   methods: {
     addRequiredClass() {
@@ -75,15 +75,14 @@ export default {
 
       const currentPage = window.location.pathname;
 
-     
-      if (currentPage === '/sejarah' || currentPage === '/areakeraton' ) {
-        this.isWhiteText = true;
+      if (currentPage === '/sejarah' || currentPage === '/areakeraton') {
+        this.$emit('update:isWhiteText', true); // Emit event to update the prop
       } else {
-        this.isWhiteText = false;
+        this.$emit('update:isWhiteText', false); // Emit event to update the prop
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
 import NavBar from '../components/NavBar.vue'
 import { onMounted } from 'vue'
 import logoBJB from '../assets/images/bjb.png'
-import LoaderPayment from '../views/LoaderPayment.vue'
+import LoaderPayment from '../pages/LoaderPayment.vue'
 import PaymentPopup from '../components/PaymentPopup.vue'
 import afterCheckoutFunc from '../afterCheckoutFunc'
 

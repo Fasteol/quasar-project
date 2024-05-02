@@ -1,25 +1,7 @@
 <template>
-  <div class="navbar">
-    <div class="navbar-left">
-      <img
-        alt="icon-aplikasi"
-        src="../assets/images/kanjut.jpeg"
-        class="app-icon"
-      />
-      <span class="app-name"></span>
-    </div>
-    <div class="navbar-right">
-      <nav>
-        <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Sejarah</a></li>
-          <li><a href="#">Booking</a></li>
-          <li><a href="#">Objek Wisata</a></li>
-          <button @click="getTickets" class="button1">Dapatkan Tiket</button>
-        </ul>
-      </nav>
-    </div>
-  </div>
+  <nav>
+    <navbar border/>
+  </nav>
     <img src="../assets/images/bekron.png" class="background-image" />
     <div class="container">
       <img src="../assets/images/Line 17 (1).png" style="display: block; margin-left: -100px; margin-top: -15px" />
@@ -32,7 +14,7 @@
       <div>
         <img
           src="../assets/images/Frame.jpeg"
-          style="margin-left: -106px; padding-top: -200px margin-bottom: 10px"
+          style="margin-left: -106px; padding-top: -200px; margin-bottom: 10px;"
         />
         <span class="gold-text">1662 M</span> <br /><br />
         <div class="garis">
@@ -58,7 +40,7 @@
     <div>
       <img
         src="../assets/images/Frame.jpeg"
-        style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+        style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1697 M</span> <br /><br />
       <div class="garis">
@@ -82,7 +64,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1720 M</span> <br /><br />
       <div class="garis">
@@ -106,7 +88,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1750 M</span> <br /><br />
       <div class="garis">
@@ -132,7 +114,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1778 M</span> <br /><br />
       <div class="garis">
@@ -156,7 +138,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1784 M</span> <br /><br />
       <div class="garis">
@@ -179,7 +161,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1790M</span> <br /><br />
       <div class="garis">
@@ -204,7 +186,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1816 M</span> <br /><br />
       <div class="garis">
@@ -228,7 +210,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1845 M</span> <br /><br />
       <div class="garis">
@@ -252,7 +234,7 @@
     <div>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1890 M</span> <br /><br />
       <div class="garis">
@@ -273,7 +255,7 @@
     <div>
      <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1899 M</span> <br /><br />
       <div class="garis">
@@ -298,7 +280,7 @@
       </p>
       <img
       src="../assets/images/Frame.jpeg"
-      style="margin-left: -106px; margin-top: 26px; margin-buttom: 10px"
+      style="margin-left: -106px; margin-top: 26px; margin-bottom: 10px"
       />
       <span class="gold-text">1942 M</span> <br /><br />
         <div class="garis">
@@ -472,6 +454,10 @@
          </div>
         </div>
 </template>
+
+<script setup>
+import navbar from "../components/NavBar.vue"
+</script>
 
 <script>
 export default {
@@ -755,98 +741,5 @@ p {
 .garis {
   display: flex;
   flex-direction: row;
-}
-
-.navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0px 10px 0px;
-
-  position: relative;
-  background-color: white;
-
-  font-family: "Raleway", sans-serif;
-}
-.navbar-right {
-  position: absolute;
-  margin-left: 370px;
-}
-.navbar-left {
-  display: flex;
-  align-items: center;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  width: 217px;
-  height: 84px;
-}
-
-.app-icon {
-  position: absolute;
-  width: 217px;
-  height: 70.62px;
-  left: 88px;
-  top: 16.69px;
-}
-
-.app-name {
-  position: absolute;
-  width: 139px;
-  height: 84px;
-  left: 166px;
-  top: 10px;
-  color: black;
-  font-size: 20px;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav ul li {
-  margin-right: 30px;
-}
-
-nav ul li a,
-nav ul li button {
-  display: block;
-  color: #000000;
-  background-color: transparent;
-  border: none;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 5px 25px;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-nav ul li a:hover,
-nav ul li button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.button1 {
-  font-family: "Raleway";
-  font-weight: 700px;
-  border-radius: 5px;
-  width: 162px;
-  height: 34px;
-  background-color: #123b32;
-  color: #ffffff;
-}
-
-p {
-  font-family: Raleway;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #212121;
 }
 </style>

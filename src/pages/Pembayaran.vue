@@ -56,7 +56,7 @@
     </div>
   </main>
 </template>
-<style>
+<style scoped>
 .atas {
   align-items: center;
   display: flex;
