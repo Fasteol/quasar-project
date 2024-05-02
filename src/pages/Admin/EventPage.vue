@@ -1,49 +1,47 @@
 <template>
   <div>
     <div>
-      <h1>Event</h1>
-      <div v-for="(item, index) in events" :key="index" class="flex">
-        <q-card class="my-card" flat bordered style="width: 500px">
-          <q-img :src="item.image" style="height: 15rem" />
+      <!-- <h1>Event</h1> -->
+      <div
+        class="flex col-grow q-gutter-md"
+        style="
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        "
+      >
+        <div v-for="(item, index) in events" :key="index">
+          <q-card
+            class="my-card"
+            flat
+            bordered
+            style="width: 20rem; height: 30rem"
+          >
+            <q-img :src="item.image" style="height: 15rem" />
 
-          <q-card-section>
-            <div class="text-h6 q-mt-sm q-mb-xs">{{ item.titleBig }}</div>
-            <div class="text-caption text-grey">
-              {{ item.titleMedium }}
-            </div>
-          </q-card-section>
+            <q-card-section>
+              <div class="flex q-gutter-sm">
+                <q-badge color="blue">{{ item.buttonText1 }}</q-badge>
+                <q-badge color="blue">{{ item.buttonText2 }}</q-badge>
+              </div>
+              <div class="text-h6 q-mt-sm q-mb-xs">{{ item.titleBig }}</div>
+              <div class="text-caption text-grey">
+                {{ item.titleMedium }}
+              </div>
+            </q-card-section>
 
-          <q-card-actions>
-            <q-btn flat color="primary" label="Share" />
-            <q-btn flat color="secondary" label="Book" />
-          </q-card-actions>
-        </q-card>
-      </div>
-    </div>
+            <q-card-actions>
+              <div class="text-subtitle1 text-weight-medium">
+                {{ item.price }}
+              </div>
 
-    <div class="ni" v-for="(item, index) in events" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji">
-        <button class="btn-small">{{ item.buttonText1 }}</button>
-        <button class="btn-small">{{ item.buttonText2 }}</button>
-      </div>
-      <h2 class="judul-sedang">{{ item.titleBig }}</h2>
-      <h1 class="judul-besar">{{ item.titleMedium }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
-      </div>
-    </div>
-  </div>
-  <div>
-    Tiket / Paket
-    <div class="ni" v-for="(item, index) in tiketPakets" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji"></div>
-      <h2 class="judul-sedang">{{ item.name }}</h2>
-      <h1 class="judul-besar">{{ item.desc }}</h1>
-      <h1 class="judul-besar">{{ item.subType }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
+              <q-space />
+
+              <q-btn flat color="primary" label="Bayar" />
+            </q-card-actions>
+          </q-card>
+        </div>
       </div>
     </div>
   </div>

@@ -1,18 +1,18 @@
 <template>
   <navbar isWhiteText />
-  <section :style="{
-  'min-height': '100vh',
-  'background': 'linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))',
-  'background-image':  `url(${sectionData['0']?.context.xi1.data})`,
-  'background-repeat': 'no-repeat',
-  'background-size': 'cover',
-  'background-position': 'center',
-  'display': 'flex',
-  'flex-direction': 'column',
-  'align-items': 'center',
-  'justify-content': 'center'
-}
-">
+  <section
+    :style="{
+      'min-height': '100vh',
+      background: `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${sectionData['0']?.context.xi1.data})`,
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+      'background-position': 'center',
+      display: 'flex',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      'justify-content': 'center',
+    }"
+  >
     <div class="texthero">
       <h5 style="color: #fae084">{{ sectionData["0"]?.name }}</h5>
       <h2 style="padding: 0 10rem">
@@ -94,7 +94,8 @@
         <p class="ksc5Text">{{ sectionData["4"]?.context.xs1.data }}</p>
       </div>
       <div class="container-card">
-        <div class="card4"
+        <div
+          class="card4"
           :style="{
             'background-image': `url(${sectionData['4']?.context.xi1.data})`,
             'background-size': 'cover',
@@ -132,7 +133,7 @@
         </div>
       </div>
       <p class="sec5Text">
-        {{ sectionData["4"]?.context.xs2.data }}
+        {{ sectionData["4"]?.context.xs1.data }}
       </p>
       <a :href="sectionData['4']?.context.xl1.data">
         <img class="btnViewMore" src="../assets/images/btninfo.png" />
