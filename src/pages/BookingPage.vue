@@ -18,28 +18,64 @@
   </div>
   <a class="judul1">Tiket Masuk Keraton & Bundling</a>
   <div class="container">
-    <div class="ni" v-for="(item, index) in tiketItems" :key="index">
+    <div class="ni" v-for="(item, index) in filterItems(1, 4)" :key="index">
       <img class="image" :src="item.image" alt="Gambar" />
       <div class="buttonaji"></div>
       <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
       <h1 class="judul-besar">{{ item.titleBig }}</h1>
       <div class="tengah">
         <h3 class="judul-kecil">{{ item.price }}</h3>
+        <button class="tambah">
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
       </div>
     </div>
   </div>
 
-  <div v-for="(item, index) in paketItems" :key="index">
-    <a class="judul1">Paket {{ paketNameItems[index] }} (minimal 35 orang)</a>
-    <div class="container">
-      <div class="ni" v-for="(data, i) in item" :key="i">
-        <img class="image" :src="data.image" alt="Gambar" />
-        <div class="buttonaji"></div>
-        <h2 class="judul-sedang">{{ data.titleMedium }}</h2>
-        <h1 class="judul-besar">{{ data.titleBig }}</h1>
-        <div class="tengah">
-          <h3 class="judul-kecil">{{ data.price }}</h3>
-        </div>
+  <a class="judul1">Paket Wisata Silaturahmi (minimal 35 orang)</a>
+  <div class="container">
+    <div class="ni" v-for="(item, index) in filterItems(5, 8)" :key="index">
+      <img class="image" :src="item.image" alt="Gambar" />
+      <div class="buttonaji"></div>
+      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
+      <h1 class="judul-besar">{{ item.titleBig }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ item.price }}</h3>
+        <button class="tambah">
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <a class="judul1">Paket Wisata Non Silaturahmi (minimal 40 orang)</a>
+  <div class="container">
+    <div class="ni" v-for="(item, index) in filterItems(9, 11)" :key="index">
+      <img class="image" :src="item.image" alt="Gambar" />
+      <div class="buttonaji"></div>
+      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
+      <h1 class="judul-besar">{{ item.titleBig }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ item.price }}</h3>
+        <button class="tambah">
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <a class="judul1">Paket Wisata Pelajar (minimal 50 orang)</a>
+  <div class="container">
+    <div class="ni" v-for="(item, index) in filterItems(12, 12)" :key="index">
+      <img class="image" :src="item.image" alt="Gambar" />
+      <div class="buttonaji"></div>
+      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
+      <h1 class="judul-besar">{{ item.titleBig }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ item.price }}</h3>
+        <button class="tambah">
+          Tambah <img class="photo" src="../assets/Frame.svg" />
+        </button>
       </div>
     </div>
   </div>
@@ -231,16 +267,14 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.fetchData();
-  },
   methods: {
     async fetchData() {
       try {
         const response = await this.$api.get("items/booking");
         if (response.status != 200) throw Error("Error Occured");
         console.log(response);
-        let tikets = [],pakets = {};
+        let tikets = [],
+          pakets = {};
         for (let subType of response.data.data) {
           switch (subType.typeId) {
             case 1:

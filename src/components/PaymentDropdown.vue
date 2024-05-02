@@ -30,7 +30,7 @@ const toggleExpand = (index) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .payment-method__dropdown {
   border-radius: 0.5rem;
   background-color: #fff;

@@ -160,7 +160,7 @@ export default {
   },
   methods: {
     getTickets() {
-      this.$router.push({ name: "signin" });
+      this.$router.push({ name: "/signin" });
     },
     handleScroll() {
       if (window.pageYOffset > 50) {

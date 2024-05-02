@@ -45,9 +45,9 @@
         <q-btn icon="close" flat round dense v-close-popup />
       </q-card-section>
 
-      <q-card-section class="flex items-center">
+      <q-card-section class="flex">
         <div>
-          <div class="flex items-center">
+          <div class="flex">
             <q-input
               filled
               v-model="event.name"
@@ -88,14 +88,19 @@
             />
           </div>
         </div>
-        <div><q-file
-      filled
-      type="file"
-      v-model="event.image"
-      label="Tambahkan Image"
-      color="black"
-      class="q-mt-md"
-    /></div>
+        <div>
+          <q-file
+            filled
+            type="file"
+            v-model="event.image"
+            label="Tambahkan Image"
+            color="black"
+            class="ellipsis"
+            style="width: 10rem"
+            @update:model-value="handleUpload()"
+          />
+          <q-img :src="imgURL" v-if="imgURL" />
+        </div>
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -186,6 +191,7 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
+      imgURL: ref(),
       statusEvent: ref(false),
       events: ref(),
       tiketPakets: ref(),
@@ -199,7 +205,7 @@ export default {
         name: "",
         desc: "",
         price: "",
-        image: "",
+        image: ref(null),
         iterationId: 0,
         isFree: false,
       }),
@@ -238,6 +244,11 @@ export default {
     },
   },
   methods: {
+    handleUpload() {
+      if (this.event.image) {
+        this.imgURL = URL.createObjectURL(this.event.image);
+      }
+    },
     async fetchData() {
       try {
         const helper = await this.$api.get("items/helper");

@@ -8,14 +8,17 @@
 </template>
 
 <script>
+
 import silsilahDesktop from "../pages/silsilahDesktop.vue";
 import silsilahMobile from "../pages/silsilahMobile.vue";
 
 export default {
+  
   components: {
-    silsilahDesktop,
-    silsilahMobile,
-  },
+  silsilahDesktop,
+   silsilahMobile
+   
+},
 };
 </script>
 

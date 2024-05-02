@@ -1,65 +1,62 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
-import navbar from "../components/NavBar.vue";
-import Payment from "../components/PembayaranComponent.vue";
-const count = ref(35);
-const layanan = 2500;
-const jasaApp = 1000;
-const harga = ref(85000);
-const tanggalSekarang = new Date().toISOString().substr(0, 10);
-const totalHarga = computed(() => count.value * harga.value);
+import { ref, computed, onMounted } from 'vue'
+import navbar from '../components/NavBar.vue'
+import Payment from '../components/pembayaranComp.vue'
+const count = ref(35)
+const layanan = 2500
+const jasaApp = 1000
+const harga = ref(85000)
+const tanggalSekarang = new Date().toISOString().substr(0, 10)
+const totalHarga = computed(() => count.value * harga.value)
 
-const hargaTiket = harga.value.toLocaleString("id-ID", {
+const hargaTiket = harga.value.toLocaleString('id-ID', {
   maximumFractionDigits: 2,
-  minimumFractionDigits: 2,
+  minimumFractionDigits: 2
 });
 
 const hargaStringTiket = ref(harga);
 
-const hargaString = computed(() => totalHarga.value.toLocaleString("id-ID"));
-const layananString = layanan.toLocaleString("id-ID");
-const jasaAppString = jasaApp.toLocaleString("id-ID");
+const hargaString = computed(() => (totalHarga.value).toLocaleString('id-ID'));
+const layananString = layanan.toLocaleString('id-ID');
+const jasaAppString = jasaApp.toLocaleString('id-ID');
 
-const totalPemesanan = computed(() =>
-  (totalHarga.value + layanan + jasaApp).toLocaleString("id-ID")
-);
+const totalPemesanan = computed(() => (totalHarga.value + layanan + jasaApp).toLocaleString('id-ID'));
 
 const tambah = () => {
-  count.value++;
-  harga.value = 85000;
-};
+  count.value++
+  harga.value = 85000
+}
 
 const kurang = () => {
   if (count.value > 35) {
-    count.value--;
-    harga.value = 85000;
+    count.value--
+    harga.value = 85000
   }
-};
+}
 
 onMounted(() => {
-  const optionMenu = document.querySelector(".select-menu");
-  const selectBtn = optionMenu.querySelector(".select-btn");
-  const options = optionMenu.querySelectorAll(".option");
-  const sBtn_text = optionMenu.querySelector(".sBtn-text");
+  const optionMenu = document.querySelector(".select-menu")
+  const selectBtn = optionMenu.querySelector(".select-btn")
+  const options = optionMenu.querySelectorAll(".option")
+  const sBtn_text = optionMenu.querySelector(".sBtn-text")
 
-  selectBtn.addEventListener("click", () =>
-    optionMenu.classList.toggle("active")
-  );
+  selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"))
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      let selectedOption = option.querySelector(".option-text").innerText;
-      sBtn_text.innerText = selectedOption;
-      optionMenu.classList.remove("active");
-    });
-  });
-});
+      let selectedOption = option.querySelector(".option-text").innerText
+      sBtn_text.innerText = selectedOption
+      optionMenu.classList.remove("active")
+    })
+  })
+})
 </script>
+
 
 <style lang="css"></style>
 
 <template>
   <nav class="navbar">
-    <navbar border />
+    <navbar border/>
   </nav>
   <div class="body">
     <div class="title">
@@ -67,18 +64,16 @@ onMounted(() => {
         <h4>Pesan Tiket Langsung</h4>
       </div>
       <div class="txt">
-        <img src="../assets/svg/Frame.svg" class="image-koin" />
+        <img src="../assets/svg/Frame.svg" class="image-koin">
         <div>
-          <h6 class="pstikan">
-            pastikan pesanan anda BENAR sebelum checkout ya!
-          </h6>
+          <h6 class="pstikan">pastikan pesanan anda BENAR sebelum checkout ya!</h6>
         </div>
       </div>
     </div>
     <div class="nav2">
       <div class="content-1">
         <div class="txt2">
-          <img src="../assets/svg/account.svg" class="img-user" />
+          <img src="../assets/svg/account.svg" class="img-user">
           <p class="det-pemesan">Detail Pemesan</p>
         </div>
         <div class="det-profil">
@@ -88,38 +83,27 @@ onMounted(() => {
       </div>
       <div class="content-2">
         <div class="txt3">
-          <img src="../assets/svg/Framecard.svg" />
+          <img src="../assets/svg/Framecard.svg">
           <p class="pil-kategori">Pilih Kategori</p>
         </div>
         <div class="btn-pilih">
           <div class="umum">
             <label class="custom-radio-btn">
-              <input
-                type="radio"
-                name="pilih-kategori"
-                id="umum"
-                checked
-                disabled
-              />
+              <input type="radio" name="pilih-kategori" id="umum" checked disabled>
               <span class="checkmark"></span>
             </label>
             <label for="umum">Umum</label>
           </div>
           <div class="pelajar">
             <label class="custom-radio-btn">
-              <input type="radio" name="pilih-kategori" id="pelajar" disabled />
+              <input type="radio" name="pilih-kategori" id="pelajar" disabled>
               <span class="checkmark"></span>
             </label>
             <label for="pelajar">Pelajar</label>
           </div>
           <div class="mancanegara">
             <label class="custom-radio-btn">
-              <input
-                type="radio"
-                name="pilih-kategori"
-                id="mancanegara"
-                disabled
-              />
+              <input type="radio" name="pilih-kategori" id="mancanegara" disabled>
               <span class="checkmark"></span>
             </label>
             <label for="mancanegara">Mancanegara</label>
@@ -127,14 +111,14 @@ onMounted(() => {
         </div>
         <div class="content-3">
           <div class="txt4">
-            <img src="../assets/svg/det-tiket.svg" class="img-det-tiket" />
+            <img src="../assets/svg/det-tiket.svg" class="img-det-tiket">
             <p class="det-tiket">Detail Tiket</p>
           </div>
           <div class="date">
             <form>
               <fieldset>
                 <legend class="tgl-pemesan">Tanggal Pemesanan</legend>
-                <input type="date" class="date-tgl" />
+                <input type="date" class="date-tgl">
               </fieldset>
             </form>
             <div class="mm-dd-yyy">
@@ -145,19 +129,19 @@ onMounted(() => {
             <div class="select-menu">
               <div class="select-btn">
                 <span class="sBtn-text">Pilih Jam</span>
-                <i class="trigger"><img src="../assets/svg/trigger.svg" /></i>
+                <i class="trigger"><img src="../assets/svg/trigger.svg"></i>
               </div>
               <ul class="options">
                 <li class="option">
-                  <i class="bx bxl-github" style="color: #171515"></i>
+                  <i class="bx bxl-github" style="color: #171515;"></i>
                   <span class="option-text">10:00</span>
                 </li>
                 <li class="option">
-                  <i class="bx bxl-instagram-alt" style="color: #e1306c"></i>
+                  <i class="bx bxl-instagram-alt" style="color: #E1306C;"></i>
                   <span class="option-text">11:00</span>
                 </li>
                 <li class="option">
-                  <i class="bx bxl-linkedin-square" style="color: #0e76a8"></i>
+                  <i class="bx bxl-linkedin-square" style="color: #0E76A8;"></i>
                   <span class="option-text">12:00</span>
                 </li>
               </ul>
@@ -173,13 +157,9 @@ onMounted(() => {
           </div>
           <div class="tmbh-brg">
             <div class="input-tiket1">
-              <button @click="kurang" class="kurang">
-                <img src="../assets/svg/iconKurang.svg" />
-              </button>
+              <button @click="kurang" class="kurang"><img src="../assets/svg/iconKurang.svg"></button>
               <p class="input-tiket2">{{ count }}</p>
-              <button @click="tambah" class="tambah">
-                <img src="../assets/svg/iconTambah.svg" />
-              </button>
+              <button @click="tambah" class="tambah"><img src="../assets/svg/iconTambah.svg"></button>
             </div>
           </div>
           <div class="content-5">
@@ -189,52 +169,53 @@ onMounted(() => {
       </div>
     </div>
 
-    <div id="ringkasanBooking">
-      <h5>Ringkasan Booking</h5>
-      <div class="totalPemesanan">
-        <h6 class="ringkasan">Total Pemesanan</h6>
-        <div class="totalHarga">
-          <p>Total Harga ({{ count }} Tiket)</p>
-          <p class="harga">Rp.{{ hargaString }}</p>
-        </div>
-      </div>
-      <div class="biaya">
-        <div class="biayaTransaksi">
-          <h6 class="ringkasan">Biaya Transaksi</h6>
-          <div class="totalHarga">
-            <p>Biaya Layanan</p>
-            <p class="harga">Rp.{{ layananString }}</p>
-          </div>
-          <div class="totalHarga">
-            <p>Biaya Jasa Aplikasi</p>
-            <p class="harga">Rp.{{ jasaAppString }}</p>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="totalTagihan">
-        <h5 class="txt-total-tagihan">Total Tagihan</h5>
-        <h6 class="ringkasan">Rp.{{ totalPemesanan }}</h6>
-      </div>
-      <div class="containerbtn">
-        <button class="btn">
-          <div class="btn-checkout">
-            <div class="txt-checkout">
-              <p>Checkout</p>
-            </div>
-            <p><img src="../assets/svg/arrow-btn-checkout.svg" alt="" /></p>
-          </div>
-        </button>
+  <div id="ringkasanBooking">
+    <h5>Ringkasan Booking</h5>
+    <div class="totalPemesanan">
+      <h6 class="ringkasan">Total Pemesanan</h6>
+      <div class="totalHarga">
+        <p>Total Harga ({{ count }} Tiket)</p>
+        <p class="harga">Rp.{{ hargaString }}</p>
       </div>
     </div>
+    <div class="biaya">
+      <div class="biayaTransaksi">
+        <h6 class="ringkasan">Biaya Transaksi</h6>
+        <div class="totalHarga">
+          <p>Biaya Layanan</p>
+          <p class="harga">Rp.{{ layananString }}</p>
+        </div>
+        <div class="totalHarga">
+          <p>Biaya Jasa Aplikasi</p>
+          <p class="harga">Rp.{{ jasaAppString }}</p>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="totalTagihan">
+      <h5 class="txt-total-tagihan">Total Tagihan</h5>
+      <h6 class="ringkasan">Rp.{{ totalPemesanan }}</h6>
+    </div>
+    <div class="containerbtn">
+      <button class="btn">
+        <div class="btn-checkout">
+          <div class="txt-checkout">
+            <p>Checkout</p>
+          </div>
+          <p><img src="../assets/svg/arrow-btn-checkout.svg" alt=""></p>
+        </div>
+      </button>
+    </div>
   </div>
+</div>
+
 </template>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-.trigger {
+.trigger{
   width: 24px;
   height: 24px;
   margin-left: 8px;
@@ -264,7 +245,7 @@ onMounted(() => {
   display: none;
 }
 
-.custom-radio-btn input:checked + .checkmark {
+.custom-radio-btn input:checked+.checkmark {
   display: inline-block;
   opacity: 1;
 }
@@ -296,7 +277,7 @@ onMounted(() => {
 }
 
 .sBtn-text {
-  font-family: "Lexend";
+  font-family: 'Lexend';
   font-size: 14px;
   font-weight: 500;
   line-height: 17.5px;
@@ -333,7 +314,7 @@ onMounted(() => {
 }
 
 .options .option:hover {
-  background: #f2f2f2;
+  background: #F2F2F2;
 }
 
 .option i {
@@ -346,12 +327,13 @@ onMounted(() => {
   color: #333;
 }
 
+
 .date {
   justify-content: center;
 }
 
 .pstikan {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   color: black;
   width: 495px;
   height: 28px;
@@ -368,12 +350,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 20px;
   height: 20px;
   margin-right: 12px;
+
 }
 
 .plh-pembayaran {
   margin-top: 5px;
   margin-left: 6px;
-  color: #5e5e5e;
+  color: #5E5E5E;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -411,21 +394,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .tambah {
-  border: solid 1.5px #b0bec5;
-  color: #b0bec5;
-  background-color: #ffffff;
+  border: solid 1.5px #B0BEC5;
+  color: #B0BEC5;
+  background-color: #FFFFFF;
   margin-left: 3%;
 }
 
 .kurang {
-  border: solid 1.5px #b0bec5;
-  color: #b0bec5;
-  background-color: #ffffff;
+  border: solid 1.5px #B0BEC5;
+  color: #B0BEC5;
+  background-color: #FFFFFF;
 }
 
 .tambah:hover,
-.kurang:hover {
-  border: none;
+.kurang:hover{
+ border: none;
   color: white;
   background-color: #000000;
 }
@@ -438,7 +421,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .input-tiket2 {
   margin-left: 3%;
   color: #000000;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 600;
   font-size: 16px;
   line-height: 21.86px;
@@ -464,8 +447,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .mm-dd-yyy {
-  color: #49454f;
-  font-family: "Roboto";
+  color: #49454F;
+  font-family: 'Roboto';
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -473,12 +456,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .tgl-pemesan {
-  font-family: "Roboto";
+  font-family: 'Roboto';
   margin-bottom: -14px;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
-  color: #daa520;
+  color: #DAA520;
 }
 
 fieldset {
@@ -487,14 +470,14 @@ fieldset {
   border: solid 3px;
   border-radius: 4px;
   gap: 10px;
-  border-color: #daa520;
+  border-color: #DAA520;
 }
 
 .date-tgl {
   margin-left: 16px;
   margin-top: 5px;
   border: none;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   background: transparent;
   font-size: 16px;
   width: 290px;
@@ -563,10 +546,11 @@ fieldset {
   padding: 12px, 20px, 12px, 20px;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   width: 18px;
   height: 18px;
   accent-color: yellow;
+
 }
 
 label {
@@ -608,7 +592,7 @@ label {
 }
 
 .nm-user {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   color: black;
   width: 90px;
   height: 28px;
@@ -632,11 +616,11 @@ label {
 }
 
 h1 {
-  color: black;
+  color: black
 }
 
 .body {
-  font-family: "Raleway", "Lexend";
+  font-family: 'Raleway', 'Lexend';
   width: 1280px;
   height: 1023px;
 }
@@ -652,9 +636,9 @@ h1 {
 }
 
 .txt-tiket {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   color: black;
-  width: 305px;
+  width: 350px;
   height: 40px;
   top: 146px;
   left: 88px;
@@ -731,7 +715,7 @@ h1 {
   /* padding: 20px, 23px,20px, 23px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
 }
 
 .containerbtn {
@@ -751,7 +735,7 @@ h1 {
   gap: 10px;
   border-radius: 10px;
   border: none;
-  background-color: #daa520;
+  background-color: #DAA520;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
@@ -766,21 +750,23 @@ h1 {
   margin-left: 10px;
   width: 74px;
   height: 24px;
+  margin-bottom: 20px;
 }
 
 .txt-checkout p {
   color: white;
   font-size: 16px;
   font-weight: 700;
-  font-family: "Raleway";
+  font-family: 'Raleway';
 }
 
 h5 {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   color: #000000;
+
 }
 
 .totalPemesanan {
@@ -792,17 +778,18 @@ h5 {
   font-weight: bold;
   line-height: 28px;
   color: #000000;
-  font-family: "Raleway";
+  font-family: 'Raleway';
 }
 
 .totalTagihan {
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
+
 }
 
 .txt-total-tagihan {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-weight: bold;
   font-size: 24px;
   line-height: 32px;
@@ -814,7 +801,7 @@ h5 {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   color: #000000;
 }
 
@@ -833,10 +820,12 @@ hr {
   padding-top: 20px;
 }
 
+
 /*-------------> Laptop L <------------- */
-@media screen and (min-width: 1440px) {
-  #ringkasanBooking {
-    margin-left: 100px;
-  }
+@media screen and (min-width: 1440px){
+#ringkasanBooking{
+margin-left: 100px;
+
+}
 }
 </style>
