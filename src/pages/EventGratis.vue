@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border />
+    <navbar border/>
   </nav>
   <div class="header">
     <div class="text1">
@@ -94,33 +94,47 @@ export default {
       default: "Jenis Event",
     },
   },
-  watch:{
-    selectedOptions: {
-      handler(val){
-        console.log(val)
-        this.fetchData()
-      }
-    },
-    selectedOptions2: {
-      handler(val){
-        console.log(val)
-        this.fetchData()
-      }
-    }
-  },
   data() {
     return {
       isOpen: false,
       isOpen2: false,
       imageUrl: "../assets/trigger.svg",
-      options: ref(),
+      options: [
+        { label: "Hari", value: "Perminggu" },
+        { label: "Minggu", value: "Perminggu" },
+        { label: "Bulan", value: "Perminggu" },
+      ],
       options2: [
-        { label: "Gratis", value: "1" },
-        { label: "Bayar", value: "0" },
+        { label: "Gratis", value: "Gratis" },
       ],
       selectedOptions: [],
       selectedOptions2: [],
-      events: ref()
+      items: [
+        {
+          image: "src/assets/images/isra.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Peringatan isra mi'raj di langgar alit",
+          titleBig:
+            "Keluarga Keraton Kasepuhan mengadakan acara Isra Miraj di Langgar Alit yang rutin digunakan untuk peringatan hari besar Islam",
+        },
+        {
+          image: "/src/assets/images/sholat.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Perayaan Maulid Nabi di Masjid Agung",
+          titleBig:
+            "Komunitas Muslim mengadakan acara perayaan Maulid Nabi di Masjid Agung setempat",
+        },
+        {
+          image: "src/assets/images/bedug.png",
+          buttonText1: "Perminggu",
+          buttonText2: "Gratis",
+          titleMedium: "Tadarus di langgar alit",
+          titleBig:
+            "Kegiatan tadarus Alquran ini biasanya dibimbing oleh kaum masjid dan dilakukan dua kali khatam selama bulan Ramadan",
+        },
+      ],
     };
   },
   mounted(){
@@ -320,7 +334,9 @@ nav ul li button:hover {
   margin-left: 131px;
   width: 250px; /* Contoh ukuran lebar */
   height: 200px; /* Contoh ukuran tinggi */
+  
 }
+
 
 .buttonaji {
   display: flex; /* Use flexbox */
@@ -543,5 +559,116 @@ nav ul li button:hover {
 .dropdown-toggle2 img {
   margin-left: auto; /* Jarak antara teks dan gambar */
   z-index: 1;
+}
+
+.footer {
+ width: 100%;
+ height: auto;
+ margin-top: 278px;
+ position: relative;
+  margin-bottom: 100px;
+ 
+} 
+a {
+ text-decoration: none;
+ color: #212121;
+}
+ul {
+ list-style-type: none;
+}
+.footer-col {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 20px;
+}
+
+.footer-col h3 {
+ font-size: 30px;
+ font-weight: 40px;
+ display: inline-block;
+ margin-bottom: 11px;
+ margin-top: 76px;
+}
+.footer-col-1 {
+ 
+ margin-left: 88px;
+ width: 20vw;
+ 
+}
+
+
+
+.logo {
+font-size: 20px;
+font-weight: 400;
+display: flex;
+flex-direction: row;
+margin-left: 88px;
+
+
+}
+
+.logo img {
+width: 70px;
+margin-right: 9px;
+
+}
+
+.footer-col-2 {
+margin-left: 60px;
+}
+
+.footer-col-3 {
+margin-left: 60px;
+}
+
+.footer-col-4 {
+margin-left: 139px;
+width: 434px;
+}
+
+.footer-col li {
+color: #212121;
+}
+
+.footer-col li:not(:last-child) {
+margin-bottom: 11px;
+}
+
+.adress {
+width: 184px;
+height: 84px;
+font-size: 20px;
+font-weight: 400;
+margin-top: 62px;
+margin-left: 88px;
+}
+
+.lower {
+
+height: 142px;
+margin-left: 88px;
+display: flex;
+}
+
+.inlower {
+padding-top: 118px;
+position: absolute;
+}
+
+.collab {
+display: flex;
+flex-direction: row;
+gap: 46px;
+
+}
+
+.susun {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 46px;
+padding-left: 795px;
 }
 </style>

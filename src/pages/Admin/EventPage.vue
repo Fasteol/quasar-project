@@ -128,6 +128,7 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
+      currentId: null,
       events: ref(),
       tiketPakets: ref(),
       iterations: ref([]),
@@ -210,22 +211,65 @@ export default {
       }
     },
     async sendUpdate(type){
+      let url, requestBody
       try{
-        let url = type
-        const response = await this.$api.post('')
+        switch(type){
+          case "event":
+            url = `event/update/${this.currentId}`
+            requestBody = this.event
+            break;
+          case "tiket":
+            url = `item/update/${this.currentId}`
+            requestBody = this.tikets
+            break;
+          default:
+            break;
+        }
+        const response = await this.$api.post(url, requestBody, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        if(response.status != 200) throw Error('Error Occured')
       }catch(err){
         console.log(err)
       }
     },
     async sendCreate(type){
+      let url, requestBody
       try{
-        
+        switch(type){
+          case "event":
+            url = `event/create`
+            requestBody = this.event
+            break;
+          case "tiket":
+            url = `item/create`
+            requestBody = this.tikets
+            break;
+          default:
+            break;
+        }
+        const response = await this.$api.post(url, requestBody, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+        if(response.status != 200) throw Error('Error Occured')
+
+      }catch(err){
+        console.log(err)
+      }
+    },
+    actionHandler(type){
+      try{
+        if(!type) throw Error('No Type is specified')
+        this.currentId ? this.sendUpdate(type) : this.sendCreate(type)
       }catch(err){
         console.log(err)
       }
     },
     openDialog(type, itemData){
-      console.log(type)
       type != "event" ? this.addNewTiketPaket = true : this.addNewEvent = true
       if(itemData){
         const dataToChanged = type != "event" ? "event" : "tikets"

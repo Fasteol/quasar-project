@@ -17,6 +17,7 @@
           <li class="sub">
             <q-btn
               flat
+              to="/"
               label="Beranda"
               :text-color="isScrolled ? 'black' : 'white'"
               no-caps
@@ -58,7 +59,7 @@
             >
               <q-menu>
                 <q-list>
-                  <q-item clickable v-ripple to="/filterbayar">
+                  <q-item clickable v-ripple to="/booking">
                     <q-item-section>
                       <q-item-label>Paket Keraton</q-item-label>
                     </q-item-section>
@@ -74,35 +75,12 @@
             </q-btn>
           </li>
           <li class="sub">
-            <q-btn
-              flat
-              label="Objek Wisata"
-              :text-color="isScrolled ? 'black' : 'white'"
-              no-caps
-              dense
-            >
-              <q-menu>
-                <q-list>
-                  <q-item clickable v-ripple to="/areakeraton">
-                    <q-item-section>
-                      <q-item-label>Keraton Kesepuhan</q-item-label>
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item clickable v-ripple to="/museum">
-                    <q-item-section>
-                      <q-item-label>Museum Pusaka</q-item-label>
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item clickable v-ripple to="/agungdalem">
-                    <q-item-section>
-                      <q-item-label>Dalem Agung Pangkuwati</q-item-label>
-                    </q-item-section>
-                  </q-item>
-                </q-list>
-              </q-menu>
-            </q-btn>
+            <p>Objek Wisata</p>
+            <ul class="dropdown-list">
+              <li><a href="#/areakeraton">Keraton Kesepuhan</a></li>
+              <li><a href="#/museum">Museum Pusaka</a></li>
+              <li><a href="#/agungdalem">Dalem Agung Pakungwati</a></li>
+            </ul>
           </li>
           <!-- <button
             @click="getTickets"
@@ -160,7 +138,7 @@ export default {
   },
   methods: {
     getTickets() {
-      this.$router.push({ name: "signin" });
+      this.$router.push({ name: "/signin" });
     },
     handleScroll() {
       if (window.pageYOffset > 50) {

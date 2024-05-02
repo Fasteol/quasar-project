@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border />
+    <navbar border/>
   </nav>
   <div class="header">
     <div class="text1">
@@ -10,7 +10,9 @@
       <div class="kakaje">
         <ul>
           <a class="text2">
-            <strong><a class="text2">Tiket Event Keraton</a></strong>
+            <strong
+              ><a class="text2">Tiket Event Keraton</a></strong
+            >
           </a>
         </ul>
       </div>
@@ -44,58 +46,68 @@
     </div>
   </div>
 
-  <div class="footer">
-    <div class="logo">
-      <img src="../assets/images/logo_keraton.png" alt="" />
-      <p>KERATON <br />KASEPUHAN <br />CIREBON</p>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-1">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Sejarah</a></li>
-          <li><a href="#">Booking</a></li>
-          <li><a href="#">Objek Wisata</a></li>
+<div class="footer">
+     
+     <div class="logo">
+        <img src="../assets/images/logo_keraton.png" alt="">
+        <p>KERATON <br>KASEPUHAN <br>CIREBON</p>
+     </div>
+     <div class="footer-col">
+        <div class="footer-col-1">
+           <h3>Quick Links</h3>
+           <ul>
+           <li><a href="#">Beranda</a></li>
+           <li><a href="#">Sejarah</a></li>
+           <li><a href="#">Booking</a></li>
+           <li><a href="#">Objek Wisata</a></li>
         </ul>
-      </div>
-      <div class="footer-col-2">
-        <h3>Socials</h3>
-        <ul>
-          <li><a href="#">Whatsapp</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Threads</a></li>
-        </ul>
-      </div>
-      <div class="footer-col-3">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Partners</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col-4">
-        <h3>Subscribes your email for updates!</h3>
-        <button class="button">Enter your email</button>
-      </div>
-    </div>
-    <div class="adress">Jalan Kasepuhan 43 Cirebon, Jawa Barat 45114</div>
-    <div class="lower">
-      <div class="inlower">@2024 Keraton Kasepuhan Cirebon</div>
-      <div class="susun">
+        </div>
+        <div class="footer-col-2">
+           <h3>Socials</h3>
+           <ul>
+              <li><a href="#">Whatsapp</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Threads</a></li>
+           </ul>
+        </div>
+        <div class="footer-col-3">
+           <h3>Company</h3>
+           <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Contact</a></li>
+           </ul>
+        </div>
+        <div class="footer-col-4">
+           <h3>Subscribes your email for updates!</h3>
+           <button class="button">Enter your email</button>
+           
+
+        </div>
+     </div>
+     <div class="adress">
+        Jalan Kasepuhan 43
+        Cirebon, Jawa Barat
+        45114 
+     </div>
+     <div class="lower">
+        <div class="inlower">
+        @2024 Keraton Kasepuhan Cirebon
+        </div>
+        <div class="susun">
         <p>In collaboration</p>
 
         <div class="collab">
-          <img src="../assets/images/logo_keraton.png" alt="" class="foto1" />
-          <img src="../assets/images/1 931.png" alt="" class="foto2" />
-          <img src="../assets/images/telkom.png" alt="" class="foto3" />
-          <img src="../assets/images/bjb.png" alt="" class="foto4" />
+            <img src="../assets/images/logo_keraton.png" alt="" class="foto1">
+           <img src="../assets/images/1 931.png" alt="" class="foto2">
+           <img src="../assets/images/telkom.png" alt="" class="foto3">
+           <img src="../assets/images/bjb.png" alt="" class="foto4">
+           
         </div>
-      </div>
+     </div>
+     </div>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -130,116 +142,17 @@ export default {
         { label: "Berbayar", value: "Berbayar" },
       ],
       selectedOptions: [],
-      selectedOptions2: [],
-      items: [
-        {
-          id: 1,
-          image: "src/assets/images/imageArea.png",
-          titleMedium: "Tiket Masuk Keraton",
-          titleBig:
-            "Menikmati area Keraton. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp. 10.000-20.000/orang",
-        },
-        {
-          id: 2,
-          image: "/src/assets/images/museum.png",
-          titleMedium: "Tiket Masuk Museum",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.15.000/orang",
-        },
-        {
-          id: 3,
-          image: "src/assets/images/museum.png",
-          titleMedium: "Tiket Masuk Keraton + Museum",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.20.000/orang",
-        },
-        {
-          id: 4,
-          image: "src/assets/images/keraton.png",
-          titleMedium: "Tadarus di langgar alit",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.20.000/orang",
-        },
-        {
-          id: 5,
-          image: "src/assets/images/isra.png",
-          titleMedium: "Paket Wisata Silatuhrahmi I",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + silatuhrahmi dan foto bersama dengan Sultan",
-          price: "Rp.85.000/orang",
-        },
-        {
-          id: 6,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi II",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.135.000/orang",
-        },
-        {
-          id: 7,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi III",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan nasional) + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.200.000/orang",
-        },
-        {
-          id: 8,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi IV",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan khas Cirebon) + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.200.000/orang",
-        },
-        {
-          id: 9,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi I",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + kesenian",
-          price: "Rp.115.000/orang",
-        },
-        {
-          id: 10,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi II",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan nasional) + kesenian",
-          price: "Rp.175.000/orang",
-        },
-        {
-          id: 11,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi III",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan khas Cirebon) + kesenian",
-          price: "Rp.175.000/orang",
-        },
-        {
-          id: 12,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Pelajar",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (nasi dus) + belajar sejarah dan kesenian",
-          price: "Rp.60.000/orang",
-        },
-      ],
+      selectedOptions2: []
     };
   },
-  mounted() {
-    this.fetchData();
+  mounted(){
+    this.fetchData()
   },
   methods: {
     async fetchData() {
       try {
         const response = await this.$api.get("items/booking");
         if (response.status != 200) throw Error("Error Occured");
-        console.log(response);
         let tikets = [],pakets = {};
         for (let subType of response.data.data) {
           switch (subType.typeId) {
@@ -307,13 +220,11 @@ export default {
       });
     },
     filterItems(startId, endId) {
-      return this.items.filter(
-        (item) => item.id >= startId && item.id <= endId
-      );
-    },
+    return this.items.filter(item => item.id >= startId && item.id <= endId);
+  },
     findItemById(id) {
-      return this.items.find((item) => item.id === id);
-    },
+    return this.items.find(item => item.id === id);
+  },
     toggleDropdown() {
       this.isOpen = !this.isOpen;
     },
@@ -345,7 +256,7 @@ export default {
       console.log("Filtered items:", filteredItems);
     },
   },
-};
+  };
 </script>
 
 <style scoped>
@@ -394,14 +305,14 @@ export default {
   height: 32px;
   top: 151px;
   left: 132px;
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-size: 24px;
   line-height: 32px;
   text-align: left;
   font-weight: bold;
 }
 .judul1 {
-  font-family: "Raleway";
+  font-family: 'Raleway';
   font-size: 24px;
   line-height: 32px;
   font-weight: bold;
@@ -485,6 +396,7 @@ nav ul li button:hover {
   overflow-x: scroll;
   margin-bottom: 72px;
 }
+
 
 .buttonaji {
   display: flex; /* Use flexbox */
@@ -718,48 +630,53 @@ nav ul li button:hover {
 }
 
 .foto1 {
-  width: 68px;
-  height: 71px;
+ width:68px;
+ height: 71px;
 }
 .foto2 {
-  width: 69px;
-  height: 74px;
+ width:69px;
+ height: 74px;
 }
 .foto3 {
-  width: 53px;
-  height: 71px;
+ width:53px;
+ height: 71px;
 }
 .foto4 {
-  width: 100px;
-  height: 49px;
+ width : 100px;
+ height: 49px;
 }
 .footer {
-  width: 1280px;
-  height: 650px;
-  margin-top: 156px;
-  position: relative;
-}
+ width:1280px;
+ height: 650px;
+ margin-top: 156px;
+ position: relative;
+
+ 
+} 
 a {
-  text-decoration: none;
-  color: #212121;
+ text-decoration: none;
+ color: #212121;
 }
 ul {
-  list-style-type: none;
+ list-style-type: none;
 }
 .footer-col {
-  display: flex;
+ display: flex;
 }
 .footer-col h3 {
-  font-size: 30px;
-  font-weight: 40px;
-  display: inline-block;
-  margin-bottom: 11px;
-  margin-top: 76px;
+ font-size: 30px;
+ font-weight: 40px;
+ display: inline-block;
+ margin-bottom: 11px;
+ margin-top: 76px;
 }
 .footer-col-1 {
-  margin-left: 88px;
-  color: #212121;
+ margin-left: 88px;
+ color: #212121;
+ 
 }
+
+
 
 .logo {
   font-size: 20px;
@@ -767,75 +684,79 @@ ul {
   display: flex;
   flex-direction: row;
   margin-left: 88px;
+ 
+  
 }
 
 .logo img {
-  width: 70px;
-  margin-right: 9px;
+ width: 70px;
+ margin-right: 9px;
+
 }
 
 .footer-col-2 {
-  margin-left: 60px;
+ margin-left: 60px;
 }
 .footer-col-3 {
-  margin-left: 60px;
+ margin-left: 60px;
 }
 .footer-col-4 {
-  margin-left: 139px;
-  width: 434px;
+ margin-left: 139px;
+ width: 434px;
 }
 .footer-col li {
-  color: #212121;
+    color: #212121;
 }
 .footer-col li:not(:last-child) {
-  margin-bottom: 11px;
+ margin-bottom: 11px;
 }
 .adress {
-  width: 184px;
-  height: 84px;
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 62px;
-  margin-left: 88px;
+ width:184px;
+ height: 84px;
+ font-size: 20px;
+ font-weight: 400;
+ margin-top:62px;
+ margin-left: 88px;
 }
 .lower {
-  width: 1080px;
+  width:1080px;
   height: 142px;
   margin-left: 88px;
   display: flex;
 }
 .inlower {
-  padding-top: 108px;
-  margin-left: 80px;
-  position: absolute;
+ padding-top:108px;
+ margin-left: 80px;
+ position: absolute;
 }
 .collab {
-  display: flex;
-  flex-direction: row;
-  gap: 46px;
+ display: flex;
+ flex-direction: row;
+ gap:46px;
+ 
 }
 .susun {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 46px;
-  padding-left: 645px;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ gap:46px;
+ padding-left: 645px;
 }
 
 .button {
-  width: 431px;
-  height: 58px;
-  border-radius: 10px;
-  border: none;
-  background-color: #123b32;
-  color: #ffffff;
-  text-align: left;
-  padding-left: 22px;
-  font-size: 20px;
-  font-weight: 800;
-  margin-top: 22px;
-  line-height: 28px;
-  font-family: "Raleway";
+ width:431px;
+ height: 58px;
+ border-radius: 10px;
+ border: none;
+ background-color: #123B32;
+ color: #FFFFFF;
+ text-align: left;
+ padding-left: 22px;
+ font-size: 20px;
+ font-weight: 800;
+ margin-top: 22px;
+ line-height: 28px;
+ font-family: "Raleway";
 }
 </style>

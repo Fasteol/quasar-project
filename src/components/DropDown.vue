@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .menu-item svg {
   width: 10px;
   margin-left: 10px;
