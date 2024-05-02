@@ -92,10 +92,10 @@ b{
 .error-message {
   color: #FF5656;
   font-size: 12px;
-  margin-top: 8px; 
+  margin-top: -10px; 
   font-weight: 700;
+  height: 20px;
 }
-
 
 body {
   justify-content: center;
@@ -140,7 +140,7 @@ h1{
   width: 416px;
   height: 40px;
   margin-bottom: 38px;
-
+  margin-top: -15px;
 }
 
 .box input {
@@ -177,10 +177,10 @@ h1{
   font-weight: 400;
   width: 418px;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 38px;
+  margin-top: -10px;
   font-family: 'Raleway';
   text-decoration: none;
+  font-size: 14px;
 }
 
 .highlight{
@@ -194,6 +194,9 @@ h1{
   font-size: 14px;
   font-weight: 400;
   color: #AFAFAF;
+  width: 372px;
+  color:#4F3CC9;
+  margin-left: 20px;
 }
 
 .image{
@@ -282,7 +285,7 @@ b{
 .error-message {
   color: #FF5656;
   font-size: 12px;
-  margin-top: 8px; 
+  margin-top: -10px; 
   font-weight: 700;
 }
 
@@ -378,9 +381,9 @@ h1{
   font-weight: 400;
   width: 418px;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 38px;
+  margin-top: -10px;
   font-family: 'Raleway';
+  font-size: 14px;
 }
 
 .highlight{

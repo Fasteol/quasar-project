@@ -120,7 +120,7 @@ h1 {
 .error-message {
   color: #FF5656;
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: -10px;
   font-weight: 700;
 }
 
@@ -149,6 +149,7 @@ h1 {
   text-align: left;
   font-family: 'Raleway';
   margin-bottom: 4px;
+  margin-top: -10px
 }
 
 .box {
@@ -166,6 +167,7 @@ h1 {
   width: 200px;
   height: 40px;
   margin-bottom: 38px;
+  margin-top: -15px;
 }
 
 .box2 input {
@@ -202,15 +204,17 @@ h1 {
   font-weight: 500;
   font-size: 14px;
   font-family: 'Raleway';
+  margin-top: 20px;
 }
 
 .signup {
   font-weight: 400;
   width: 418px;
   text-align: center;
-  margin-top: 10px;
+  margin-top: -10px;
   margin-bottom: 38px;
   font-family: 'Raleway';
+  font-size: 14px;
 }
 
 .highlight {
@@ -219,12 +223,13 @@ h1 {
 }
 
 .terms {
-  font-family: inter;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   color: #AFAFAF;
   font-family: 'Inter';
+  margin-top: -20px;
+  margin-left: 20px;
 }
 
 b {
@@ -330,6 +335,7 @@ b {
     margin-top: 8px;
     font-weight: 700;
     text-align: left;
+    margin-top: -10px;
   }
 
   .container {
@@ -407,13 +413,14 @@ b {
     font-size: 14px;
     font-family: 'Raleway';
     justify-content: center;
+    margin-top: 20px;
   }
 
   .signup {
     font-weight: 400;
     width: 100%; 
     text-align: center;
-    margin-top: 10px;
+    margin-top: -10px;
     margin-bottom: 38px;
     font-family: 'Raleway';
   }

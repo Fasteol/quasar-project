@@ -1,13 +1,13 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import navbar from '../components/NavBar.vue'
-import Payment from '../components/pembayaranComp.vue'
-const count = ref(35)
-const layanan = 2500
-const jasaApp = 1000
-const harga = ref(85000)
-const tanggalSekarang = new Date().toISOString().substr(0, 10)
-const totalHarga = computed(() => count.value * harga.value)
+import { ref, computed, onMounted } from "vue";
+import navbar from "../components/NavBar.vue";
+import Payment from "../components/pembayaranComp.vue";
+const count = ref(35);
+const layanan = 2500;
+const jasaApp = 1000;
+const harga = ref(85000);
+const tanggalSekarang = new Date().toISOString().substr(0, 10);
+const totalHarga = computed(() => count.value * harga.value);
 
 const hargaTiket = harga.value.toLocaleString('id-ID', {
   maximumFractionDigits: 2,

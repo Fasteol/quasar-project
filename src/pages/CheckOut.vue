@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border />
+    <navbar border :isCheckoutPage="true"/>
   </nav>
   <div class="body">
     <div class="group1">
@@ -328,7 +328,7 @@ nav {
 }
 
 .pembayaran {
-  margin-top: 37px;
+  margin-top: -5px;
   align-items: center;
   display: flex;
   gap: 6px;
@@ -344,6 +344,7 @@ nav {
 }
 
 .txt-group17 p {
+  margin-top: 12px;
   width: 135px;
   height: 24px;
   left: 38px;
@@ -582,7 +583,7 @@ input[type="date"]:focus {
 
 .btn-tiket {
   margin-top: 20px;
-  align-items: center;
+  /* align-items: center; */
   display: flex;
   gap: 5px;
 }

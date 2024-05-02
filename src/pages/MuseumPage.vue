@@ -32,16 +32,11 @@
     </div>
   </div>
 
-  <div>
-  <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg">
-  <div
-    class="bulet"
-    v-for="(bullet, index) in bullets"
-    :key="index"
-    :class="{ active: index === currentIndex }"
-  ></div>
-  <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg">
-</div>  
+  <div class="button-container">
+    <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg" />
+    <div class="bulet" v-for="(bullet, index) in bullets" :key="index" :class="{ active: index === currentIndex }"></div>
+    <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg" />
+</div>
     <div class="Fasilitas">
       <p>Fasilitas</p>
       <p class="Fasilitas-Text">Fasilitas di Keraton Kasepuhan Cirebon cukup lengkap untuk menunjang kegiatan wisata dan
@@ -84,7 +79,9 @@
       <img class="paket-images" src="../assets/images/museumPaket.png">
     </div>
 
-    <div class="footer">
+    <footerDesk></footerDesk>
+
+    <!-- <div class="footer">
 
       <div class="logo">
         <img src="../assets/images/logo_keraton.png" alt="">
@@ -145,15 +142,15 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
   </body>
 </template>
 
 <script setup>
-import navbar from '../components/NavBar.vue'
-
+import navbar from '../components/NavBars.vue'
+import footerDesk from '../components/FooterComp.vue'
 </script>
 
 <script>
@@ -167,6 +164,9 @@ const scrollToContent = () => {
 
 
 export default {
+  components: {
+    footerDesk
+  },
   data() {
     return {
       cards: [

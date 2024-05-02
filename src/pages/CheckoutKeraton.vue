@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed } from 'vue'
-import navbar from '../components/NavBar.vue'
-import Payment from '../components/pembayaranComp.vue'
-const count = ref(1)
-const layanan = 2500
-const jasaApp = 1000
-const harga = ref(10000)
+import { ref, computed } from "vue";
+import navbar from "../components/NavBar.vue";
+import Payment from "../components/pembayaranComp.vue";
+const count = ref(1);
+const layanan = 2500;
+const jasaApp = 1000;
+const harga = ref(10000);
 
 const tanggalSekarang = new Date().toISOString().substr(0, 10);
 
@@ -39,7 +39,7 @@ const kurang = () => {
 
 <template>
   <nav class="navbar">
-    <navbar border />
+    <navbar border :isCheckoutPage="true"/>
   </nav>
   <div>
     <div class="title">
@@ -213,7 +213,7 @@ const kurang = () => {
 .pstikan {
   font-family: 'Raleway';
   color: black;
-  width: 495px;
+  width: 505px;
   height: 28px;
   top: 203px;
   left: 144px;
@@ -227,7 +227,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-repeat: no-repeat;
   width: 20px;
   height: 20px;
-  margin-right: 12px;
 
 }
 
@@ -245,12 +244,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .content-5 {
-  margin-top: 37px;
+  margin-top: -5px;
 }
 
 .input-tiket1 {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100px;
 }
@@ -358,13 +356,13 @@ fieldset {
 }
 
 .date-tgl {
-  margin-left: 16px;
-  margin-top: 5px;
+  margin-left: 2px;
+  margin-top: 1px;
   border: none;
   font-family: 'Roboto';
   background: transparent;
   font-size: 16px;
-  width: 290px;
+  width: 300px;
   height: 48px;
   line-height: 24px;
 }
@@ -456,7 +454,7 @@ label {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  margin-top: 5px;
+  margin-top: 17px;
   margin-left: 6px;
 }
 
@@ -493,7 +491,7 @@ label {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  margin-top: 5px;
+  margin-top: 17px;
   margin-left: 5px;
 }
 
@@ -595,7 +593,7 @@ body {
   width: 542px;
   height: 348px;
   top: 295px;
-  left: 650px;
+  left: 720px;
   border-radius: 15px;
   /* padding: 20px, 23px,20px, 23px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
