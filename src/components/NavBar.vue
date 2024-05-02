@@ -17,6 +17,7 @@
           <li class="sub">
             <q-btn
               flat
+              to="/"
               label="Beranda"
               :text-color="isScrolled ? 'black' : 'white'"
               no-caps
@@ -58,7 +59,7 @@
             >
               <q-menu>
                 <q-list>
-                  <q-item clickable v-ripple to="/filterbayar">
+                  <q-item clickable v-ripple to="/booking">
                     <q-item-section>
                       <q-item-label>Paket Keraton</q-item-label>
                     </q-item-section>

@@ -56,71 +56,16 @@
       </div>
     </div>
     <div class="container">
-      <div class="ni" v-for="(item, index) in items" :key="index">
+      <div class="ni" v-for="(item, index) in events" :key="index">
         <img class="image" :src="item.image" alt="Gambar" />
         <div class="buttonaji">
           <button class="btn-small">{{ item.buttonText1 }}</button>
           <button class="btn-small">{{ item.buttonText2 }}</button>
         </div>
-        <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-        <h1 class="judul-besar">{{ item.titleBig }}</h1>
+        <h2 class="judul-sedang">{{ item.titleBig }}</h2>
+        <h1 class="judul-besar">{{ item.titleMedium }}</h1>
         <div class="tengah">
-          <button class="tambah">
-            Tambah <img class="photo" src="../assets/Frame.svg" />
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="logo">
-      <img src="../assets/images/logo_keraton.png" alt="" />
-      <p>KERATON <br />KASEPUHAN <br />CIREBON</p>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-1">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Beranda</a></li>
-          <li><a href="#">Sejarah</a></li>
-          <li><a href="#">Booking</a></li>
-          <li><a href="#">Objek Wisata</a></li>
-        </ul>
-      </div>
-      <div class="footer-col-2">
-        <h3>Socials</h3>
-        <ul>
-          <li><a href="#">Whatsapp</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Threads</a></li>
-        </ul>
-      </div>
-      <div class="footer-col-3">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Partners</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col-4">
-        <h3>Subscribes your email for updates!</h3>
-        <button class="button">Enter your email</button>
-      </div>
-    </div>
-    <div class="adress">Jalan Kasepuhan 43 Cirebon, Jawa Barat 45114</div>
-    <div class="lower">
-      <div class="inlower">@2024 Keraton Kasepuhan Cirebon</div>
-      <div class="susun">
-        <p>In collaboration</p>
-
-        <div class="collab">
-          <img src="../assets/images/logo_keraton.png" alt="" class="foto1" />
-          <img src="../assets/images/1 931.svg" alt="" class="foto2" />
-          <img src="../assets/images/telkom.svg" alt="" class="foto3" />
-          <img src="../assets/images/bjb.svg" alt="" class="foto4" />
+          <h3 class="judul-kecil">{{ item.price }}</h3>
         </div>
       </div>
     </div>
@@ -189,6 +134,9 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    this.fetchData();
   },
   methods: {
     async fetchData() {

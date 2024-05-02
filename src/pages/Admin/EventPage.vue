@@ -2,30 +2,48 @@
   <div>
     <div>
       <h1>Event</h1>
-      <div class="ni" v-for="(item, index) in events" :key="index">
-        <img class="image" :src="item.image" alt="Gambar" />
-        <div class="buttonaji">
-          <button class="btn-small">{{ item.buttonText1 }}</button>
-          <button class="btn-small">{{ item.buttonText2 }}</button>
-        </div>
-        <h2 class="judul-sedang">{{ item.titleBig }}</h2>
-        <h1 class="judul-besar">{{ item.titleMedium }}</h1>
-        <div class="tengah">
-          <h3 class="judul-kecil">{{ item.price }}</h3>
-        </div>
+      <div v-for="(item, index) in events" :key="index" class="flex">
+        <q-card class="my-card" flat bordered style="width: 500px">
+          <q-img :src="item.image" style="height: 15rem" />
+
+          <q-card-section>
+            <div class="text-h6 q-mt-sm q-mb-xs">{{ item.titleBig }}</div>
+            <div class="text-caption text-grey">
+              {{ item.titleMedium }}
+            </div>
+          </q-card-section>
+
+          <q-card-actions>
+            <q-btn flat color="primary" label="Share" />
+            <q-btn flat color="secondary" label="Book" />
+          </q-card-actions>
+        </q-card>
       </div>
     </div>
-    <div>
-      Tiket / Paket
-      <div class="ni" v-for="(item, index) in tiketPakets" :key="index">
-        <img class="image" :src="item.image" alt="Gambar" />
-        <div class="buttonaji"></div>
-        <h2 class="judul-sedang">{{ item.name }}</h2>
-        <h1 class="judul-besar">{{ item.desc }}</h1>
-        <h1 class="judul-besar">{{ item.subType }}</h1>
-        <div class="tengah">
-          <h3 class="judul-kecil">{{ item.price }}</h3>
-        </div>
+
+    <div class="ni" v-for="(item, index) in events" :key="index">
+      <img class="image" :src="item.image" alt="Gambar" />
+      <div class="buttonaji">
+        <button class="btn-small">{{ item.buttonText1 }}</button>
+        <button class="btn-small">{{ item.buttonText2 }}</button>
+      </div>
+      <h2 class="judul-sedang">{{ item.titleBig }}</h2>
+      <h1 class="judul-besar">{{ item.titleMedium }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ item.price }}</h3>
+      </div>
+    </div>
+  </div>
+  <div>
+    Tiket / Paket
+    <div class="ni" v-for="(item, index) in tiketPakets" :key="index">
+      <img class="image" :src="item.image" alt="Gambar" />
+      <div class="buttonaji"></div>
+      <h2 class="judul-sedang">{{ item.name }}</h2>
+      <h1 class="judul-besar">{{ item.desc }}</h1>
+      <h1 class="judul-besar">{{ item.subType }}</h1>
+      <div class="tengah">
+        <h3 class="judul-kecil">{{ item.price }}</h3>
       </div>
     </div>
   </div>
@@ -45,7 +63,7 @@
         <q-btn icon="close" flat round dense v-close-popup />
       </q-card-section>
 
-      <q-card-section class="flex">
+      <q-card-section class="flex q-gutter-md">
         <div>
           <div class="flex">
             <q-input
@@ -88,7 +106,13 @@
             />
           </div>
         </div>
-        <div>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          "
+        >
           <q-file
             filled
             type="file"
@@ -97,48 +121,100 @@
             color="black"
             class="ellipsis"
             style="width: 10rem"
-            @update:model-value="handleUpload()"
+            @update:model-value="handleUploadEvent()"
           />
-          <q-img :src="imgURL" v-if="imgURL" />
+          <q-img :src="imgURLEvent" v-if="imgURLEvent" />
         </div>
       </q-card-section>
     </q-card>
   </q-dialog>
 
-  <!-- <q-dialog v-model="addNewEvent">
-    <q-input
-      filled
-      v-model="event.name"
-      label="Text"
-      color="black"
-      bg-color="gray"
-    />
-    <q-input
-      filled
-      v-model="event.desc"
-      label="Text"
-      color="black"
-      bg-color="gray"
-    />
-    <q-input
-      filled
-      v-model="event.price"
-      label="Text"
-      color="black"
-      bg-color="gray"
-    />
-    <q-file
-      filled
-      type="file"
-      v-model="event.image"
-      label="Tambahkan Image"
-      color="black"
-      class="q-mt-md"
-    />
-  </q-dialog> -->
   <q-dialog v-model="addNewTiketPaket">
-    <!-- Buatin Q-Select Unit -->
-    <!-- Buatin Q-Select SubType -->
+    <q-card style="width: 610px; max-width: 70vw">
+      <q-card-section class="row items-center q-pb-none">
+        <div class="text-h6">Add New Tiket Paket</div>
+        <q-space />
+        <q-btn icon="close" flat round dense v-close-popup />
+      </q-card-section>
+
+      <q-card-section class="flex q-gutter-md">
+        <div>
+          <q-input
+            filled
+            v-model="tikets.name"
+            label="Name"
+            color="black"
+            bg-color="gray"
+          />
+          <q-input
+            filled
+            v-model="tikets.desc"
+            label="Description"
+            type="textarea"
+            color="black"
+            class="q-mt-md"
+            bg-color="gray"
+          />
+        </div>
+
+        <div>
+          <q-input
+            filled
+            v-model="tikets.price"
+            label="Price"
+            color="black"
+            bg-color="gray"
+          />
+          <q-input
+            filled
+            v-model="tikets.priceUmum"
+            label="Price Umum"
+            color="black"
+            class="q-mt-md"
+            bg-color="gray"
+          />
+          <q-input
+            filled
+            v-model="tikets.priceMancanegara"
+            label="Price Manca"
+            color="black"
+            class="q-mt-md"
+            bg-color="gray"
+          />
+          <q-select
+            filled
+            v-model="unit"
+            :options="unitOptions"
+            label="Unit"
+            class="q-mt-md"
+          />
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          "
+        >
+          <q-file
+            filled
+            type="file"
+            v-model="tikets.image"
+            label="Tambahkan Image"
+            color="black"
+            class="ellipsis"
+            style="width: 10rem"
+            @update:model-value="handleUploadTiket()"
+          />
+          <q-img :src="imgURLTiket" v-if="imgURLTiket" />
+          <q-btn no-caps label="Create" />
+        </div>
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+
+  <!-- <q-dialog v-model="addNewTiketPaket">
     <q-input
       filled
       v-model="tikets.name"
@@ -150,6 +226,7 @@
       filled
       v-model="tikets.desc"
       label="Text"
+      type="textarea"
       color="black"
       bg-color="gray"
     />
@@ -182,7 +259,39 @@
       color="black"
       class="q-mt-md"
     />
-  </q-dialog>
+  </q-dialog> -->
+
+  <!-- <q-dialog v-model="addNewEvent">
+    <q-input
+      filled
+      v-model="event.name"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-input
+      filled
+      v-model="event.desc"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-input
+      filled
+      v-model="event.price"
+      label="Text"
+      color="black"
+      bg-color="gray"
+    />
+    <q-file
+      filled
+      type="file"
+      v-model="event.image"
+      label="Tambahkan Image"
+      color="black"
+      class="q-mt-md"
+    />
+  </q-dialog> -->
 </template>
 
 <script>
@@ -191,8 +300,10 @@ import { ref } from "vue";
 export default {
   setup() {
     return {
-      imgURL: ref(),
+      unit: ref(),
+      unitOptions: ["Perorangan", "Kelompok"],
       statusEvent: ref(false),
+      currentId: null,
       events: ref(),
       tiketPakets: ref(),
       iterations: ref([]),
@@ -216,7 +327,7 @@ export default {
         price: 0,
         priceUmum: null,
         priceMancanegara: null,
-        image: "",
+        image: ref(null),
         subTypeId: 0,
       }),
 
@@ -244,9 +355,14 @@ export default {
     },
   },
   methods: {
-    handleUpload() {
+    handleUploadEvent() {
       if (this.event.image) {
-        this.imgURL = URL.createObjectURL(this.event.image);
+        this.imgURLEvent = URL.createObjectURL(this.event.image);
+      }
+    },
+    handleUploadTiket() {
+      if (this.tikets.image) {
+        this.imgURLTiket = URL.createObjectURL(this.tikets.image);
       }
     },
     async fetchData() {
@@ -286,21 +402,64 @@ export default {
       }
     },
     async sendUpdate(type) {
+      let url, requestBody;
       try {
-        let url = type;
-        const response = await this.$api.post("");
+        switch (type) {
+          case "event":
+            url = `event/update/${this.currentId}`;
+            requestBody = this.event;
+            break;
+          case "tiket":
+            url = `item/update/${this.currentId}`;
+            requestBody = this.tikets;
+            break;
+          default:
+            break;
+        }
+        const response = await this.$api.post(url, requestBody, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (response.status != 200) throw Error("Error Occured");
       } catch (err) {
         console.log(err);
       }
     },
     async sendCreate(type) {
+      let url, requestBody;
       try {
+        switch (type) {
+          case "event":
+            url = `event/create`;
+            requestBody = this.event;
+            break;
+          case "tiket":
+            url = `item/create`;
+            requestBody = this.tikets;
+            break;
+          default:
+            break;
+        }
+        const response = await this.$api.post(url, requestBody, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (response.status != 200) throw Error("Error Occured");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    actionHandler(type) {
+      try {
+        if (!type) throw Error("No Type is specified");
+        this.currentId ? this.sendUpdate(type) : this.sendCreate(type);
       } catch (err) {
         console.log(err);
       }
     },
     openDialog(type, itemData) {
-      console.log(type);
       type != "event"
         ? (this.addNewTiketPaket = true)
         : (this.addNewEvent = true);

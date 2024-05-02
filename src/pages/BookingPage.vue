@@ -18,64 +18,28 @@
   </div>
   <a class="judul1">Tiket Masuk Keraton & Bundling</a>
   <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(1, 4)" :key="index">
+    <div class="ni" v-for="(item, index) in tiketItems" :key="index">
       <img class="image" :src="item.image" alt="Gambar" />
       <div class="buttonaji"></div>
       <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
       <h1 class="judul-besar">{{ item.titleBig }}</h1>
       <div class="tengah">
         <h3 class="judul-kecil">{{ item.price }}</h3>
-        <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
       </div>
     </div>
   </div>
 
-  <a class="judul1">Paket Wisata Silaturahmi (minimal 35 orang)</a>
-  <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(5, 8)" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji"></div>
-      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-      <h1 class="judul-besar">{{ item.titleBig }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
-        <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <a class="judul1">Paket Wisata Non Silaturahmi (minimal 40 orang)</a>
-  <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(9, 11)" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji"></div>
-      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-      <h1 class="judul-besar">{{ item.titleBig }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
-        <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <a class="judul1">Paket Wisata Pelajar (minimal 50 orang)</a>
-  <div class="container">
-    <div class="ni" v-for="(item, index) in filterItems(12, 12)" :key="index">
-      <img class="image" :src="item.image" alt="Gambar" />
-      <div class="buttonaji"></div>
-      <h2 class="judul-sedang">{{ item.titleMedium }}</h2>
-      <h1 class="judul-besar">{{ item.titleBig }}</h1>
-      <div class="tengah">
-        <h3 class="judul-kecil">{{ item.price }}</h3>
-        <button class="tambah">
-          Tambah <img class="photo" src="../assets/Frame.svg" />
-        </button>
+  <div v-for="(item, index) in paketItems" :key="index">
+    <a class="judul1">Paket {{ paketNameItems[index] }} (minimal 35 orang)</a>
+    <div class="container">
+      <div class="ni" v-for="(data, i) in item" :key="i">
+        <img class="image" :src="data.image" alt="Gambar" />
+        <div class="buttonaji"></div>
+        <h2 class="judul-sedang">{{ data.titleMedium }}</h2>
+        <h1 class="judul-besar">{{ data.titleBig }}</h1>
+        <div class="tengah">
+          <h3 class="judul-kecil">{{ data.price }}</h3>
+        </div>
       </div>
     </div>
   </div>
@@ -167,112 +131,16 @@ export default {
       ],
       selectedOptions: [],
       selectedOptions2: [],
-      items: [
-        {
-          id: 1,
-          image: "src/assets/images/imageArea.png",
-          titleMedium: "Tiket Masuk Keraton",
-          titleBig:
-            "Menikmati area Keraton. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp. 10.000-20.000/orang",
-        },
-        {
-          id: 2,
-          image: "/src/assets/images/museum.png",
-          titleMedium: "Tiket Masuk Museum",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.15.000/orang",
-        },
-        {
-          id: 3,
-          image: "src/assets/images/museum.png",
-          titleMedium: "Tiket Masuk Keraton + Museum",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.20.000/orang",
-        },
-        {
-          id: 4,
-          image: "src/assets/images/keraton.png",
-          titleMedium: "Tadarus di langgar alit",
-          titleBig:
-            "Menikmati area Museum. Jam operasional dari 08.00 - 17.00 WIB.",
-          price: "Rp.20.000/orang",
-        },
-        {
-          id: 5,
-          image: "src/assets/images/isra.png",
-          titleMedium: "Paket Wisata Silatuhrahmi I",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + silatuhrahmi dan foto bersama dengan Sultan",
-          price: "Rp.85.000/orang",
-        },
-        {
-          id: 6,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi II",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.135.000/orang",
-        },
-        {
-          id: 7,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi III",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan nasional) + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.200.000/orang",
-        },
-        {
-          id: 8,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Silatuhrahmi IV",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan khas Cirebon) + silatuhrahmi dan foto bersama dengan Sultan + kesenian",
-          price: "Rp.200.000/orang",
-        },
-        {
-          id: 9,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi I",
-          titleBig:
-            "Menikmati Keraton dengan guide + snack khas cirebon + kesenian",
-          price: "Rp.115.000/orang",
-        },
-        {
-          id: 10,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi II",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan nasional) + kesenian",
-          price: "Rp.175.000/orang",
-        },
-        {
-          id: 11,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Non Silatuhrahmi III",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (masakan khas Cirebon) + kesenian",
-          price: "Rp.175.000/orang",
-        },
-        {
-          id: 12,
-          image: "src/assets/images/sholat.png",
-          titleMedium: "Paket Wisata Pelajar",
-          titleBig:
-            "Menikmati Keraton dengan guide + makan (nasi dus) + belajar sejarah dan kesenian",
-          price: "Rp.60.000/orang",
-        },
-      ],
     };
+  },
+  mounted() {
+    this.fetchData();
   },
   methods: {
     async fetchData() {
       try {
         const response = await this.$api.get("items/booking");
         if (response.status != 200) throw Error("Error Occured");
-        console.log(response);
         let tikets = [],
           pakets = {};
         for (let subType of response.data.data) {

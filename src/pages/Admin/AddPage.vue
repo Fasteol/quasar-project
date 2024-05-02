@@ -74,16 +74,19 @@
         />
       </div>
     </div>
-    <q-file
-      v-for="(image, i) in imageInputs"
-      :key="i"
-      filled
-      type="file"
-      v-model="image.data"
-      label="Tambahkan Image"
-      color="black"
-      class="q-mt-md"
-    />
+    <div v-for="(image, i) in imageInputs" :key="i">
+      <q-file
+       
+        filled
+        type="file"
+        v-model="image.data"
+        :label="image.data ? 'Ganti Image' : 'Tambah Image'"
+        color="black"
+        class="q-mt-md"
+        @update:model-value="handleUpload(image.data)"
+      />
+      <q-img :src="image.data?.data || image.data" v-if="image.data" />
+    </div>
     <q-btn
       no-caps
       @click="sendUpdate"
@@ -131,9 +134,11 @@ export default {
 
         const contextKeys = Object.keys(response.data.data.context)
         let rawContext = { xs: [], xi: [], xl: [] }
+        console.log(response.data.data.context)
         for(let context of contextKeys) rawContext[this.takeTwoChars(context)].push({
           ...response.data.data.context[context]
         })
+        console.log(rawContext)
         this.textInputs = rawContext.xs
         this.imageInputs = rawContext.xi
         this.linkInputs = rawContext.xl
@@ -144,9 +149,15 @@ export default {
     async sendUpdate(){
       try{
         let textList = [], imageList = [], linkList = []
+        console.log(this.imageInputs)
         for(let text of this.textInputs) textList.push(text)
-        for(let image of this.imageInputs) imageList.push(image.data)
+        for(let image of this.imageInputs){
+      console.log(image)
+      imageList.push(image.data)
+        }
         for(let link of this.linkInputs) linkList.push(link.data)
+        console.log(this.imageInputs)
+        console.log(this.linkInputs)
         const linkIdentifier = this.contentId ?  `edit/${this.contentId}` : 'create/'
         const response = await this.$api.post(`/content/${linkIdentifier}`, { pageId: 1, sectionName: this.sectionName, sectionOrder: this.sectionOrder, textList, imageList, linkList }, {
         headers: {
@@ -186,6 +197,11 @@ export default {
           break;
         default:
           break;
+      }
+    },
+    handleUpload(image) {
+      if (image){
+       image.data = URL.createObjectURL(image)
       }
     },
     takeTwoChars(str) {
