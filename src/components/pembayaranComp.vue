@@ -105,7 +105,6 @@ text-align: left;
 }
 
 .txt-group17 p {
-  margin-top: 14px;
   width: 135px;
   height: 24px;
   left: 38px;

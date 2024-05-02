@@ -31,6 +31,7 @@
               :text-color="isCheckoutPage ? 'black' : (isScrolled ? 'black' : 'white')"
               no-caps
               dense
+
             >
             <q-icon name="keyboard_arrow_down" class="q-ml-sm"></q-icon>
               <q-menu>

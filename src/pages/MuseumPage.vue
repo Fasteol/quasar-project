@@ -8,6 +8,7 @@
 
     <div class="image-container">
       <img alt="Area Keraton Image" class="image" src="../assets/images/museumPaket.png" />
+      <img alt="Area Keraton Image" class="image" src="../assets/images/museumPaket.png" />
       <p class="image-text">MUSEUM PUSAKA</p>
       <p class="text-bottom1">Museum Pusaka ini terletak di dalam kompleks Keraton Kasepuhan, Cirebon, Jawa Barat.</p>
       <p class="text-bottom2">Didirikan pada tahun 1981 oleh Sultan Sepuh XIV, Pangeran Raja Mochamad Jayadiningrat.</p>
@@ -31,8 +32,19 @@
       {{ card.content }}
     </div>
   </div>
+    <div
+      v-for="(card, index) in cards"
+      :key="index"
+      :id="'card-' + index"
+      :class="{ cardd: true, active: index === currentIndex }"
+    >
+      {{ card.content }}
+    </div>
 
   <div class="button-container">
+    <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg" />
+    <div class="bulet" v-for="(bullet, index) in bullets" :key="index" :class="{ active: index === currentIndex }"></div>
+    <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg" />
     <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg" />
     <div class="bulet" v-for="(bullet, index) in bullets" :key="index" :class="{ active: index === currentIndex }"></div>
     <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg" />
@@ -323,6 +335,8 @@ overflow-x: hidden;
   width: 1280px;
   height: 100%;
   max-height: 580px;
+  height: 100%;
+  max-height: 580px;
   object-fit: cover;
   filter: brightness(60%);
 }
@@ -332,6 +346,7 @@ overflow-x: hidden;
 
 .Fasilitas {
   position: absolute;
+  width: 442px;
   width: 442px;
   height: 72px;
   top: 1500px;
@@ -530,6 +545,7 @@ overflow-x: hidden;
   width: 625px;
   height: 72px;
   top: 250px;
+  top: 250px;
   left: 327px;
   color: white;
   font-size: 64px;
@@ -545,6 +561,7 @@ overflow-x: hidden;
   width: 362px;
   height: 18px;
   top: 420px;
+  top: 420px;
   left: 90px;
   font-size: 16px;
   line-height: 24px;
@@ -555,6 +572,7 @@ overflow-x: hidden;
   position: absolute;
   width: 360px;
   height: 48px;
+  top: 420px;
   top: 420px;
   left: 499px;
   font-size: 16px;
@@ -568,6 +586,7 @@ overflow-x: hidden;
   width: 362px;
   height: 48px;
   top: 420px;
+  top: 420px;
   left: 889px;
   font-size: 16px;
   line-height: 24px;
@@ -578,6 +597,7 @@ overflow-x: hidden;
   position: absolute;
   width: 32px;
   height: 32px;
+  top: 530px;
   top: 530px;
   left: 624px;
   cursor: pointer;
@@ -864,10 +884,11 @@ right: 100px;
 }
 
 .button-slider{
+.button-slider{
   font-weight: bold;
   cursor: pointer;
   transition: all 0.5s ease;
-  
+}
 }
 
 .bulet {
@@ -884,4 +905,5 @@ right: 100px;
 .button-slider.active {
   background-color: rgb(0, 0, 0);
 }
+
 </style>

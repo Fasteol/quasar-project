@@ -5,8 +5,8 @@ import NavBar from '../components/NavBar.vue';
 import logoBJB from '../assets/images/bjb.png';
 import PaymentPopup from '../components/PaymentPopup.vue';
 import PaymentDropdown from '../components/PaymentDropdown.vue';
-import router from '../router/index';
-import AfterCheckoutViews from './AfterCheckoutViews.vue';;
+import router from '../router/routes';
+import AfterCheckoutViews from './AfterCheckoutViews.vue';
 
 const searchQuery = ref('');  
 const detail = ref(false);
@@ -15,7 +15,7 @@ const selectedStatus = ref('sudahDigunakan');
 const statusSelected = ref(false);
 const { totalPayment } = defineProps(['totalPayment']);
 const virtualAccount = ref(8883123456789012);
-const {paymentPopup} = AfterCheckoutViews
+const {paymentPopup} = AfterCheckoutViews;
 
 const showPopup = ref(false)
 
@@ -139,7 +139,7 @@ defineExpose({
 <div class="all-content">
   <div> 
     <nav class="navbar">
-      <NavBar />
+      <NavBar :isCheckoutPage="true"/>
     </nav>
     <div class="content">
       <div>
@@ -169,6 +169,7 @@ defineExpose({
       </div>
       <div v-if="currentTransaction" class="tabel">
   <div v-for="transaction in transactions" :key="transaction.status" :class="currentTransaction.cardClass" class="tiket">
+    <div class="tikets">
     <div class="tiket__header-container">
       <img src="../assets/images/Vector.png" alt="icon-tiket" class="icon-tiket">
       <p>Tiket</p>
@@ -198,6 +199,7 @@ defineExpose({
       </div>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -350,8 +352,9 @@ defineExpose({
 
     h1.title {
         text-align: center;
-        margin-top: 50px;
         color: #333;
+        font-size: 24px;
+        font-weight: 700;
     }
     
     nav {
@@ -419,18 +422,24 @@ defineExpose({
         height: 98.95px;
     }
     
+    
     .tabel {
         width: 779px;
         height: fit-content;
-        border-radius: 12px;
+        /* border-radius: 12px;
         box-shadow: 0 9px 6px rgba(0, 0, 0, 0.1);
-        margin: 0 auto; /* Mengatur margin horizontal secara otomatis untuk memusatkan */
+        margin: 0 auto;*/
         margin-top: 48px;
         padding: 10px;
         margin-bottom: 23px;
+        justify-content: center;
+        gap: 20px; 
+        margin: auto; 
     }
     
     .icon-tiket {
+      margin-top: 5px;
+      margin-left: 15px;
         width: 18px;
         height: 13px;
     }
@@ -444,17 +453,26 @@ defineExpose({
     .container{
       text-align: center;
       margin-top: 50px;
+      
     }
     
     .tiket__header-container{
       display: flex;
-      gap: 0.5rem;
-      align-items: center;
+      gap: 1rem;
+    }
+    .tikets{
+      border-radius: 12px;
+      box-shadow: 1px 3px 1px 1px rgba(0, 0, 0, 0.2);
     }
     
     .tiket__content{
       display: flex;
       gap: 1rem;
+      height: fit-content;
+      border-radius: 12px;
+      margin: 0 auto; /* Mengatur margin horizontal secara otomatis untuk memusatkan */
+      margin-bottom: 23px;
+      gap: 20px;
     }
 
     .tiket p{
@@ -472,7 +490,7 @@ defineExpose({
     
     .tiket__content h6{
         font-size: 20px;
-        padding-top: 20px;
+        /* padding-top: 20px; */
         line-height: 28px;
         padding-bottom: 10px;
     }
@@ -524,7 +542,7 @@ defineExpose({
     
     .tiket__content img{
       padding-left: 29px;
-      margin-top: 13px;
+      /* margin-top: 13px; */
       width: 215px;
       height: 98.95px;
     }
@@ -560,7 +578,7 @@ defineExpose({
     }
 
     .info {
-        padding-top: 25px;
+        padding-top: 15px;
         display: flex;
         flex-direction: column; /* Menyusun paragraf total belanja dan harga secara vertikal */
         gap: 0.5rem; /* Jarak antara paragraf */
@@ -614,6 +632,7 @@ defineExpose({
     }
 
     p.hrga{
+      padding-bottom: 15px;
         font-size: 16px;
     }
 
@@ -687,19 +706,20 @@ defineExpose({
       display: grid;
       grid-template-columns: 2 200px;
     }
+
     .header {
         box-shadow: 0  1px rgba(0, 0, 0, 0.2);
         background: white;
         position: sticky;
-        top: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 3.2rem;
+        padding: 0rem 3.2rem;
     }
     .header h1{
       font-weight: 700;
-      z-index: 1000;
+      font-size: 24px;
+
     }
 
     .Icon{
@@ -808,7 +828,7 @@ defineExpose({
 
     .status-pembayaran{
       display: flex;
-      gap: 20rem;
+      gap: 19rem;
       padding-bottom: 8px;
     }
 
@@ -821,8 +841,7 @@ defineExpose({
     .status-pembayaran small{
       padding-left: 8px;
       padding-right: 8px;
-      padding-top: 4px;
-      padding-bottom: 4px;
+      padding-top: 7px;
       background-color: #A9FFD6;
       color: #149B5A;
       border-radius: 5px;
@@ -889,7 +908,7 @@ defineExpose({
 
     .biaya-layanan{
       display: flex;
-      gap: 23.5rem;
+      gap: 23.3rem;
       padding-top: 8px;
       padding-bottom: 8px;
     }
@@ -968,7 +987,7 @@ defineExpose({
 .waiting-payment__content-data {
   display: flex;
   flex-direction: column;
-  padding: 2rem 3rem;
+  padding: 0rem 2rem;
   gap: 1rem;
   overflow-y: auto;
 }
@@ -976,6 +995,7 @@ defineExpose({
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 25px;
   justify-content: space-between;
 }
 .waiting-payment__content-desc img {
@@ -988,7 +1008,7 @@ defineExpose({
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 24px;
 }
