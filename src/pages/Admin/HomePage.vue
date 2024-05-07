@@ -1,5 +1,5 @@
 <template>
-  <navbar />
+  <navbar :isCheckoutPage="true" />
   <div style="margin-top: 150px" class="q-px-xl">
     <div class="text-h6 text-semibold">Edit Konten Dashboard</div>
     <div>Ubah dan atur konten di halaman beranda web</div>
@@ -9,12 +9,18 @@
       row-key="name"
       hide-bottom
       class="q-mt-xl"
-    />
+    >
+      <template v-slot:body-cell-action="props">
+        <q-td :props="props">
+          <q-btn color="primary" label="Edit" @click="editRow(props.row)" />
+        </q-td>
+      </template>
+    </q-table>
   </div>
-</template>
+</template> 
 
 <script>
-import navbar from "src/components/NavBar.vue";
+import navbar from "src/components/NavAdmin.vue";
 import { ref } from "vue";
 
 const columns = [
@@ -51,6 +57,7 @@ const columns = [
     label: "Action",
     field: "action",
     sortable: true,
+    actions: true,
   },
 ];
 
@@ -186,15 +193,29 @@ export default {
     },
     convertISOToReadableDate(isoDate) {
         const months = [
-            "January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"
+            "January", 
+            "February", 
+            "March", 
+            "April", 
+            "May", 
+            "June",
+            "July", 
+            "August", 
+            "September", 
+            "October", 
+            "November", 
+            "December"
         ];
         const date = new Date(isoDate);
         const day = date.getDate();
         const month = months[date.getMonth()];
         const year = date.getFullYear();
         return `${day} ${month} ${year}`;
-    }
+    },
+    editRow(row) {
+      // Logika untuk mengedit baris
+      console.log("Edit row:", row);
+    },
   }
  };
 </script>

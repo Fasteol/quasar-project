@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border/>
+    <navbar border :isCheckoutPage="true" />
   </nav>
   <div class="header">
     <div class="text1">
@@ -345,6 +345,7 @@ export default {
   order: 0;
   flex-grow: 0;
   margin-bottom: 69px;
+  margin-top: 90px;
 }
 
 .text1 {
@@ -823,5 +824,10 @@ ul {
  margin-top: 22px;
  line-height: 28px;
  font-family: "Raleway";
+}
+
+.container::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar width */
+  height: 0; /* Remove scrollbar height */
 }
 </style>

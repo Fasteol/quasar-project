@@ -1,12 +1,24 @@
 <template>
   <navbar isWhiteText />
-  <section id="hero">
+  <section
+    :style="{
+      'min-height': '100vh',
+      background: `linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${sectionData['0']?.context.xi1.data})`,
+      'background-repeat': 'no-repeat',
+      'background-size': 'cover',
+      'background-position': 'center',
+      display: 'flex',
+      'flex-direction': 'column',
+      'align-items': 'center',
+      'justify-content': 'center',
+    }"
+  >
     <div class="texthero">
       <h5 style="color: #fae084">{{ sectionData["0"]?.name }}</h5>
       <h2 style="padding: 0 10rem">
-        {{ sectionData["0"]?.context.xs1.label }}
+        {{ sectionData["0"]?.context.xs1.data }}
       </h2>
-      <a :href="sectionData['0']?.context.xi1.data" v-mod class="btn1">
+      <a :href="sectionData['0']?.context.xl1.data" v-mod class="btn1">
         <img class="btn1" src="../assets/images/btn1.png" />
       </a>
     </div>
@@ -26,9 +38,9 @@
     <div class="container">
       <div class="hero">
         <p class="aboutText">{{ sectionData["1"]?.name }}</p>
-        <h2 class="ksc2Text">{{ sectionData["1"]?.context.xs1 }}</h2>
+        <h2 class="ksc2Text">{{ sectionData["1"]?.context.xs1.data }}</h2>
         <p class="sej1Text" style="margin-top: 50px">
-          {{ sectionData["1"]?.context.xs2 }}
+          {{ sectionData["1"]?.context.xs2.data }}
         </p>
       </div>
     </div>
@@ -47,44 +59,29 @@
   <section class="sec-home" id="section4">
     <div class="container">
       <div class="text">
-        <p class="sej2Text">Sejarah</p>
-        <h2 class="ksc4Text">Keraton Kesepuhan Cirebon</h2>
+        <p class="sej2Text">{{ sectionData["3"]?.name }}</p>
+        <h2 class="ksc4Text">{{ sectionData["3"]?.context.xs1.data }}</h2>
       </div>
 
       <div class="card1">
-        <a href="https://your-link-here.com">
-          <img src="../assets/images/sej.png" alt="sejarah1" />
+        <a>
+          <img :src="sectionData['3']?.context.xi1.data" alt="sejarah1" />
         </a>
       </div>
 
       <div class="card2">
-        <a href="https://your-link-here.com">
-          <img src="../assets/images/sej2.png" alt="sejarah2" />
+        <a>
+          <img :src="sectionData['3']?.context.xi2.data" alt="sejarah2" />
         </a>
       </div>
 
       <div class="card3">
-        <a href="https://your-link-here.com">
-          <img src="../assets/images/sej3.png" alt="sejarah3" />
-          <div class="caption">
-            <p class="title3">Silsilah Keraton Kesepuhan Cirebon</p>
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M24 17V26C24 26.5304 23.7893 27.0391 23.4142 27.4142C23.0391 27.7893 22.5304 28 22 28H6C5.46957 28 4.96086 27.7893 4.58579 27.4142C4.21071 27.0391 4 26.5304 4 26V10C4 9.46957 4.21071 8.96086 4.58579 8.58579C4.96086 8.21071 5.46957 8 6 8H15C15.2652 8 15.5196 8.10536 15.7071 8.29289C15.8946 8.48043 16 8.73478 16 9C16 9.26522 15.8946 9.51957 15.7071 9.70711C15.5196 9.89464 15.2652 10 15 10H6V26H22V17C22 16.7348 22.1054 16.4804 22.2929 16.2929C22.4804 16.1054 22.7348 16 23 16C23.2652 16 23.5196 16.1054 23.7071 16.2929C23.8946 16.4804 24 16.7348 24 17ZM28 5C28 4.73478 27.8946 4.48043 27.7071 4.29289C27.5196 4.10536 27.2652 4 27 4H19C18.8021 3.99984 18.6086 4.05841 18.444 4.16828C18.2794 4.27815 18.1511 4.43439 18.0754 4.61721C17.9996 4.80003 17.9798 5.00122 18.0185 5.19531C18.0571 5.38939 18.1525 5.56764 18.2925 5.7075L21.5863 9L16.2925 14.2925C16.1049 14.4801 15.9994 14.7346 15.9994 15C15.9994 15.2654 16.1049 15.5199 16.2925 15.7075C16.4801 15.8951 16.7346 16.0006 17 16.0006C17.2654 16.0006 17.5199 15.8951 17.7075 15.7075L23 10.4138L26.2925 13.7075C26.4324 13.8475 26.6106 13.9429 26.8047 13.9815C26.9988 14.0202 27.2 14.0004 27.3828 13.9246C27.5656 13.8489 27.7218 13.7206 27.8317 13.556C27.9416 13.3914 28.0002 13.1979 28 13V5Z"
-                fill="white"
-              />
-            </svg>
-          </div>
+        <a>
+          <img :src="sectionData['3']?.context.xi3.data" alt="sejarah3" />
         </a>
       </div>
 
-      <a href="/sejarah">
+      <a :href="sectionData['3']?.context.xl1.data">
         <img class="pls" src="../assets/images/btninfo.png"
       /></a>
     </div>
@@ -93,35 +90,52 @@
   <section id="section5">
     <div class="container">
       <div class="text">
-        <p class="eventText">Event</p>
-        <p class="ksc5Text">Keraton Kesepuhan Cirebon</p>
+        <p class="eventText">{{ sectionData["4"]?.name }}</p>
+        <p class="ksc5Text">{{ sectionData["4"]?.context.xs1.data }}</p>
       </div>
       <div class="container-card">
-        <div class="card4">
+        <div
+          class="card4"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi1.data})`,
+            'background-size': 'cover',
+            'border-radius': '20px',
+            'margin-left': '10px',
+            'background-color': '#b6b6b6',
+          }"
+        >
           <div class="overlay"></div>
           <a href="#">
             <p class="title5" style="filter: brightness(200%)">
-              Tadarus di Langgar Anggit
+              {{ sectionData["4"]?.context.xi1.sub }}
             </p>
           </a>
         </div>
-        <div class="card5">
+        <div
+          class="card5"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi2.data})`,
+          }"
+        >
           <a href="#">
-            <p class="title5">Jamasan Kerisa dan Tombak</p>
+            <p class="title5">{{ sectionData["4"]?.context.xi2.sub }}</p>
           </a>
         </div>
-        <div class="card6">
+        <div
+          class="card6"
+          :style="{
+            'background-image': `url(${sectionData['4']?.context.xi3.data})`,
+          }"
+        >
           <a href="#">
-            <p class="title6">Siraman Panjat Jimat</p>
+            <p class="title6">{{ sectionData["4"]?.context.xi3.sub }}</p>
           </a>
         </div>
       </div>
       <p class="sec5Text">
-        Hingga saat ini, Keraton Kasepuhan Cirebon tetap mempertahankan keaslian
-        dan tradisi turun menurun dengan rutin melaksanakan upacara adat tradisi
-        mereka.
+        {{ sectionData["4"]?.context.xs1.data }}
       </p>
-      <a href="/filterbayar">
+      <a :href="sectionData['4']?.context.xl1.data">
         <img class="btnViewMore" src="../assets/images/btninfo.png" />
       </a>
     </div>
@@ -130,17 +144,15 @@
   <section class="sec-home" id="section6">
     <div class="container">
       <div class="text">
-        <p class="owText">Objek Wisata</p>
-        <p class="ksc6Text">Keraton Kesepuhan Cirebon</p>
+        <p class="owText">{{ sectionData["5"]?.name }}</p>
+        <p class="ksc6Text">{{ sectionData["5"]?.context.xs1.data }}</p>
       </div>
       <div class="tiket">
         <div class="text2">
           <p class="sej3Text">
-            Mari mengenal budaya kasepuhan Cirebon. Bersama kita lestarikan dan
-            apresiasikan beragam budaya dan tradisi Indonesia dengan mengunjungi
-            Keraton Kasepuhan Cirebon.
+            {{ sectionData["5"]?.context.xs2.data }}
           </p>
-          <a href="/areakeraton">
+          <a :href="sectionData['5']?.context.xl1.data">
             <img class="btn2" src="../assets/images/tiket.png" />
           </a>
         </div>
@@ -149,10 +161,23 @@
   </section>
 
   <section class="sec-home" id="section7">
-    <div class="container">
-      <div class="text">
-        <p class="faqText">FAQ</p>
-        <h2 class="tanyaText">Ada pertanyaan untuk kami?</h2>
+    <div
+      style="
+        background-size: cover;
+        text-align: center;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        background-position: center;
+        color: white;
+        font-family: Raleway, sans-serif;
+      "
+    >
+      <div>
+        <p class="faqText">{{ sectionData["6"]?.name }}</p>
+        <h2 class="tanyaText">{{ sectionData["6"]?.context.xs1.data }}</h2>
       </div>
       <div class="faq">
         <div
@@ -189,6 +214,22 @@
       </div>
     </div>
   </section>
+
+  <!-- <div class="q-px-xl full-width">
+    <q-list class="rounded-borders" v-for="(item, index) in faqs" :key="index">
+      <q-expansion-item
+        expand-separator
+        :label="item.pertanyaan"
+        class="text-h5"
+      >
+        <q-card>
+          <q-card-section>
+            {{ item.jawaban }}
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+    </q-list>
+  </div> -->
 
   <section class="sec-home" id="section8">
     <div class="container">
@@ -230,6 +271,7 @@
         <!-- <h4 class="subscribe">Subscribes your email for updates!</h4> -->
       </div>
       <!-- <input type="text" placeholder="Enter Your Email" /> -->
+
       <p class="alamat">Jalan Kesepuhan 43 Cirebon, Jawa Barat 45114</p>
       <footer>
         <p class="wm">@ 2024 Keraton Kasepuhan Cirebon</p>
@@ -332,11 +374,22 @@ export default {
         if (status != 200) throw Error("Error Occured");
         if (data.data.length < 1) throw Error("No Section send from Databasea");
         data.data[0].Contents.forEach((content) => {
+          if (content.sectionOrder === 6) {
+            const contextValue = Object.values(content.context);
+            contextValue.shift();
+            this.faqs = contextValue.map((context, i) => ({
+              nomor: String(i + 1).padStart(2, "0"),
+              pertanyaan: context.data,
+              jawaban: context.sub,
+              active: false,
+            }));
+          }
           rawSection[content.sectionOrder] = {
             name: content.sectionName,
             context: content.context,
           };
         });
+
         console.log(rawSection);
         this.sectionData = rawSection;
       } catch (err) {
@@ -396,8 +449,8 @@ export default {
 }
 
 #section5 .container {
-  margin: 5rem 0;
   background-image: url("../assets/images/keraton2.png");
+  height: 1000px;
   background-size: cover;
 }
 
@@ -752,19 +805,13 @@ export default {
   height: 427px;
 }
 .card4 {
-  background-image: url("../assets/images/card4.png");
-  background-size: cover;
   position: relative;
-  border-radius: 20px;
-  margin-left: 10px;
   height: 427px;
   width: 273.21px;
-  background-color: #b6b6b6;
   flex: 1;
   transition: 0.3s all ease;
 }
 .card5 {
-  background-image: url("../assets/images/card5.png");
   background-size: cover;
   position: relative;
   border-radius: 20px;
@@ -776,7 +823,6 @@ export default {
   transition: 0.3s all ease;
 }
 .card6 {
-  background-image: url("../assets/images/card6.png");
   background-size: cover;
   position: relative;
   border-radius: 20px;
@@ -871,7 +917,7 @@ export default {
   text-align: center;
   width: 50%;
   height: 10%;
-  top: 85%;
+  margin-top: 700px;
   font-family: "Raleway";
   font-size: 20px;
   color: #ffffff;
@@ -881,7 +927,7 @@ export default {
   padding: 5px;
   gap: 10px;
   position: relative;
-  margin-top: 49.5rem;
+  margin-top: 53rem;
 }
 
 .btnViewMore:hover {
@@ -889,7 +935,6 @@ export default {
 }
 
 .faqText {
-  position: absolute;
   font-family: "Inria Serif";
   font-size: 25px;
   top: 2vw;
@@ -898,15 +943,12 @@ export default {
 }
 
 .tanyaText {
-  position: absolute;
   font-family: "Inria Serif";
   font-style: normal;
   font-size: 25px;
   text-align: center;
   font-weight: 700;
   color: #212121;
-  top: 5vw;
-  left: 39vw;
 }
 
 .faq {
@@ -1217,7 +1259,6 @@ input::placeholder {
 
   #section7 .container {
     background-image: url("../assets/images/batik.png");
-    display: fixed;
   }
 
   #section8 .container {
@@ -1231,7 +1272,6 @@ input::placeholder {
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 120vh;
     flex-direction: column;
     background-position: center;
     color: white;
@@ -1737,26 +1777,19 @@ input::placeholder {
   }
 
   .faqText {
-    position: absolute;
     font-family: "Inria Serif";
     font-size: 25px;
-    top: 2vw;
     text-align: center;
     color: #d9a520;
   }
 
-  .tanyaText {
-    position: absolute;
-    width: 21%;
+  /* .tanyaText {
     font-family: "Inria Serif";
     font-style: normal;
     font-size: 25px;
     text-align: center;
-    font-weight: 700;
     color: #212121;
-    top: 5vw;
-    left: 41vw;
-  }
+  } */
 
   .faq {
     position: relative;

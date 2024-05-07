@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <navbar border :isCheckoutPage="true"/>
+    <navbar border :isCheckoutPage="true"  />
   </nav>
   <div class="body">
     <div class="group1">
@@ -11,7 +11,7 @@
       </div>
       <div class="group2">
         <div class="icon-group2">
-          <img src="../assets/svg/Frame.svg" alt="">
+          <img src="../assets/svg/Frame.svg" alt="" />
         </div>
         <div class="txt-group1">
           <h6>Pastikan pesanan Anda BENAR sebelum checkout ya!</h6>
@@ -22,7 +22,7 @@
         <div id="detailPemesanan">
           <div class="atas">
             <div class="icon">
-              <img src="../assets/svg/account.svg" alt="">
+              <img src="../assets/svg/account.svg" alt="" />
             </div>
             <div class="txt-group17">
               <p>Detail Pemesanan</p>
@@ -31,16 +31,16 @@
 
           <div class="nama">
             <div class="john-doe">
-              <h6>John Doe </h6>
+              <h6>John Doe</h6>
             </div>
             <div class="johndoe">
-              <h6> - (johndoe01@keraton.com)</h6>
+              <h6>- (johndoe01@keraton.com)</h6>
             </div>
           </div>
           <div class="pilih-kategori">
             <div class="atas">
               <div class="icon">
-                <img src="../assets/svg/Framecard.svg" alt="">
+                <img src="../assets/svg/Framecard.svg" alt="" />
               </div>
               <div class="txt-group17">
                 <p>Pilih Kategori</p>
@@ -49,21 +49,21 @@
             <div class="radioBtn">
               <div class="umum">
                 <label class="custom-radio-btn">
-                  <input type="radio" name="pilih-kategori" id="umum" checked>
+                  <input type="radio" name="pilih-kategori" id="umum" checked />
                   <span class="checkmark"></span>
                 </label>
                 <label for="umum">Umum</label>
               </div>
               <div class="pelajar">
                 <label class="custom-radio-btn">
-                  <input type="radio" name="pilih-kategori" id="pelajar">
+                  <input type="radio" name="pilih-kategori" id="pelajar" />
                   <span class="checkmark"></span>
                 </label>
                 <label for="pelajar">Pelajar</label>
               </div>
               <div class="mancanegara">
                 <label class="custom-radio-btn">
-                  <input type="radio" name="pilih-kategori" id="mancanegara">
+                  <input type="radio" name="pilih-kategori" id="mancanegara" />
                   <span class="checkmark"></span>
                 </label>
                 <label for="mancanegara">Mancanegara</label>
@@ -94,11 +94,11 @@
                   </div>
                 </legend>
                 <div class="test">
-                <input type="date" name="" id="tanggalPemesanan" :value="tanggalSekarang" disabled>
-                <div class="icon-date">
-                    <img src="../assets/svg/Icondate.svg" alt="">
+                  <input type="date" name="" id="tanggalPemesanan" :value="tanggalSekarang" disabled />
+                  <div class="icon-date">
+                    <img src="../assets/svg/Icondate.svg" alt="" />
+                  </div>
                 </div>
-              </div>
               </fieldset>
               <div class="supporting-text">
                 <div class="supporting-txt">
@@ -154,7 +154,6 @@
               <payment />
             </div>
           </div>
-
         </div>
         <div id="ringkasanBooking" :class="{ 'scroll-active': isScrollActive }">
           <h5>Ringkasan Booking</h5>
@@ -178,7 +177,7 @@
               </div>
             </div>
           </div>
-          <hr>
+          <hr />
           <div class="totalTagihan">
             <h5 class="txt-total-tagihan">Total Tagihan</h5>
             <h6 class="harga">Rp.{{ totalPemesanan }}</h6>
@@ -189,24 +188,20 @@
                 <div class="txt-checkout">
                   <p>Checkout</p>
                 </div>
-                <p><img src="../assets/svg/arrow-btn-checkout.svg" alt=""></p>
+                <p><img src="../assets/svg/arrow-btn-checkout.svg" alt="" /></p>
               </div>
             </button>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-
-
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@500&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@500&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@500&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@500&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 .body {
   width: 1280px;
@@ -218,7 +213,7 @@ nav {
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   z-index: 1000;
 }
 
@@ -262,6 +257,7 @@ nav {
 }
 
 .group2 {
+  margin-top: 17px;
   display: flex;
   text-align: center;
   gap: 4px;
@@ -281,7 +277,7 @@ nav {
 }
 
 .txt-group1 h6 {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
@@ -290,10 +286,10 @@ nav {
 }
 
 .pesan-tiket-langsung {
-  width: 320px;
+  width: 405px;
   height: 40px;
   margin-left: 88px;
-  margin-top: 42px
+  margin-top: 42px;
 }
 
 .txt-pesan-tiket-langsung h4 {
@@ -301,7 +297,7 @@ nav {
   font-size: 30px;
   line-height: 40px;
   color: #000000;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 #detailPemesanan {
@@ -328,14 +324,14 @@ nav {
 }
 
 .pembayaran {
-  margin-top: -5px;
+  margin-top: 37px;
   align-items: center;
   display: flex;
   gap: 6px;
 }
 
 .txt-group17 {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -344,11 +340,11 @@ nav {
 }
 
 .txt-group17 p {
-  margin-top: 12px;
   width: 135px;
   height: 24px;
   left: 38px;
-  color: #5E5E5E;
+  color: #5e5e5e;
+  margin-top: 10px;
 }
 
 .nama {
@@ -364,7 +360,7 @@ nav {
 }
 
 .john-doe h6 {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 700;
   line-height: 28px;
@@ -373,19 +369,20 @@ nav {
 }
 
 .johndoe {
-  width: 252px;
+  width: 262px;
   height: 28px;
   top: 34px;
   left: 94px;
 }
 
 .johndoe h6 {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0em;
   text-align: left;
+  margin-left: 4px;
 }
 
 .pilih-kategori {
@@ -403,7 +400,7 @@ nav {
 input[type="radio"] {
   width: 24px;
   height: 24px;
-  background-color: #DAA520;
+  background-color: #daa520;
   cursor: pointer;
 }
 
@@ -442,7 +439,7 @@ input[type="radio"] {
 .pelajar,
 .mancanegara,
 label {
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -465,19 +462,22 @@ label {
   color: #999999;
   opacity: 0.5;
 }
-.icon-date{
+
+.icon-date {
   width: 48px;
   height: 48px;
   align-items: center;
   justify-content: center;
   padding: 8px;
 }
-.test{
+
+.test {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100% ;
+  width: 100%;
 }
+
 fieldset {
   width: 312px;
   height: 66px;
@@ -491,7 +491,7 @@ fieldset {
   justify-content: center;
   flex-direction: column;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 legend {
@@ -502,11 +502,12 @@ legend {
   margin-left: 16px;
   margin-top: 12px;
 }
+
 input[type="date"] {
   width: 248px;
   height: 48px;
   padding: 4px 0px 4px 0px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -517,7 +518,6 @@ input[type="date"] {
   margin-left: 16px;
   margin-top: 4px;
   margin-bottom: 4px;
-  
 }
 
 input[type="date"]:focus {
@@ -538,7 +538,7 @@ input[type="date"]:focus {
 }
 
 .supporting-txt small {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
@@ -555,7 +555,7 @@ input[type="date"]:focus {
 
 .nama-tiket h6 {
   margin-top: 10px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
@@ -572,7 +572,7 @@ input[type="date"]:focus {
 
 .harga-tiket h6 {
   margin-top: 4px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-size: 20px;
   font-weight: 400;
   line-height: 28px;
@@ -583,7 +583,7 @@ input[type="date"]:focus {
 
 .btn-tiket {
   margin-top: 20px;
-  /* align-items: center; */
+  align-items: center;
   display: flex;
   gap: 5px;
 }
@@ -591,7 +591,7 @@ input[type="date"]:focus {
 .btn-tiket p {
   width: 30px;
   height: 22px;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
@@ -620,42 +620,52 @@ input[type="date"]:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  color:#d5d5d5;
+  color: #d5d5d5;
 }
-.min:hover ,.plus:hover{
+
+.min:hover,
+.plus:hover {
   border: none;
   background-color: #000000;
   cursor: pointer;
 }
-.min:hover .path{
-  fill: white;
-}
-.plus:hover .path{
+
+.min:hover .path {
   fill: white;
 }
 
+.plus:hover .path {
+  fill: white;
+}
+
+.count {
+  height: 24px;
+}
 
 #ringkasanBooking {
   width: 542px;
   height: 348px;
-  margin-right: 88px;
-  margin-left: 98px;
+  /* margin-right: 88px; */
+  margin-left: 88px;
   top: 295px;
   position: static;
   margin-top: 64px;
-  left: 650px;
+  left: 605px;
   border-radius: 15px;
   /* padding: 20px, 23px,20px, 23px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   padding: 20px;
   gap: 8px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+  transition: top 0.2s ease-in-out; 
 }
 
-.scroll-active #ringkasanBooking {
+#ringkasanBooking.sticky {
   position: fixed;
-  top: 0;
+  top: 30vh;
+  transform: translateY(-11vh);
 }
+
 
 .btn {
   width: 542px;
@@ -667,7 +677,7 @@ input[type="date"]:focus {
   gap: 10px;
   border-radius: 10px;
   border: none;
-  background-color: #DAA520;
+  background-color: #daa520;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   text-align: center;
   cursor: pointer;
@@ -693,24 +703,21 @@ input[type="date"]:focus {
 .txt-checkout {
   margin-left: 10px;
   width: 74px;
-  height: 24px;
-  margin-bottom: 20px;
 }
 
 .txt-checkout p {
   color: white;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 h5 {
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   color: #000000;
-
 }
 
 .totalPemesanan {
@@ -722,35 +729,34 @@ h6 {
   font-weight: bold;
   line-height: 28px;
   color: #000000;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 .totalTagihan {
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .txt-total-tagihan {
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: bold;
   font-size: 24px;
   line-height: 32px;
 }
 
 .totalHarga {
-  width: auto;
+  width: 496px;
   height: 24px;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   color: #000000;
 }
 
 .biaya {
-  width: auto;
+  width: 496px;
   height: 122px;
   padding: 15px, 0px, 15px, 0px;
 }
@@ -762,69 +768,116 @@ hr {
 .biayaTransaksi {
   margin-top: 8px;
   padding-top: 20px;
-
 }
 
-@media only screen and (max-width: 1280px){
-  #ringkasanBooking{
+@media only screen and (max-width: 1280px) {
+  #ringkasanBooking {
     margin-left: 0px;
   }
 }
 
-@media screen and (min-width: 1440px){
-  #ringkasanBooking{
-    margin-left: 188px;
+@media screen and (min-width: 1440px) {
+  #ringkasanBooking {
+    margin-left: 250px;
   }
-} 
+  .custom-radio-btn .checkmark {
+  width: calc(95% - 4px);
+  height: calc(95% - 4px);
+  background-color: goldenrod;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+ 
+}
 
+@media screen and (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+  }
 
+  #ringkasanBooking {
+    margin-top: 20px;
+    margin-left: 230px;
+  }
+
+  #detailPemesanan {
+    margin-left: 230px;
+  }
+}
 </style>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from "vue";
 import navbar from "../components/NavBar.vue";
 import payment from "../components/pembayaranComp.vue";
-import SelectPopup from '../components/SelectPopup.vue';
+import SelectPopup from "../components/SelectPopup.vue";
 
-const selectPopup = ref(null)
+const isScrollActive = ref(false);
 
-const count = ref(1)
-const layanan = 2500
-const jasaApp = 1000
-const harga = ref(10000)
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
 
-const hargaTiket = harga.value.toLocaleString('id-ID', {
+const handleScroll = () => {
+  const ringkasanBooking = document.getElementById('ringkasanBooking');
+  const threshold = window.innerHeight / 2; 
+  const topDistance = ringkasanBooking.getBoundingClientRect().top;
+
+  if (topDistance < threshold && window.scrollY > 0) {
+    if (!ringkasanBooking.classList.contains('sticky')) {
+      ringkasanBooking.classList.add('sticky');
+      isScrollActive.value = true;
+    }
+  } else {
+    if (ringkasanBooking.classList.contains('sticky')) {
+      ringkasanBooking.classList.remove('sticky');
+      isScrollActive.value = false;
+    }
+  }
+};
+
+const selectPopup = ref(null);
+
+const count = ref(1);
+const layanan = 2500;
+const jasaApp = 1000;
+const harga = ref(10000);
+
+const hargaTiket = harga.value.toLocaleString("id-ID", {
   maximumFractionDigits: 2,
-  minimumFractionDigits: 2
+  minimumFractionDigits: 2,
 });
 
 const hargaStringTiket = ref(hargaTiket);
 
-const hargaString = ref(harga.value.toLocaleString('id-ID'));
-const layananString = layanan.toLocaleString('id-ID');
-const jasaAppString = jasaApp.toLocaleString('id-ID');
+const hargaString = ref(harga.value.toLocaleString("id-ID"));
+const layananString = layanan.toLocaleString("id-ID");
+const jasaAppString = jasaApp.toLocaleString("id-ID");
 
-const totalPemesanan = computed(() => (harga.value + layanan + jasaApp).toLocaleString('id-ID'));
-
+const totalPemesanan = computed(() =>
+  (harga.value + layanan + jasaApp).toLocaleString("id-ID")
+);
 
 const tambah = () => {
   count.value++;
-  harga.value = 10000 * count.value
-  hargaString.value = harga.value.toLocaleString('id-ID')
-}
+  harga.value = 10000 * count.value;
+  hargaString.value = harga.value.toLocaleString("id-ID");
+};
 
 const kurang = () => {
   if (count.value > 1) {
     count.value--;
-    harga.value = 10000 * count.value
-    hargaString.value = harga.value.toLocaleString('id-ID')
+    harga.value = 10000 * count.value;
+    hargaString.value = harga.value.toLocaleString("id-ID");
   }
-}
+};
 const tanggalSekarang = new Date().toISOString().substr(0, 10);
 
-  const focusInput = () => {
-    const input = document.getElementById('tanggalPemesanan').focus();
-    input.focus();
-    input.click();
-  }
-  </script>
+const focusInput = () => {
+  const input = document.getElementById("tanggalPemesanan").focus();
+  input.focus();
+  input.click();
+};
+</script>

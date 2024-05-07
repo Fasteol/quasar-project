@@ -8,7 +8,6 @@
 
     <div class="image-container">
       <img alt="Area Keraton Image" class="image" src="../assets/images/museumPaket.png" />
-      <img alt="Area Keraton Image" class="image" src="../assets/images/museumPaket.png" />
       <p class="image-text">MUSEUM PUSAKA</p>
       <p class="text-bottom1">Museum Pusaka ini terletak di dalam kompleks Keraton Kasepuhan, Cirebon, Jawa Barat.</p>
       <p class="text-bottom2">Didirikan pada tahun 1981 oleh Sultan Sepuh XIV, Pangeran Raja Mochamad Jayadiningrat.</p>
@@ -16,11 +15,13 @@
       <a class="arrow-down" @click="scrollToContent"><img src="../assets/images/Frame.svg"></a>
     </div>
 
+    <div class="destinasi-container">
     <div class="Destinasi">
       <p> <span class="bold">Mengenal</span> sejarah dan budaya Cirebon</p>
     </div>
     <p class="bawah-destinasi">Museum ini menyimpan berbagai koleksi benda bersejarah, seperti kereta kencana, gamelan,
       dan lukisan.</p>
+    </div>
 
       <div class="slider" ref="slider">
     <div
@@ -32,23 +33,19 @@
       {{ card.content }}
     </div>
   </div>
-    <div
-      v-for="(card, index) in cards"
-      :key="index"
-      :id="'card-' + index"
-      :class="{ cardd: true, active: index === currentIndex }"
-    >
-      {{ card.content }}
-    </div>
 
   <div class="button-container">
     <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg" />
-    <div class="bulet" v-for="(bullet, index) in bullets" :key="index" :class="{ active: index === currentIndex }"></div>
-    <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg" />
-    <img class="button-slider" @click="prevCard" src="../assets/svg/ArrowLeft.svg" />
-    <div class="bulet" v-for="(bullet, index) in bullets" :key="index" :class="{ active: index === currentIndex }"></div>
+    <div
+      class="bulet"
+      v-for="(bulet, index) in bullets"
+      :key="index"
+      :class="{ active: index === currentIndex }"
+    ></div>
     <img class="button-slider" @click="nextCard" src="../assets/svg/ArrrowRight.svg" />
 </div>
+
+
     <div class="Fasilitas">
       <p>Fasilitas</p>
       <p class="Fasilitas-Text">Fasilitas di Keraton Kasepuhan Cirebon cukup lengkap untuk menunjang kegiatan wisata dan
@@ -79,6 +76,7 @@
       <button class="button-Kunjungan">Dapatkan Tiket Sekarang!</button>
     </div>
 
+    <a href="/#/booking">
     <div class="Paket">
       <p class="bold2">Tiket Masuk Museum Pusaka</p>
       <div class="teks-kunjungan">
@@ -87,82 +85,16 @@
       <div class="teks-kunjungan2">
         <p>Area Museum Pusaka</p>
       </div>
-
       <img class="paket-images" src="../assets/images/museumPaket.png">
     </div>
-
-    <footerDesk></footerDesk>
-
-    <!-- <div class="footer">
-
-      <div class="logo">
-        <img src="../assets/images/logo_keraton.png" alt="">
-        <p>KERATON <br>KASEPUHAN <br>CIREBON</p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-1">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Beranda</a></li>
-            <li><a href="#">Sejarah</a></li>
-            <li><a href="#">Booking</a></li>
-            <li><a href="#">Objek Wisata</a></li>
-          </ul>
-        </div>
-        <div class="footer-col-2">
-          <h3>Socials</h3>
-          <ul>
-            <li><a href="#">Whatsapp</a></li>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Threads</a></li>
-          </ul>
-        </div>
-        <div class="footer-col-3">
-          <h3>Company</h3>
-          <ul>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col-4">
-          <h3>Subscribes your email for updates!</h3>
-          <button class="button">Enter your email</button>
-
-
-        </div>
-      </div>
-      <div class="adress">
-        Jalan Kasepuhan 43
-        Cirebon, Jawa Barat
-        45114
-      </div>
-      <div class="lower">
-        <div class="inlower">
-          @2024 Keraton Kasepuhan Cirebon
-        </div>
-        <div class="susun">
-          <p>In collaboration</p>
-
-          <div class="collab">
-            <img src="../assets/images/logo_keraton.png" alt="" class="foto1">
-            <img src="../assets/images/1 931.png" alt="" class="foto2">
-            <img src="../assets/images/telkom.png" alt="" class="foto3">
-            <img src="../assets/images/bjb.png" alt="" class="foto4">
-
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
+  </a>
+<bawah class="footer"></bawah>
   </body>
 </template>
 
 <script setup>
-import navbar from '../components/NavBars.vue'
-import footerDesk from '../components/FooterComp.vue'
+import navbar from '../components/NavBar.vue'
+import bawah from '../components/FooterComp.vue'
 </script>
 
 <script>
@@ -173,11 +105,10 @@ const scrollToContent = () => {
   });
 };
 
-
-
 export default {
-  components: {
-    footerDesk
+  components : {
+    navbar,
+    bawah
   },
   data() {
     return {
@@ -197,41 +128,45 @@ export default {
     }
   },
   methods: {
-  prevCard() {
-    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
-  },
-  nextCard() {
-    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
-  },
-  centerActiveCard() {
-    const sliderWidth = this.$refs.slider.offsetWidth;
-    const cardWidth = 250;
-    const offset = (sliderWidth - cardWidth) / 2;
-    const cardContainer = document.querySelector('.slider');
-    const activeCard = document.querySelector('.cardd.active');
-
-    if (activeCard && cardContainer) {
-      const index = this.currentIndex;
-      const newPosition = -index * cardWidth + offset;
-      cardContainer.style.transform = `translateX(${newPosition}px)`;
-    }
-  
-},
-
-  adjacentIndex(index, offset) {
-    const length = this.cards.length;
-    return (index + offset + length) % length;
+    prevCard() {
+  if (this.currentIndex === 0) {
+    this.currentIndex = this.cards.length - 1;
+  } else {
+    this.currentIndex--;
   }
 },
-watch: {
+nextCard() {
+  if (this.currentIndex === this.cards.length - 1) {
+    this.currentIndex = 0;
+  } else {
+    this.currentIndex++;
+  }
+},
+    centerActiveCard() {
+      const sliderWidth = this.$refs.slider.offsetWidth;
+      const cardWidth = 250;
+      const offset = (sliderWidth - cardWidth) / 2;
+      const cardContainer = document.querySelector('.slider');
+      const activeCard = document.querySelector('.cardd.active');
+
+      if (activeCard && cardContainer) {
+        const index = this.currentIndex;
+        const newPosition = -index * cardWidth + offset;
+        cardContainer.style.transform = translateX`(${newPosition}px)`;
+      }
+    }
+  },
+  watch: {
   currentIndex() {
     this.centerActiveCard();
   }
 }
 };
+
+
 </script>
 
-<style scoped>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 </style>
 
@@ -259,7 +194,6 @@ overflow-x: hidden;
 }
 
 .Paket {
-
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -267,9 +201,9 @@ overflow-x: hidden;
   padding: 0px 0px 10px ;
   gap: 109px;
   position: absolute;
-  width: 1085px;
+  width: 1080px;
   height: 207px;
-  left: 109px;
+  left: 15%;
   top: 3700px;
   margin-top: 86px;
   border-bottom: 1px solid #D0D5DD;
@@ -317,63 +251,116 @@ overflow-x: hidden;
 
 
 .paket-images {
-  width: 1280px;
+  width: 100%;
   height: 207px;
-  left: 109px;
+  left: 100px;
   top: 3715px;
   object-fit: cover;
 }
 
 .image-container {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 600px;
+  height: auto; 
 }
 
 .image {
-  width: 100%;
-  width: 1280px;
-  height: 100%;
-  max-height: 580px;
-  height: 100%;
-  max-height: 580px;
-  object-fit: cover;
+  width: 100vw; 
+  height: 120vh; 
+  object-fit: cover; 
   filter: brightness(60%);
 }
 
-
-
-
-.Fasilitas {
-  position: absolute;
-  width: 442px;
-  width: 442px;
-  height: 72px;
-  top: 1500px;
-  left: 120px;
-  margin-left: -50px;
+.image-text {
   font-family: Raleway;
+  position: absolute;
+  min-width: 100vw;
+  height: 72px;
+  top: 40%;
+  transform: translateY(-50%);
+  color: white;
   font-size: 64px;
-  font-weight: 400;
-  line-height: 400px;
+  font-weight: 700;
+  line-height: 72px;
   letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
+  text-align: center;
 
+  }
 
+  .text-bottom1 {
+  position: absolute;
+  width: 362px;
+  height: 18px;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  left: 5%;
+  transform: translateX(-50%);
+  top: 60%; 
+  transform: translateY(-50%);
 }
 
-.Fasilitas-Text {
+.text-bottom2 {
+  position: absolute;
+  width: 362px;
+  height: 18px;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  left: 37%;
+  top: 60%;
+  transform: translateX(-50%);
+  transform: translateY(-50%);
+}
+
+.text-bottom3 {
+  position: absolute;
+  width: 362px;
+  height: 18px;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+  left: 70%;
+  transform: translateX(-50%);
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+.arrow-down {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 50vw;
+  left: 50vw;
+  cursor: pointer;
+}
+
+.Fasilitas{
+    width: 542px;
+    height: 72px;
+    top: 1500px;
+    left: 150px;
+    margin-left: 10%;
+    font-family: Raleway;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 400px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
+}
+
+.Fasilitas-Text{
   width: 542px;
-  height: 72px;
-  margin-top: -220px;
-  margin-left: 650px;
-  font-family: Raleway;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 25px;
-  letter-spacing: 0em;
-  text-align: right;
+    height: 72px;
+    margin-top: -220px;
+    margin-left: 130%;
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: right;
 }
 
 .Fasilitas-Images {
@@ -389,44 +376,40 @@ overflow-x: hidden;
 .card {
   width: 600px;
   height: 649px;
-  top: 5773px;
-  left: 55px;
-  margin-left: 30px;
-  border-radius: 30px;
-  margin-top: 320px;
+  top: 1773px;
+  left: 30px; /* Menggeser ke kanan sedikit */
+  margin-top: 200px;
+  margin-left: 10%;
   border-radius: 30px;
   filter: opacity(70%);
   background-size: cover;
   background-image: url(../assets/images/image33.png);
-
-
 }
 
 .card2 {
   width: 600px;
   height: 649px;
   top: 1773px;
-  left: 685px;
-  margin-top: 110px;
-  margin-left: -40px;
+  left: 660px;
+  margin-top: -650px;
+  margin-left: 52%;
   border-radius: 30px;
   filter: opacity(70%);
   background-size: cover;
   background-image: url(../assets/images/card2.png);
-  position: absolute;
 }
+
 
 .card3 {
   width: 600px;
   height: 649px;
-  top: 1850px;
-  left: 0;
-  margin-left: 30px;
-  margin-top: 690px;
+  top: 1773px;
+  left: 30px; /* Menggeser ke kanan sedikit */
+  margin-top: 10px;
+  margin-left: 10%;
   border-radius: 30px;
   filter: opacity(70%);
   background-size: cover;
-  position: absolute;
 }
 
 .card3 {
@@ -437,15 +420,14 @@ overflow-x: hidden;
 .card4 {
   width: 600px;
   height: 649px;
-  top: 1850px;
-  left: 685px;
-  margin-top: 690px;
-  margin-left: -40px;
+  top: 1773px;
+  left: 660px;/* Menggeser ke kiri sedikit */
+  margin-top: -1100px;
+  margin-left: 52%;
   border-radius: 30px;
   filter: opacity(70%);
-  background-image: url(../assets/images/card4Museum.png);
   background-size: cover;
-  position: absolute;
+  background-image: url(../assets/images/card4Museum.png);
 }
 
 .card-text {
@@ -494,6 +476,7 @@ overflow-x: hidden;
 }
 
 .card-text4 {
+  padding-top: 460px;
   width: 500px;
   height: 18px;
   left: 242px;
@@ -509,12 +492,10 @@ overflow-x: hidden;
 }
 
 .Kunjungan {
-  position: absolute;
   width: 542px;
   height: 72px;
   top: 3400px;
-  left: 100px;
-  margin-left: 0px;
+  margin-left: 14%;
   font-family: Raleway;
   font-size: 64px;
   font-weight: 400;
@@ -539,85 +520,40 @@ overflow-x: hidden;
   text-align: right;
 }
 
-.image-text {
-  font-family: Raleway;
-  position: absolute;
-  width: 625px;
-  height: 72px;
-  top: 250px;
-  top: 250px;
-  left: 327px;
-  color: white;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 72px;
-  letter-spacing: 0em;
-  text-align: center;
-
+.destinasi-container {
+  position: relative;
+  width: 100%; 
+  height: 100%;
 }
-
-.text-bottom1 {
-  position: absolute;
-  width: 362px;
-  height: 18px;
-  top: 420px;
-  top: 420px;
-  left: 90px;
-  font-size: 16px;
-  line-height: 24px;
-  color: white;
-}
-
-.text-bottom2 {
-  position: absolute;
-  width: 360px;
-  height: 48px;
-  top: 420px;
-  top: 420px;
-  left: 499px;
-  font-size: 16px;
-  line-height: 24px;
-  color: white;
-
-}
-
-.text-bottom3 {
-  position: absolute;
-  width: 362px;
-  height: 48px;
-  top: 420px;
-  top: 420px;
-  left: 889px;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffffff;
-}
-
-.arrow-down {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  top: 530px;
-  top: 530px;
-  left: 624px;
-  cursor: pointer;
-}
-
 
 .Destinasi {
   font-family: Raleway;
-  margin-top: 750px;
-  width: 1104px;
+  margin-top: 200px; 
+  width: 100%;
   height: 64px;
-  top: 922px;
-  left: 88px;
-  margin-left: 80px;
+  top: 40%; /* Posisi vertikal di tengah */
+  transform: translateY(-150%); /* Menggeser elemen ke tengah vertikal */
   color: #000000;
   font-size: 56px;
   font-weight: 400;
   line-height: 64px;
   text-align: center;
 }
+
+.bawah-destinasi {
+  width: 886px;
+  height: 68px;
+  font-family: Raleway;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 50%; /* Posisi horizontal di tengah */
+  top: 70%; /* Posisi vertikal di tengah */
+  transform: translate(-50%, -50%); /* Menggeser elemen ke tengah horizontal dan vertikal */
+}
+
 
 .bold {
   font-family: Raleway;
@@ -628,19 +564,7 @@ overflow-x: hidden;
   text-align: center;
 }
 
-.bawah-destinasi {
-  width: 886px;
-  height: 68px;
-  top: 1014px;
-  left: 197px;
-  margin-left: 200px;
-  margin-top: 40px;
-  font-family: Raleway;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 30px;
-  text-align: center;
-}
+
 
 
 
@@ -664,122 +588,6 @@ overflow-x: hidden;
   height: 49px;
 }
 
-.footer {
-  width: 1280px;
-  height: 650px;
-  margin-top: 1900px;
-  position: relative;
-
-
-}
-
-a {
-  text-decoration: none;
-  color: #212121;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.footer-col {
-  display: flex;
-}
-
-.footer-col h3 {
-  font-size: 30px;
-  font-weight: 40px;
-  display: inline-block;
-  margin-bottom: 11px;
-  margin-top: 76px;
-}
-
-.footer-col-1 {
-
-  margin-left: 88px;
-  color: #212121;
-
-}
-
-
-
-.logo {
-  font-size: 20px;
-  font-weight: 400;
-  display: flex;
-  flex-direction: row;
-  margin-left: 88px;
-
-
-}
-
-.logo img {
-  width: 70px;
-  margin-right: 9px;
-
-}
-
-.footer-col-2 {
-  margin-left: 60px;
-}
-
-.footer-col-3 {
-  margin-left: 60px;
-}
-
-.footer-col-4 {
-  margin-left: 139px;
-  width: 434px;
-}
-
-.footer-col li {
-  color: #212121;
-}
-
-.footer-col li:not(:last-child) {
-  margin-bottom: 11px;
-}
-
-.adress {
-  width: 184px;
-  height: 84px;
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 62px;
-  margin-left: 88px;
-}
-
-.lower {
-  width: 1080px;
-  height: 142px;
-  margin-left: 88px;
-  display: flex;
-}
-
-.inlower {
-  padding-top: 600px;
-  margin-left: 80px;
-  position: absolute;
-
-
-}
-
-.collab {
-  display: flex;
-  flex-direction: row;
-  gap: 46px;
-
-}
-
-.susun {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 46px;
-  padding-left: 645px;
-}
-
 .button {
   width: 431px;
   height: 58px;
@@ -797,6 +605,9 @@ ul {
 }
 
 .button-Kunjungan {
+  align-items: center;
+  justify-content: center;
+  display: flex;
   width: 300px;
   height: 40px;
   border-radius: 10px;
@@ -807,18 +618,16 @@ ul {
   padding-left: 22px;
   font-size: 20px;
   font-weight: 800;
-  margin-top: 250px;
   margin-left: 800px;
-  line-height: 28px;
   font-family: Raleway;
-  position: absolute;
+  line-height: 22px;
 }
 
 .slider {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1260px;
+  width: 100%;
 }
 
 .cardd {
@@ -884,11 +693,9 @@ right: 100px;
 }
 
 .button-slider{
-.button-slider{
   font-weight: bold;
   cursor: pointer;
   transition: all 0.5s ease;
-}
 }
 
 .bulet {
@@ -906,4 +713,8 @@ right: 100px;
   background-color: rgb(0, 0, 0);
 }
 
+.footer{
+  margin-top: 700px;
+  margin-left: 5%;
+}
 </style>

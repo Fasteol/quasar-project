@@ -16,12 +16,18 @@ import sejarahSilsilah from "../pages/sejarahSilsilah.vue";
 import silsilahDesktop from "../pages/silsilahDesktop.vue";
 import AdminHomePage from "../pages/Admin/HomePage.vue";
 import AdminAddPage from "../pages/Admin/AddPage.vue";
+import AdminEventPage from "../pages/Admin/EventPage.vue";
 
 const routes = [
   {
     path: "/admin/home",
     name: "AdminHomePage",
     component: AdminHomePage,
+  },
+  {
+    path: "/admin/event",
+    name: "AdminEventPage",
+    component: AdminEventPage,
   },
   {
     path: "/admin/add/:id",

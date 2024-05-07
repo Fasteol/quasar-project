@@ -124,85 +124,30 @@
 <div class="Kunjungan">
   <p>Kunjungan</p>
   <p class="Kunjungan-Text">Kunjungi Keraton Kasepuhan Cirebon dengan berbagai pilihan paket wisata yang menarik.</p>
+  <a href="/#/booking">
+  <button class="button-Kunjungan">Dapatkan Tiket Sekarang!</button></a>
 </div>
-
+<a href="/#/booking">
 <div class="Paket">
   <img src="../assets/images/Frame 81.png">
   <img src="../assets/images/Frame 82.png">
   <img src="../assets/images/Frame 83.png">
   <img src="../assets/images/Frame 84.png">
 </div>
-<div class="footer">
-     
-     <div class="logo">
-        <img src="../assets/images/logo_keraton.png" alt="">
-        <p>KERATON <br>KASEPUHAN <br>CIREBON</p>
-     </div>
-     <div class="footer-col">
-        <div class="footer-col-1">
-           <h3>Quick Links</h3>
-           <ul>
-           <li><a href="#">Beranda</a></li>
-           <li><a href="#">Sejarah</a></li>
-           <li><a href="#">Booking</a></li>
-           <li><a href="#">Objek Wisata</a></li>
-        </ul>
-        </div>
-        <div class="footer-col-2">
-           <h3>Socials</h3>
-           <ul>
-              <li><a href="#">Whatsapp</a></li>
-              <li><a href="#">Facebook</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Threads</a></li>
-           </ul>
-        </div>
-        <div class="footer-col-3">
-           <h3>Company</h3>
-           <ul>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Partners</a></li>
-              <li><a href="#">Contact</a></li>
-           </ul>
-        </div>
-        <div class="footer-col-4">
-           <h3>Subscribes your email for updates!</h3>
-           <button class="button">Enter your email</button>
-           
-
-        </div>
-     </div>
-     <div class="adress">
-        Jalan Kasepuhan 43
-        Cirebon, Jawa Barat
-        45114 
-     </div>
-     <div class="lower">
-        <div class="inlower">
-        @2024 Keraton Kasepuhan Cirebon
-        </div>
-        <div class="susun">
-        <p>In collaboration</p>
-
-        <div class="collab">
-            <img src="../assets/images/logo_keraton.png" alt="" class="foto1">
-           <img src="../assets/images/1 931.png" alt="" class="foto2">
-           <img src="../assets/images/telkom.png" alt="" class="foto3">
-           <img src="../assets/images/bjb.png" alt="" class="foto4">
-           
-        </div>
-     </div>
-     </div>
-    </div>
+</a>
   </body>
+  <bawah class="bawah"></bawah>
 </template>
 
 <script setup>
 import navbar from '../components/NavBar.vue'
+import bawah from '../components/FooterComp.vue'
+
 </script>
 
 
 <script>
+
 
 const scrollToContent = () => {
     document.querySelector('.Destinasi').scrollIntoView({ 
@@ -215,6 +160,10 @@ const scrollToContent = () => {
   });}
 
   export default {
+    component:{
+      bawah,
+      navbar
+    },
   data() {
     return {
       cards: [
@@ -257,7 +206,7 @@ nextCard() {
       if (activeCard && cardContainer) {
         const index = this.currentIndex;
         const newPosition = -index * cardWidth + offset;
-        cardContainer.style.transform = 'translateX(${newPosition}px)';
+        cardContainer.style.transform = translateX`(${newPosition}px)`;
       }
     }
   },
@@ -265,7 +214,9 @@ nextCard() {
   currentIndex() {
     this.centerActiveCard();
   }
-}
+},
+
+
 };
 
 </script>
@@ -299,12 +250,12 @@ nav {
 .Paket{
   position: absolute;
   width: 1,085px;
-height: 207px;
-top: 7661px;
-left: 119px;
-padding: 0px, 0px, 10px, 0px;
-border: 0px, 0px, 1px, 0px;
-gap: 109px;
+  height: 207px;
+  top: 6361px;
+  left: 100px;
+  padding: 0px, 0px, 10px, 0px;
+  border: 0px, 0px, 1px, 0px;
+  gap: 109px;
 
 }
 .image-container {
@@ -487,7 +438,7 @@ iframe {
     position: absolute;
     width: 542px;
     height: 72px;
-    top: 5500px;
+    top: 4500px;
     left: 150px;
     margin-left: -120px;
     font-family: Raleway;
@@ -497,14 +448,12 @@ iframe {
     letter-spacing: 0em;
     text-align: left;
     color: #000000;
-
-
 }
 .Fasilitas-Text{
   width: 542px;
     height: 72px;
-    margin-top: -220px;
-      margin-left: 650px;
+    margin-top: 20px;
+    margin-left: 650px;
     font-family: Raleway;
     font-size: 20px;
     font-weight: 400;
@@ -521,61 +470,61 @@ iframe {
 }
 
 
-.card{
+.card {
   width: 600px;
-height: 649px;
-top: 4153px;
-left: 0;
-margin-left: 30px;
-margin-top: 1600px;
-border-radius: 30px;
-filter: opacity(70%);
-background-size: cover;
-position: absolute;
-background-image: url(../assets/images/Rectangle57.png);
+  height: 649px;
+  top: 1773px;
+  left: 30px;
+  margin-top: 1200px;
+  margin-left: 10%;
+  border-radius: 30px;
+  filter: opacity(70%);
+  background-size: cover;
+  background-image: url(../assets/images/rectangle57.png);
+}
+
+.card2 {
+  width: 600px;
+  height: 649px;
+  top: 1773px;
+  left: 660px;
+  margin-top: -650px;
+  margin-left: 52%;
+  border-radius: 30px;
+  filter: opacity(70%);
+  background-size: cover;
+  background-image: url(../assets/images/image34.png);
+}
+
+
+.card3 {
+  width: 600px;
+  height: 649px;
+  top: 1973px;
+  left: 30px; /* Menggeser ke kanan sedikit */
+  margin-top: 10px;
+  margin-left: 10%;
+  border-radius: 30px;
+  filter: opacity(70%);
+  background-size: cover;
+}
+
+.card3 {
+  background-image: url(../assets/images/rectangle59.png);
 
 }
 
-.card2{
+.card4 {
   width: 600px;
-height: 649px;
-top: 4153px;
-left: 685px;
-margin-top: 1600px;
-margin-left: -40px;
-border-radius: 30px;
-filter: opacity(70%);
-background-size: cover;
-background-image: url(../assets/images/image34.png);
-position: absolute;
-}
-.card3{
-  width: 600px;
-height: 649px;
-top: 4850px;
-left: 0;
-margin-left: 30px;
-margin-top: 1565px;
-border-radius: 30px;
-filter: opacity(70%);
-background-size: cover;
-position: absolute;
-background-image: url(../assets/images/Rectangle59.png);
-
-}
-
-.card4{
-  width: 600px;
-height: 649px;
-top: 4850px;
-left: 685px;
-margin-left: -40px;
-margin-top: 1560px;
-border-radius: 30px;
-filter: opacity(70%);
-background-image: url(../assets/images/Rectangle60.png);
-background-size: cover;
-position: absolute;
+  height: 649px;
+  top: 1773px;
+  left: 660px;/* Menggeser ke kiri sedikit */
+  margin-top: -1100px;
+  margin-left: 52%;
+  border-radius: 30px;
+  filter: opacity(70%);
+  background-size: cover;
+  background-image: url(../assets/images/rectangle60.png);
 }
 .card-text{
   width: 210px;
@@ -620,6 +569,7 @@ position: absolute;
   color: #ffffff;
   }
   .card-text4{
+  padding-top: 300px;
   width: 500px;
   height: 48px;
   top: 662px;
@@ -639,9 +589,9 @@ position: absolute;
     position: absolute;
     width: 542px;
     height: 72px;
-    top: 7149px;
+    top: 6000px;
     left: 100px;
-    margin-left: -50px;
+    margin-left: -30px;
     font-family: Raleway;
     font-size: 64px;
     font-weight: 400;
@@ -830,35 +780,13 @@ position: absolute;
  width : 100px;
  height: 49px;
 }
-.footer {
- width:1280px;
- height: 650px;
- margin-top: 4500px;
- position: relative;
-
- 
-} 
+  
 a {
  text-decoration: none;
  color: #212121;
 }
 ul {
  list-style-type: none;
-}
-.footer-col {
- display: flex;
-}
-.footer-col h3 {
- font-size: 30px;
- font-weight: 40px;
- display: inline-block;
- margin-bottom: 11px;
- margin-top: 76px;
-}
-.footer-col-1 {
- margin-left: 88px;
- color: #212121;
- 
 }
 
 
@@ -877,58 +805,6 @@ ul {
  width: 70px;
  margin-right: 9px;
 
-}
-
-.footer-col-2 {
- margin-left: 60px;
-}
-.footer-col-3 {
- margin-left: 60px;
-}
-.footer-col-4 {
- margin-left: 139px;
- width: 434px;
-}
-.footer-col li {
-    color: #212121;
-}
-.footer-col li:not(:last-child) {
- margin-bottom: 11px;
-}
-.adress {
- width:184px;
- height: 84px;
- font-size: 20px;
- font-weight: 400;
- margin-top:62px;
- margin-left: 88px;
-}
-.lower {
-  width:1080px;
-  height: 142px;
-  margin-left: 88px;
-  display: flex;
-}
-.inlower {
- padding-top:600px;
- margin-left: 80px;
- position: absolute;
- 
- 
-}
-.collab {
- display: flex;
- flex-direction: row;
- gap:46px;
- 
-}
-.susun {
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- gap:46px;
- padding-left: 645px;
 }
 
 .button {
@@ -951,7 +827,7 @@ ul {
  height: 40px;
  border-radius: 10px;
  background-color: #123B32;
- color: #FFFFFF;
+ color: #ffffff;
  text-align: left;
  padding-left: 22px;
  font-size: 20px;
@@ -1050,5 +926,9 @@ background-size:cover;
   background-color: rgb(0, 0, 0);
 }
 
-
+.bawah{
+  transform: scale(0.9);
+  margin-left: -70px;
+  margin-top: 3100px;
+}
 </style>
