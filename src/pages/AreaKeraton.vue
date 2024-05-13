@@ -138,7 +138,7 @@
 
 <script setup>
 import navbar from '../components/NavBar.vue'
-import footer from '../components/footerDesktop.vue'
+import footer from '../components/FooterComp.vue'
 </script>
 
 

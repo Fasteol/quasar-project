@@ -17,21 +17,23 @@
           <li class="sub">
             <q-btn
               flat
-              to="/"
               label="Beranda"
-              :text-color="isScrolled ? 'black' : 'white'"
+              :text-color="isCheckoutPage ? 'black' : (isScrolled ? 'black' : 'white')"
               no-caps
               dense
+              clickable v-ripple to="/"
             ></q-btn>
           </li>
           <li class="sub">
             <q-btn
               flat
               label="Sejarah"
-              :text-color="isScrolled ? 'black' : 'white'"
+              :text-color="isCheckoutPage ? 'black' : (isScrolled ? 'black' : 'white')"
               no-caps
               dense
+
             >
+            <q-icon name="keyboard_arrow_down" class="q-ml-sm"></q-icon>
               <q-menu>
                 <q-list>
                   <q-item clickable v-ripple to="/sejarah">
@@ -53,10 +55,11 @@
             <q-btn
               flat
               label="Booking"
-              :text-color="isScrolled ? 'black' : 'white'"
+              :text-color="isCheckoutPage ? 'black' : (isScrolled ? 'black' : 'white')"
               no-caps
               dense
             >
+            <q-icon name="keyboard_arrow_down" class="q-ml-sm"></q-icon>
               <q-menu>
                 <q-list>
                   <q-item clickable v-ripple to="/booking">
@@ -78,10 +81,11 @@
             <q-btn
               flat
               label="Objek Wisata"
-              :text-color="isScrolled ? 'black' : 'white'"
+              :text-color="isCheckoutPage ? 'black' : (isScrolled ? 'black' : 'white')"
               no-caps
               dense
             >
+            <q-icon name="keyboard_arrow_down" class="q-ml-sm"></q-icon>
               <q-menu>
                 <q-list>
                   <q-item clickable v-ripple to="/areakeraton">
@@ -123,7 +127,6 @@
             Dapatkan Tiket
           </button> -->
           <q-btn
-            v-if="!userName"
             style="background: #123b32; color: white; padding-inline: 30px"
             no-caps
             dense
@@ -131,10 +134,6 @@
           >
             <span class="text-bold">Dapatkan Tiket</span>
           </q-btn>
-          <div v-if="userName">
-            <h1>{{ userName }}</h1>
-            <q-btn @click="logOut">Log Out</q-btn>
-          </div>
         </ul>
       </nav>
     </div>
@@ -142,14 +141,10 @@
 </template>
 
 <script>
-import CookieHandler from 'src/cookieHandler';
-import StorageHandler from 'src/storeHandler';
 export default {
   data() {
     return {
       isScrolled: false,
-      accessToken: CookieHandler.getCookie('token'),
-      userName: StorageHandler.getData('name', 'local')
     };
   },
   props: {
@@ -161,7 +156,11 @@ export default {
       type: Boolean,
       default: false,
     },
+  isCheckoutPage: {
+    type: Boolean,
+    default: false,
   },
+},
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -170,23 +169,7 @@ export default {
   },
   methods: {
     getTickets() {
-      if(!this.accessToken) this.$router.push('/signin');
-    },
-    async logOut(){
-      try{
-        const response = await this.$api.post('auth/logout', {}, {
-          headers: {
-            'Authorization': `Bearer ${this.accessToken}`
-          }
-        })
-        if(response.status != 200) throw Error(response.data.message)
-        StorageHandler.deleteData('name', 'local')
-        StorageHandler.deleteData('email', 'local')
-        CookieHandler.removeCookie('token')
-        this.userName = null
-      }catch(err){
-        console.log(err)
-      }
+      this.$router.push({ name: "signin" });
     },
     handleScroll() {
       if (window.pageYOffset > 50) {
@@ -258,6 +241,7 @@ nav ul.dropdown-list li {
   background-color: white;
   color: black;
 }
+
 
 @keyframes moveUp {
   0% {
